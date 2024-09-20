@@ -1,19 +1,25 @@
 import React from 'react';
+import './Navbar.css';
+import logo from './logo.svg';
 
-const Header = () => {
+const Navbar = () => {
   return (
-    <header className="bg-white shadow-md">
-      <nav className="container mx-auto flex justify-between items-center p-6">
-        <a href="#" className="text-2xl font-bold text-blue-600">ResourceFinder</a>
-        <div className="space-x-4">
-          <a href="#" className="text-gray-600 hover:text-blue-600">Home</a>
-          <a href="#" className="text-gray-600 hover:text-blue-600">Features</a>
-          <a href="#" className="text-gray-600 hover:text-blue-600">About</a>
-          <a href="#" className="text-gray-600 hover:text-blue-600">Contact</a>
-        </div>
-      </nav>
-    </header>
+    <nav className="navbar-container">
+      <div className="navbar-content">
+        <a className="navbar-brand" href="#">
+          <img src={logo} alt="Brand Logo" className="navbar-logo" />
+        </a>
+        <ul className="navbar-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Portfolios</a></li>
+          <li><a href="#">Adtriox OOH</a></li>
+        </ul>
+        <a href="#" className="contact-button">Contact Us</a>
+      </div>
+    </nav>
   );
 };
 
-export default Header;
+export default Navbar;
