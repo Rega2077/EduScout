@@ -11,10 +11,10 @@ const Navbar = () => {
         </a>
         <ul className="navbar-links">
           <li><a href="#">Home</a></li>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Services</a></li>
-          <li><a href="#">Portfolios</a></li>
-          <li><a href="#">Adtriox OOH</a></li>
+          <li><a href="#">Resources</a></li>
+          <li><a href="#">Roadmaps</a></li>
+          <li><a href="#">Quizzes</a></li>
+          <li><a href="#">Rewards</a></li>
         </ul>
         <a href="#" className="contact-button">Contact Us</a>
       </div>

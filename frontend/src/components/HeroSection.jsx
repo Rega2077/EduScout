@@ -1,11 +1,17 @@
 import React from 'react';
+import './HeroSection.css';
 
 const HeroSection = () => {
   return (
-    <section className="bg-blue-600 text-white h-screen flex flex-col justify-center items-center">
-      <h1 className="text-5xl font-bold mb-4">Find the Best Resources, Ranked for You</h1>
-      <p className="text-xl mb-8">Access high-quality resources and learn from the best, curated and ranked by experts.</p>
-      <button className="bg-white text-blue-600 px-8 py-3 rounded-full shadow-md hover:bg-gray-100">Get Started</button>
+    <section className="hero-container">
+      <div className="hero-content">
+        <h1 className="hero-heading">Unlock Your Learning Potential Today!</h1>
+        <p className="hero-subheading">Explore expert-curated resources, tailored roadmaps, and quizzes to enhance your skills.</p>
+        <div className="hero-buttons">
+          <a href="#resources" className="btn-primary">Explore Resources</a>
+          <a href="#roadmaps" className="btn-secondary">Start Learning</a>
+        </div>
+      </div>
     </section>
   );
 };
