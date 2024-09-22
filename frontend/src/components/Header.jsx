@@ -1,22 +1,23 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom'; // Import NavLink for routing
 import './Navbar.css';
-import logo from './logo.svg';
+import logo from '../assets/logo.svg';
 
 const Navbar = () => {
   return (
     <nav className="navbar-container">
       <div className="navbar-content">
-        <a className="navbar-brand" href="#">
+        <NavLink className="navbar-brand" to="/">
           <img src={logo} alt="Brand Logo" className="navbar-logo" />
-        </a>
+        </NavLink>
         <ul className="navbar-links">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Resources</a></li>
-          <li><a href="#">Roadmaps</a></li>
-          <li><a href="#">Quizzes</a></li>
-          <li><a href="#">Rewards</a></li>
+          <li><NavLink to="/" activeClassName="active-link">Home</NavLink></li>
+          <li><NavLink to="/resources" activeClassName="active-link">Resources</NavLink></li>
+          <li><NavLink to="/roadmaps" activeClassName="active-link">Roadmaps</NavLink></li>
+          <li><NavLink to="/quizzes" activeClassName="active-link">Quizzes</NavLink></li>
+          <li><NavLink to="/rewards" activeClassName="active-link">Rewards</NavLink></li>
         </ul>
-        <a href="#" className="contact-button">Contact Us</a>
+        <NavLink to="/contact" className="contact-button">Contact Us</NavLink>
       </div>
     </nav>
   );

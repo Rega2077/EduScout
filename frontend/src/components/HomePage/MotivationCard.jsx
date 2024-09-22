@@ -1,6 +1,6 @@
 import React from 'react';
 import './MotivationCard.css';
-import Image from './download.jpeg';
+import Image from '../../assets/download.jpeg';
 
 const MotivationCard = () => {
   return (

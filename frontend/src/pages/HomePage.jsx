@@ -1,19 +1,16 @@
 import React from 'react';
-import Header from '../components/Header';
-import HeroSection from '../components/HeroSection';
-import Footer from '../components/Footer';
-import BoxSection from '../components/BoxSection';
-import RoadmapCarousel from '../components/RoadmapCarousel';
-import MotivationCard from '../components/MotivationCard';
-import ExpertSteps from '../components/ExpertSteps';
-import BeforeAfter from '../components/BeforeAfter';
-import Testimonials from '../components/Testimonials';
-import CallToAction from '../components/CallToAction';
+import HeroSection from '../components/HomePage/HeroSection';
+import BoxSection from '../components/HomePage/BoxSection';
+import RoadmapCarousel from '../components/HomePage/RoadmapCarousel';
+import MotivationCard from '../components/HomePage/MotivationCard';
+import ExpertSteps from '../components/HomePage/ExpertSteps';
+import BeforeAfter from '../components/HomePage/BeforeAfter';
+import Testimonials from '../components/HomePage/Testimonials';
+import CallToAction from '../components/HomePage/CallToAction';
 
 const HomePage = () => {
   return (
     <>
-      <Header />
       <HeroSection />
       <BoxSection />
       <RoadmapCarousel/>
@@ -22,7 +19,6 @@ const HomePage = () => {
       <BeforeAfter/>
       <Testimonials/>
       <CallToAction/>
-      <Footer />
     </>
   );
 };
