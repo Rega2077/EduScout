@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for routing
 import './ResourceSection.css';
-import DSA from '../../assets//DSA.png'; // Importing image
+import DSA from '../../assets/DSA.png'; // Importing image
 import Web from '../../assets/Web.png';
 import Machine from '../../assets/Machine.png';
 import DBMS from '../../assets/DBMS.png';
@@ -12,7 +13,7 @@ const resources = [
     title: 'Data Structures & Algorithms',
     icon: '📚',
     description: 'Top 5 resources to master DSA from scratch.',
-    image: DSA, // Using the imported image
+    image: DSA,
   },
   {
     title: 'Web Development',
@@ -49,10 +50,65 @@ const resources = [
 const ResourceSection = () => {
   const [popupVisible, setPopupVisible] = useState(false);
   const [selectedResource, setSelectedResource] = useState(null);
+  const navigate = useNavigate(); // Initialize useNavigate for routing
 
+  // Handle resource click to show the difficulty popup
   const handleResourceClick = (resource) => {
     setSelectedResource(resource);
     setPopupVisible(true);
+  };
+
+  // Function to handle difficulty navigation
+  const handleDifficultyClick = (title, level) => {
+    if (title === 'Data Structures & Algorithms') {
+      if (level === 'Easy') {
+        navigate('/resources/dsa/easy');
+      } else if (level === 'Medium') {
+        navigate('/resources/dsa/medium');
+      } else {
+        navigate('/resources/dsa/hard');
+      }
+    } else if (title === 'Web Development') {
+      if (level === 'Easy') {
+        navigate('/resources/webdev/easy');
+      } else if (level === 'Medium') {
+        navigate('/resources/webdev/medium');
+      } else {
+        navigate('/resources/webdev/hard');
+      }
+    } else if (title === 'Competitive Programming') {
+      if (level === 'Easy') {
+        navigate('/resources/competitive/easy');
+      } else if (level === 'Medium') {
+        navigate('/resources/competitive/medium');
+      } else {
+        navigate('/resources/competitive/hard');
+      }
+    } else if (title === 'System Design') {
+      if (level === 'Easy') {
+        navigate('/resources/systemdesign/easy');
+      } else if (level === 'Medium') {
+        navigate('/resources/systemdesign/medium');
+      } else {
+        navigate('/resources/systemdesign/hard');
+      }
+    } else if (title === 'Machine Learning') {
+      if (level === 'Easy') {
+        navigate('/resources/machinelearning/easy');
+      } else if (level === 'Medium') {
+        navigate('/resources/machinelearning/medium');
+      } else {
+        navigate('/resources/machinelearning/hard');
+      }
+    } else if (title === 'Database Management') {
+      if (level === 'Easy') {
+        navigate('/resources/dbms/easy');
+      } else if (level === 'Medium') {
+        navigate('/resources/dbms/medium');
+      } else {
+        navigate('/resources/dbms/hard');
+      }
+    }
   };
 
   const handleClosePopup = () => {
@@ -91,7 +147,7 @@ const ResourceSection = () => {
 
                 {/* Difficulty boxes with stars */}
                 <div className="difficulty-container">
-                  <div className="difficulty-box easy">
+                  <div className="difficulty-box easy" onClick={() => handleDifficultyClick(selectedResource.title, 'Easy')}>
                     <div>
                       <h3>Easy</h3>
                       <p>Great for beginners starting with {selectedResource.title}.</p>
@@ -101,7 +157,7 @@ const ResourceSection = () => {
                     </div>
                   </div>
 
-                  <div className="difficulty-box medium">
+                  <div className="difficulty-box medium" onClick={() => handleDifficultyClick(selectedResource.title, 'Medium')}>
                     <div>
                       <h3>Medium</h3>
                       <p>For intermediate learners wanting to deepen their knowledge in {selectedResource.title}.</p>
@@ -112,7 +168,7 @@ const ResourceSection = () => {
                     </div>
                   </div>
 
-                  <div className="difficulty-box hard">
+                  <div className="difficulty-box hard" onClick={() => handleDifficultyClick(selectedResource.title, 'Hard')}>
                     <div>
                       <h3>Hard</h3>
                       <p>Advanced content for mastering {selectedResource.title}.</p>
