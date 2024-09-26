@@ -27,18 +27,18 @@ const StepContainer = styled.div`
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-  border-left: 8px solid #32b67a;
+  border-left: 8px solid #28a163;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   
   &:hover {
-    transform: scale(1.05); // Enlarge effect
+    transform: scale(1.05);
     box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
   }
 `;
 
 const StepTitle = styled.h2`
   font-size: 2rem;
-  color: #32b67a;
+  color: #28a163;
   margin-bottom: 10px;
   position: relative;
   cursor: pointer;
@@ -50,7 +50,7 @@ const StepTitle = styled.h2`
     bottom: -2px;
     width: 100%;
     height: 3px;
-    background-color: #32b67a;
+    background-color: #28a163;
     transform: scaleX(0);
     transform-origin: left;
     animation: underline 0.4s forwards;
@@ -78,10 +78,7 @@ const DifficultyContainer = styled.div`
 
 const DifficultyLabel = styled.span`
   font-size: 1rem;
-  color: ${props => 
-    props.level === 'Easy' ? '#28a163' :
-    props.level === 'Medium' ? '#ffc107' :
-    '#dc3545'};
+  color: #28a163;
   font-weight: bold;
 `;
 
@@ -107,7 +104,7 @@ const ButtonContainer = styled.div`
 `;
 
 const StartButton = styled.button`
-  background-color: #32b67a;
+  background-color: #28a163;
   color: white;
   border: none;
   padding: 15px 40px;
@@ -121,25 +118,25 @@ const StartButton = styled.button`
   }
 `;
 
-// Roadmap data with links and difficulty levels
+// Easy-level Machine Learning Roadmap data
 const roadmapSteps = [
-  { title: '1. Static Webpages', description: 'Learn HTML, CSS, and JavaScript basics.', difficulty: 'Easy', link: 'https://www.w3schools.com/html/' },
-  { title: '2. Advanced CSS', description: 'Flexbox, Grid, and Responsive Design.', difficulty: 'Easy', link: 'https://css-tricks.com/snippets/css/a-guide-to-flexbox/' },
-  { title: '3. JavaScript DOM', description: 'DOM Manipulation and Events.', difficulty: 'Medium', link: 'https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model' },
-  { title: '4. Version Control', description: 'Git and GitHub Basics.', difficulty: 'Easy', link: 'https://git-scm.com/book/en/v2' },
-  { title: '5. Frontend Apps', description: 'React basics, JSX, Components.', difficulty: 'Medium', link: 'https://reactjs.org/docs/getting-started.html' },
-  { title: '6. Backend Development', description: 'Node.js, Express.js, and building APIs.', difficulty: 'Medium', link: 'https://expressjs.com/' },
-  { title: '7. Databases', description: 'Learn PostgreSQL and MongoDB.', difficulty: 'Medium', link: 'https://www.postgresql.org/' },
-  { title: '8. Authentication', description: 'JWT and OAuth.', difficulty: 'Hard', link: 'https://jwt.io/introduction/' },
-  { title: '9. Full Stack Integration', description: 'Connecting Frontend with Backend.', difficulty: 'Hard', link: 'https://frontend.turing.edu/lessons/module-4/front-end-back-end-connection.html' },
-  { title: '10. Deployment', description: 'Deploy apps using AWS or Heroku.', difficulty: 'Hard', link: 'https://devcenter.heroku.com/categories/deployment' }
+  { title: '1. Introduction to Machine Learning', description: 'Understand the basics and types of machine learning (supervised, unsupervised).', difficulty: 'Easy', link: 'https://en.wikipedia.org/wiki/Machine_learning' },
+  { title: '2. Python for Data Science', description: 'Get familiar with Python libraries like NumPy, Pandas, and Matplotlib.', difficulty: 'Easy', link: 'https://www.learnpython.org/' },
+  { title: '3. Linear Algebra Basics', description: 'Learn about vectors, matrices, and how they are used in ML algorithms.', difficulty: 'Easy', link: 'https://www.khanacademy.org/math/linear-algebra' },
+  { title: '4. Introduction to Probability and Statistics', description: 'Understand the basics of probability and statistics used in machine learning.', difficulty: 'Easy', link: 'https://www.khanacademy.org/math/statistics-probability' },
+  { title: '5. Data Preprocessing', description: 'Learn techniques like data cleaning, normalization, and feature scaling.', difficulty: 'Easy', link: 'https://scikit-learn.org/stable/modules/preprocessing.html' },
+  { title: '6. Simple Linear Regression', description: 'Understand and implement simple linear regression models.', difficulty: 'Easy', link: 'https://towardsdatascience.com/linear-regression-detailed-view-ea73175f6e86' },
+  { title: '7. Train/Test Splitting', description: 'Learn how to split your dataset for training and testing.', difficulty: 'Easy', link: 'https://scikit-learn.org/stable/modules/cross_validation.html' },
+  { title: '8. K-Nearest Neighbors (KNN)', description: 'Introduction to the KNN algorithm for classification problems.', difficulty: 'Easy', link: 'https://scikit-learn.org/stable/modules/neighbors.html' },
+  { title: '9. Introduction to Decision Trees', description: 'Learn the basics of decision trees and how they work.', difficulty: 'Easy', link: 'https://www.geeksforgeeks.org/decision-tree-introduction-example/' },
+  { title: '10. Model Evaluation Metrics', description: 'Understand evaluation metrics like accuracy, precision, recall, and F1-score.', difficulty: 'Easy', link: 'https://scikit-learn.org/stable/modules/model_evaluation.html' }
 ];
 
 // Roadmap Component
 const Roadmap = () => {
   return (
     <Container>
-      <Title>Full Stack Developer Roadmap (Easy)</Title>
+      <Title>Machine Learning Roadmap - Easy</Title>
       {roadmapSteps.map((step, index) => (
         <StepContainer key={index}>
           <StepTitle>{step.title}</StepTitle>
@@ -151,7 +148,7 @@ const Roadmap = () => {
         </StepContainer>
       ))}
       <ButtonContainer>
-        <StartButton onClick={() => alert('Redirect to the playfield!')}>Start the Roadmap</StartButton>
+        <StartButton onClick={() => alert('Redirect to the roadmap start!')}>Start the Roadmap</StartButton>
       </ButtonContainer>
     </Container>
   );

@@ -29,9 +29,9 @@ const StepContainer = styled.div`
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
   border-left: 8px solid #32b67a;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  
+
   &:hover {
-    transform: scale(1.05); // Enlarge effect
+    transform: scale(1.05);
     box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
   }
 `;
@@ -100,46 +100,25 @@ const LearnMoreLink = styled.a`
   }
 `;
 
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 50px;
-`;
-
-const StartButton = styled.button`
-  background-color: #32b67a;
-  color: white;
-  border: none;
-  padding: 15px 40px;
-  font-size: 1.2rem;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: #28a163;
-  }
-`;
-
 // Roadmap data with links and difficulty levels
 const roadmapSteps = [
-  { title: '1. Static Webpages', description: 'Learn HTML, CSS, and JavaScript basics.', difficulty: 'Easy', link: 'https://www.w3schools.com/html/' },
-  { title: '2. Advanced CSS', description: 'Flexbox, Grid, and Responsive Design.', difficulty: 'Easy', link: 'https://css-tricks.com/snippets/css/a-guide-to-flexbox/' },
-  { title: '3. JavaScript DOM', description: 'DOM Manipulation and Events.', difficulty: 'Medium', link: 'https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model' },
-  { title: '4. Version Control', description: 'Git and GitHub Basics.', difficulty: 'Easy', link: 'https://git-scm.com/book/en/v2' },
-  { title: '5. Frontend Apps', description: 'React basics, JSX, Components.', difficulty: 'Medium', link: 'https://reactjs.org/docs/getting-started.html' },
-  { title: '6. Backend Development', description: 'Node.js, Express.js, and building APIs.', difficulty: 'Medium', link: 'https://expressjs.com/' },
-  { title: '7. Databases', description: 'Learn PostgreSQL and MongoDB.', difficulty: 'Medium', link: 'https://www.postgresql.org/' },
-  { title: '8. Authentication', description: 'JWT and OAuth.', difficulty: 'Hard', link: 'https://jwt.io/introduction/' },
-  { title: '9. Full Stack Integration', description: 'Connecting Frontend with Backend.', difficulty: 'Hard', link: 'https://frontend.turing.edu/lessons/module-4/front-end-back-end-connection.html' },
-  { title: '10. Deployment', description: 'Deploy apps using AWS or Heroku.', difficulty: 'Hard', link: 'https://devcenter.heroku.com/categories/deployment' }
+  { title: '1. Introduction to Databases', description: 'Understand what databases are and their importance.', difficulty: 'Easy', link: 'https://www.tutorialspoint.com/dbms/index.htm' },
+  { title: '2. Relational Database Concepts', description: 'Learn relational databases and their structures.', difficulty: 'Easy', link: 'https://www.geeksforgeeks.org/relational-model-in-dbms/' },
+  { title: '3. SQL Basics', description: 'Master basic SQL queries like SELECT, INSERT, and DELETE.', difficulty: 'Easy', link: 'https://www.w3schools.com/sql/' },
+  { title: '4. Data Modeling', description: 'Learn how to model data using ER diagrams.', difficulty: 'Medium', link: 'https://www.edrawsoft.com/data-modeling-tools.html' },
+  { title: '5. Normalization', description: 'Understand database normalization and the different normal forms.', difficulty: 'Medium', link: 'https://www.javatpoint.com/dbms-normalization' },
+  { title: '6. ACID Properties', description: 'Understand ACID properties of transactions in databases.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/acid-properties-in-dbms/' },
+  { title: '7. Indexing in Databases', description: 'Learn how indexing helps in efficient data retrieval.', difficulty: 'Medium', link: 'https://www.tutorialspoint.com/sql/sql-indexes.htm' },
+  { title: '8. Joins in SQL', description: 'Master different types of joins in SQL like INNER, LEFT, RIGHT, and FULL.', difficulty: 'Hard', link: 'https://www.datacamp.com/community/tutorials/sql-join-tutorial' },
+  { title: '9. NoSQL Databases', description: 'Get introduced to NoSQL databases like MongoDB.', difficulty: 'Hard', link: 'https://www.mongodb.com/nosql-explained' },
+  { title: '10. Database Security', description: 'Learn about securing databases from unauthorized access.', difficulty: 'Hard', link: 'https://www.oracle.com/database/technologies/security.html' }
 ];
 
 // Roadmap Component
 const Roadmap = () => {
   return (
     <Container>
-      <Title>Full Stack Developer Roadmap (Easy)</Title>
+      <Title>Database Management Roadmap (Easy)</Title>
       {roadmapSteps.map((step, index) => (
         <StepContainer key={index}>
           <StepTitle>{step.title}</StepTitle>
@@ -150,9 +129,6 @@ const Roadmap = () => {
           </DifficultyContainer>
         </StepContainer>
       ))}
-      <ButtonContainer>
-        <StartButton onClick={() => alert('Redirect to the playfield!')}>Start the Roadmap</StartButton>
-      </ButtonContainer>
     </Container>
   );
 };

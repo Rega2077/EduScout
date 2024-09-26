@@ -31,7 +31,7 @@ const StepContainer = styled.div`
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   
   &:hover {
-    transform: scale(1.05); // Enlarge effect
+    transform: scale(1.05);
     box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
   }
 `;
@@ -78,10 +78,7 @@ const DifficultyContainer = styled.div`
 
 const DifficultyLabel = styled.span`
   font-size: 1rem;
-  color: ${props => 
-    props.level === 'Easy' ? '#28a163' :
-    props.level === 'Medium' ? '#ffc107' :
-    '#dc3545'};
+  color: ${props => props.level === 'Easy' ? '#28a163' : props.level === 'Medium' ? '#ffc107' : '#dc3545'};
   font-weight: bold;
 `;
 
@@ -121,25 +118,25 @@ const StartButton = styled.button`
   }
 `;
 
-// Roadmap data with links and difficulty levels
+// Easy DSA Roadmap data
 const roadmapSteps = [
-  { title: '1. Static Webpages', description: 'Learn HTML, CSS, and JavaScript basics.', difficulty: 'Easy', link: 'https://www.w3schools.com/html/' },
-  { title: '2. Advanced CSS', description: 'Flexbox, Grid, and Responsive Design.', difficulty: 'Easy', link: 'https://css-tricks.com/snippets/css/a-guide-to-flexbox/' },
-  { title: '3. JavaScript DOM', description: 'DOM Manipulation and Events.', difficulty: 'Medium', link: 'https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model' },
-  { title: '4. Version Control', description: 'Git and GitHub Basics.', difficulty: 'Easy', link: 'https://git-scm.com/book/en/v2' },
-  { title: '5. Frontend Apps', description: 'React basics, JSX, Components.', difficulty: 'Medium', link: 'https://reactjs.org/docs/getting-started.html' },
-  { title: '6. Backend Development', description: 'Node.js, Express.js, and building APIs.', difficulty: 'Medium', link: 'https://expressjs.com/' },
-  { title: '7. Databases', description: 'Learn PostgreSQL and MongoDB.', difficulty: 'Medium', link: 'https://www.postgresql.org/' },
-  { title: '8. Authentication', description: 'JWT and OAuth.', difficulty: 'Hard', link: 'https://jwt.io/introduction/' },
-  { title: '9. Full Stack Integration', description: 'Connecting Frontend with Backend.', difficulty: 'Hard', link: 'https://frontend.turing.edu/lessons/module-4/front-end-back-end-connection.html' },
-  { title: '10. Deployment', description: 'Deploy apps using AWS or Heroku.', difficulty: 'Hard', link: 'https://devcenter.heroku.com/categories/deployment' }
+  { title: '1. Understanding Time & Space Complexity', description: 'Learn the basics of analyzing time and space complexity using Big-O notation.', difficulty: 'Easy', link: 'https://www.geeksforgeeks.org/analysis-of-algorithms-set-1-asymptotic-analysis/' },
+  { title: '2. Arrays & Strings', description: 'Master the fundamental operations on arrays and strings (sorting, searching, manipulation).', difficulty: 'Easy', link: 'https://leetcode.com/problemset/all/?topicSlugs=array' },
+  { title: '3. Basic Sorting Algorithms', description: 'Understand common sorting algorithms like Bubble Sort, Insertion Sort, and Selection Sort.', difficulty: 'Easy', link: 'https://www.geeksforgeeks.org/sorting-algorithms/' },
+  { title: '4. Recursion Basics', description: 'Learn how recursion works and solve basic recursive problems.', difficulty: 'Easy', link: 'https://www.geeksforgeeks.org/recursion/' },
+  { title: '5. Hashing & HashMaps', description: 'Learn how to use hashmaps to solve problems efficiently.', difficulty: 'Easy', link: 'https://www.geeksforgeeks.org/hashing-data-structure/' },
+  { title: '6. Two Pointer Technique', description: 'Understand the two-pointer technique for solving problems like finding pairs or subarrays.', difficulty: 'Easy', link: 'https://www.geeksforgeeks.org/two-pointers-technique/' },
+  { title: '7. Stacks & Queues', description: 'Learn stack and queue data structures and solve problems using them.', difficulty: 'Easy', link: 'https://leetcode.com/tag/stack/' },
+  { title: '8. Linked Lists', description: 'Understand how to work with singly and doubly linked lists.', difficulty: 'Easy', link: 'https://www.geeksforgeeks.org/data-structures/linked-list/' },
+  { title: '9. Binary Search', description: 'Master binary search on sorted arrays and apply it in different scenarios.', difficulty: 'Easy', link: 'https://leetcode.com/tag/binary-search/' },
+  { title: '10. Problem-Solving Patterns', description: 'Learn problem-solving patterns like sliding window, divide and conquer, and greedy.', difficulty: 'Easy', link: 'https://www.geeksforgeeks.org/sliding-window-algorithm/' }
 ];
 
 // Roadmap Component
 const Roadmap = () => {
   return (
     <Container>
-      <Title>Full Stack Developer Roadmap (Easy)</Title>
+      <Title>DSA Roadmap - Easy</Title>
       {roadmapSteps.map((step, index) => (
         <StepContainer key={index}>
           <StepTitle>{step.title}</StepTitle>
@@ -151,7 +148,7 @@ const Roadmap = () => {
         </StepContainer>
       ))}
       <ButtonContainer>
-        <StartButton onClick={() => alert('Redirect to the playfield!')}>Start the Roadmap</StartButton>
+        <StartButton onClick={() => alert('Redirect to the roadmap start!')}>Start the Roadmap</StartButton>
       </ButtonContainer>
     </Container>
   );
