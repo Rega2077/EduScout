@@ -2,6 +2,7 @@ const express = require('express');
 const connectDB = require('./config/db');
 const dotenv = require('dotenv');
 const authRoutes = require('./routes/auth');
+const cors = require('cors'); // Add this
 
 // Load environment variables
 dotenv.config();
@@ -10,6 +11,12 @@ dotenv.config();
 connectDB();
 
 const app = express();
+
+// Enable CORS for all routes, or specify certain origins
+app.use(cors({
+  origin: 'http://localhost:3000', // Allow requests from frontend (React app)
+  credentials: true,  // Allow cookies to be sent/received
+}));
 
 // Body Parser Middleware
 app.use(express.json());
