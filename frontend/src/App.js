@@ -24,6 +24,8 @@ import CpmediumRoadmap from './pages/RoadmapPages/Competitive Programming/CPMedi
 import CphardRoadmap from './pages/RoadmapPages/Competitive Programming/CPHardRoadmap';
 import DSAEasyResource from './pages/ResourcePages/DSA/DSAEasy';
 import DSAquizhome from './pages/QuizPages/DSA/DSAquizpage';
+import Login from './components/Login And Signup/Login';
+import Signup from './components/Login And Signup/Signup';
 import Header from './components/Header'; // Make sure the path is correct
 import Footer from './components/Footer'; // Make sure the path is correct
 
@@ -61,6 +63,8 @@ function App() {
             <Route path="/cp-hard-roadmap" element={<CphardRoadmap/>} />
             <Route path="/resources/dsa/easy" element={<DSAEasyResource/>} />
             <Route path="/quizzes/dsa" element={<DSAquizhome/>} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
           </Routes>
         </div>
 

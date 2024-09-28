@@ -35,6 +35,7 @@
 .navbar-links a:hover {
   color: #555;
 }
+
 .contact-button {
   background-color: black;
   color: white;
@@ -49,8 +50,30 @@
   background-color: #333;
   transform: scale(1.1);
 }
+
+/* New styles for login and signup buttons */
+.auth-buttons {
+  display: flex;
+  gap: 15px;
+  margin-left: auto;
+}
+
+.auth-link {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.auth-link:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
 .navbar-links a.active-link {
   border-bottom: 2px solid white;
   color: white;
 }
-

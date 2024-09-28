@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom'; // Import NavLink for routing
+import { NavLink } from 'react-router-dom';
 import './Navbar.css';
 import logo from '../assets/logo.svg';
 
@@ -17,7 +17,10 @@ const Navbar = () => {
           <li><NavLink to="/quizzes" activeClassName="active-link">Quizzes</NavLink></li>
           <li><NavLink to="/rewards" activeClassName="active-link">Rewards</NavLink></li>
         </ul>
-        <NavLink to="/contact" className="contact-button">Contact Us</NavLink>
+        <div className="auth-buttons">
+          <NavLink to="/login" className="auth-link">Login</NavLink>
+          <NavLink to="/signup" className="auth-link">Signup</NavLink>
+        </div>
       </div>
     </nav>
   );
