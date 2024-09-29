@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -14,8 +16,12 @@ const Login = () => {
         password,
       });
 
+      // Store the token securely in local storage
+      localStorage.setItem('token', res.data.token);
       alert('Login successful');
-      console.log('JWT Token:', res.data.token); // Store token securely
+
+      // Redirect to the quiz section or any other section you want
+      navigate('/quiz'); // Change this to the route you want to redirect after login
     } catch (error) {
       alert('Invalid login credentials');
     }

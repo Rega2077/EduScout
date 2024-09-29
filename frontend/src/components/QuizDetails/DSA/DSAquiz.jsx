@@ -20,7 +20,7 @@ const QuizSection = () => {
   const navigate = useNavigate();
 
   const handleQuizClick = (topic) => {
-    navigate(`/quiz/${topic.title.toLowerCase()}`);
+    navigate(`/quiz/dsa/${topic.title.toLowerCase()}`);
   };
 
   return (
