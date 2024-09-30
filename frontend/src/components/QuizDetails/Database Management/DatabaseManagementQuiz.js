@@ -1,0 +1,105 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+
+// Quiz topics for Database Management
+const databaseManagementTopics = [
+  { title: 'SQL Basics', icon: '🗄️', description: 'Test your SQL knowledge.', bestScore: 85 },
+  { title: 'Normalization', icon: '📏', description: 'Learn about database normalization.', bestScore: 88 },
+  { title: 'Indexes', icon: '📊', description: 'Understand indexing in databases.', bestScore: 82 },
+  { title: 'Transactions', icon: '🔄', description: 'Explore transaction management.', bestScore: 90 },
+  { title: 'Database Security', icon: '🔒', description: 'Test your knowledge of database security.', bestScore: 86 },
+  { title: 'Stored Procedures', icon: '📜', description: 'Learn about stored procedures.', bestScore: 81 },
+  { title: 'Data Warehousing', icon: '🏢', description: 'Understand data warehousing concepts.', bestScore: 83 },
+  { title: 'NoSQL Databases', icon: '🚀', description: 'Explore NoSQL database types.', bestScore: 89 },
+  { title: 'Database Design', icon: '📐', description: 'Learn about database design principles.', bestScore: 84 },
+  { title: 'Backup and Recovery', icon: '💾', description: 'Test your knowledge of backup strategies.', bestScore: 87 },
+];
+
+const DatabaseManagementSection = () => {
+  const navigate = useNavigate();
+
+  const handleQuizClick = (topic) => {
+    navigate(`/quiz/databasemanagement/${topic.title.toLowerCase()}`); // Navigate to the quiz page for that topic
+  };
+
+  return (
+    <QuizSectionWrapper>
+      <SectionBanner>Welcome to the Database Management Quiz Section</SectionBanner>
+      <SectionTitle>Select a Database Management Topic to Start Quiz</SectionTitle>
+      <QuizGrid>
+        {databaseManagementTopics.map((topic, index) => (
+          <QuizBox key={index} onClick={() => handleQuizClick(topic)}>
+            <QuizIcon>{topic.icon}</QuizIcon>
+            <h2>{topic.title}</h2>
+            <p>{topic.description}</p>
+            <BestScore>Best Score: {topic.bestScore}%</BestScore>
+          </QuizBox>
+        ))}
+      </QuizGrid>
+    </QuizSectionWrapper>
+  );
+};
+
+// Styled Components (Same as previous sections)
+const QuizSectionWrapper = styled.div`
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+`;
+
+const SectionBanner = styled.div`
+  background-color: #2196f3; /* Banner background */
+  color: white;
+  text-align: center;
+  padding: 15px;
+  font-size: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 20px;
+`;
+
+const SectionTitle = styled.h1`
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #333;
+  font-weight: bold;
+`;
+
+const QuizGrid = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+`;
+
+const QuizBox = styled.div`
+  background-color: #fff;
+  border-radius: 10px;
+  width: calc(25% - 40px);
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  }
+`;
+
+const QuizIcon = styled.div`
+  font-size: 3rem;
+  margin-bottom: 15px;
+`;
+
+const BestScore = styled.p`
+  color: #4caf50;
+  font-weight: bold;
+`;
+
+export default DatabaseManagementSection;

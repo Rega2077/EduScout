@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import ResourcesPage from './pages/ResourcesPage';
 import RoadmapsPage from './pages/RoadmapsPage' ;
+import RewardsPage from './pages/RewardsPage' ;
 import QuizPage from './pages/QuizPage' ;
 import WebDevEasyRoadmap from './pages/RoadmapPages/Web Development/WebDevEasyRoadmap';
 import DSAEasyRoadmap from './pages/RoadmapPages/DSA/DSAEasyRoadmap';
@@ -24,6 +25,11 @@ import CpmediumRoadmap from './pages/RoadmapPages/Competitive Programming/CPMedi
 import CphardRoadmap from './pages/RoadmapPages/Competitive Programming/CPHardRoadmap';
 import DSAEasyResource from './pages/ResourcePages/DSA/DSAEasy';
 import DSAquizhome from './pages/QuizPages/DSA/DSAquizpage';
+import DBquizhome from './pages/QuizPages/Database Management/DatabaseManagementQuizPage';
+import Webquizhome from './pages/QuizPages/Web Development/WebDevQuiz';
+import SDquizhome from './pages/QuizPages/System Design/SystemDesignQuiz';
+import MLquizhome from './pages/QuizPages/Machine Learning/MachineLearningQuizPage';
+import CPquizhome from './pages/QuizPages/Competitive Programming/CompetitiveProgrammingQuizPage';
 import Login from './components/Login And Signup/Login';
 import Signup from './components/Login And Signup/Signup';
 import QuizPageInterface from './pages/QuizBackend/QuizPageInterface';
@@ -44,6 +50,7 @@ function App() {
             <Route path="/resources" element={<ResourcesPage />} />
             <Route path = "/roadmaps" element={<RoadmapsPage/>}/>
             <Route path = "/quizzes" element={<QuizPage/>}/>
+            <Route path = "/rewards" element={<RewardsPage/>}/>
             <Route path="/web-dev-easy-roadmap" element={<WebDevEasyRoadmap />} />
             <Route path="/web-dev-medium-roadmap" element={<WebDevMediumRoadmap />} />
             <Route path="/web-dev-hard-roadmap" element={<WebDevHardRoadmap />} />
@@ -64,6 +71,11 @@ function App() {
             <Route path="/cp-hard-roadmap" element={<CphardRoadmap/>} />
             <Route path="/resources/dsa/easy" element={<DSAEasyResource/>} />
             <Route path="/quizzes/dsa" element={<DSAquizhome/>} />
+            <Route path="/quizzes/competitive" element={<CPquizhome/>} />
+            <Route path="/quizzes/webdev" element={<Webquizhome/>} />
+            <Route path="/quizzes/dbms" element={<DBquizhome/>} />
+            <Route path="/quizzes/systemdesign" element={<SDquizhome/>} />
+            <Route path="/quizzes/machinelearning" element={<MLquizhome/>} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/quiz/:topic/:subtopic" element={<QuizPageInterface />} />
