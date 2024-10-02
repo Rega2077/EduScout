@@ -33,6 +33,7 @@ import CPquizhome from './pages/QuizPages/Competitive Programming/CompetitivePro
 import Login from './components/Login And Signup/Login';
 import Signup from './components/Login And Signup/Signup';
 import QuizPageInterface from './pages/QuizBackend/QuizPageInterface';
+import RoadmapPageInterface from './pages/RoadmapPages/RoadmapStartPage';
 import Header from './components/Header'; // Make sure the path is correct
 import Footer from './components/Footer'; // Make sure the path is correct
 
@@ -79,6 +80,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/quiz/:topic/:subtopic" element={<QuizPageInterface />} />
+            <Route path="/roadmap/:topic/:difficulty/progress" element={<RoadmapPageInterface />} />
 
           </Routes>
         </div>

@@ -1,5 +1,36 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom'; // Ensure useNavigate is imported
+
+// Hard-level Roadmap data with links and difficulty levels
+const roadmapSteps = [
+  { title: '1. Mastering Competitive Programming Platforms', description: 'Get familiar with platforms like Codeforces, LeetCode, and AtCoder.', difficulty: 'Easy', link: 'https://codeforces.com/' },
+  { title: '2. Efficient Input/Output in Competitive Programming', description: 'Learn fast input/output techniques to reduce runtime.', difficulty: 'Easy', link: 'https://www.geeksforgeeks.org/fast-io-in-competitive-programming/' },
+  { title: '3. Sorting Algorithms', description: 'Master sorting algorithms including QuickSort, MergeSort, and Radix Sort.', difficulty: 'Easy', link: 'https://www.geeksforgeeks.org/sorting-algorithms/' },
+  { title: '4. Basic Data Structures', description: 'Understand Arrays, Linked Lists, Stacks, and Queues.', difficulty: 'Easy', link: 'https://www.geeksforgeeks.org/data-structures/' },
+  { title: '5. Searching Algorithms', description: 'Learn Binary Search, Ternary Search, and Exponential Search.', difficulty: 'Easy', link: 'https://www.geeksforgeeks.org/binary-search/' },
+  { title: '6. Recursion and Backtracking', description: 'Master recursive and backtracking solutions for common problems.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/backtracking-algorithms/' },
+  { title: '7. Two-Pointer Technique', description: 'Learn two-pointer technique to solve problems efficiently.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/two-pointers-technique/' },
+  { title: '8. Greedy Algorithms', description: 'Understand greedy algorithms and where they can be applied.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/greedy-algorithms/' },
+  { title: '9. Dynamic Programming (DP)', description: 'Master dynamic programming problems and concepts.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/dynamic-programming/' },
+  { title: '10. Graph Traversal (DFS/BFS)', description: 'Learn Depth First Search (DFS) and Breadth First Search (BFS).', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/graph-and-its-representations/' },
+  { title: '11. Shortest Path Algorithms', description: 'Solve shortest path problems using Dijkstra’s, Bellman-Ford, and Floyd-Warshall.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/shortest-path-algorithms/' },
+  { title: '12. Union-Find (Disjoint Set)', description: 'Learn the union-find data structure for solving connectivity problems.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/union-find/' },
+  { title: '13. Bit Manipulation', description: 'Understand and practice bit manipulation techniques for efficiency.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/bitwise-operators-in-c-cpp/' },
+  { title: '14. Combinatorics and Permutations', description: 'Learn combinatorics and its applications to permutation problems.', difficulty: 'Medium', link: 'https://www.brilliant.org/wiki/combinatorics/' },
+  { title: '15. Segment Trees and Fenwick Trees', description: 'Understand segment trees and Fenwick trees for range queries.', difficulty: 'Hard', link: 'https://www.geeksforgeeks.org/segment-tree-set-1-sum-of-given-range/' },
+  { title: '16. Advanced Graph Algorithms', description: 'Master algorithms like Prim’s, Kruskal’s, and Tarjan’s for graphs.', difficulty: 'Hard', link: 'https://www.geeksforgeeks.org/graph-algorithms-set-1-connected-components-strongly-connected-components/' },
+  { title: '17. Dynamic Programming on Trees', description: 'Solve dynamic programming problems on trees.', difficulty: 'Hard', link: 'https://codeforces.com/blog/entry/20935' },
+  { title: '18. Suffix Arrays and Trees', description: 'Understand suffix arrays and suffix trees for string-related problems.', difficulty: 'Hard', link: 'https://www.geeksforgeeks.org/suffix-array-set-1-introduction/' },
+  { title: '19. Game Theory', description: 'Learn game theory concepts and solve problems using them.', difficulty: 'Hard', link: 'https://www.geeksforgeeks.org/minimax-algorithm-in-game-theory-set-1-introduction/' },
+  { title: '20. Number Theory', description: 'Master number theory concepts like GCD, LCM, modular arithmetic, and Euler’s Totient.', difficulty: 'Hard', link: 'https://cp-algorithms.com/algebra/' },
+  { title: '21. Geometry in Competitive Programming', description: 'Learn geometric algorithms and their applications.', difficulty: 'Hard', link: 'https://www.geeksforgeeks.org/geometry-in-competitive-programming/' },
+  { title: '22. Matrix Exponentiation', description: 'Understand matrix exponentiation and its applications in DP problems.', difficulty: 'Hard', link: 'https://www.geeksforgeeks.org/matrix-exponentiation/' },
+  { title: '23. Mo’s Algorithm', description: 'Learn Mo’s algorithm for solving range queries efficiently.', difficulty: 'Hard', link: 'https://www.geeksforgeeks.org/mos-algorithm-query-square-root-decomposition-technique/' },
+  { title: '24. Heavy-Light Decomposition', description: 'Master heavy-light decomposition for solving tree problems efficiently.', difficulty: 'Hard', link: 'https://www.geeksforgeeks.org/heavy-light-decomposition-set-1-introduction/' },
+  { title: '25. Practice Contests at High Level', description: 'Participate in advanced-level contests on platforms like Codeforces, AtCoder, and CodeChef.', difficulty: 'Hard', link: 'https://codeforces.com/' },
+];
 
 // Styled components
 const Container = styled.div`
@@ -78,7 +109,7 @@ const DifficultyContainer = styled.div`
 
 const DifficultyLabel = styled.span`
   font-size: 1rem;
-  color: ${props => 
+  color: ${(props) => 
     props.level === 'Easy' ? '#28a163' :
     props.level === 'Medium' ? '#ffc107' :
     '#dc3545'};
@@ -100,37 +131,54 @@ const LearnMoreLink = styled.a`
   }
 `;
 
-// Hard-level Roadmap data with links and difficulty levels
-const roadmapSteps = [
-  { title: '1. Mastering Competitive Programming Platforms', description: 'Get familiar with platforms like Codeforces, LeetCode, and AtCoder.', difficulty: 'Easy', link: 'https://codeforces.com/' },
-  { title: '2. Efficient Input/Output in Competitive Programming', description: 'Learn fast input/output techniques to reduce runtime.', difficulty: 'Easy', link: 'https://www.geeksforgeeks.org/fast-io-in-competitive-programming/' },
-  { title: '3. Sorting Algorithms', description: 'Master sorting algorithms including QuickSort, MergeSort, and Radix Sort.', difficulty: 'Easy', link: 'https://www.geeksforgeeks.org/sorting-algorithms/' },
-  { title: '4. Basic Data Structures', description: 'Understand Arrays, Linked Lists, Stacks, and Queues.', difficulty: 'Easy', link: 'https://www.geeksforgeeks.org/data-structures/' },
-  { title: '5. Searching Algorithms', description: 'Learn Binary Search, Ternary Search, and Exponential Search.', difficulty: 'Easy', link: 'https://www.geeksforgeeks.org/binary-search/' },
-  { title: '6. Recursion and Backtracking', description: 'Master recursive and backtracking solutions for common problems.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/backtracking-algorithms/' },
-  { title: '7. Two-Pointer Technique', description: 'Learn two-pointer technique to solve problems efficiently.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/two-pointers-technique/' },
-  { title: '8. Greedy Algorithms', description: 'Understand greedy algorithms and where they can be applied.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/greedy-algorithms/' },
-  { title: '9. Dynamic Programming (DP)', description: 'Master dynamic programming problems and concepts.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/dynamic-programming/' },
-  { title: '10. Graph Traversal (DFS/BFS)', description: 'Learn Depth First Search (DFS) and Breadth First Search (BFS).', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/graph-and-its-representations/' },
-  { title: '11. Shortest Path Algorithms', description: 'Solve shortest path problems using Dijkstra’s, Bellman-Ford, and Floyd-Warshall.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/shortest-path-algorithms/' },
-  { title: '12. Union-Find (Disjoint Set)', description: 'Learn the union-find data structure for solving connectivity problems.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/union-find/' },
-  { title: '13. Bit Manipulation', description: 'Understand and practice bit manipulation techniques for efficiency.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/bitwise-operators-in-c-cpp/' },
-  { title: '14. Combinatorics and Permutations', description: 'Learn combinatorics and its applications to permutation problems.', difficulty: 'Medium', link: 'https://www.brilliant.org/wiki/combinatorics/' },
-  { title: '15. Segment Trees and Fenwick Trees', description: 'Understand segment trees and Fenwick trees for range queries.', difficulty: 'Hard', link: 'https://www.geeksforgeeks.org/segment-tree-set-1-sum-of-given-range/' },
-  { title: '16. Advanced Graph Algorithms', description: 'Master algorithms like Prim’s, Kruskal’s, and Tarjan’s for graphs.', difficulty: 'Hard', link: 'https://www.geeksforgeeks.org/graph-algorithms-set-1-connected-components-strongly-connected-components/' },
-  { title: '17. Dynamic Programming on Trees', description: 'Solve dynamic programming problems on trees.', difficulty: 'Hard', link: 'https://codeforces.com/blog/entry/20935' },
-  { title: '18. Suffix Arrays and Trees', description: 'Understand suffix arrays and suffix trees for string-related problems.', difficulty: 'Hard', link: 'https://www.geeksforgeeks.org/suffix-array-set-1-introduction/' },
-  { title: '19. Game Theory', description: 'Learn game theory concepts and solve problems using them.', difficulty: 'Hard', link: 'https://www.geeksforgeeks.org/minimax-algorithm-in-game-theory-set-1-introduction/' },
-  { title: '20. Number Theory', description: 'Master number theory concepts like GCD, LCM, modular arithmetic, and Euler’s Totient.', difficulty: 'Hard', link: 'https://cp-algorithms.com/algebra/' },
-  { title: '21. Geometry in Competitive Programming', description: 'Learn geometric algorithms and their applications.', difficulty: 'Hard', link: 'https://www.geeksforgeeks.org/geometry-in-competitive-programming/' },
-  { title: '22. Matrix Exponentiation', description: 'Understand matrix exponentiation and its applications in DP problems.', difficulty: 'Hard', link: 'https://www.geeksforgeeks.org/matrix-exponentiation/' },
-  { title: '23. Mo’s Algorithm', description: 'Learn Mo’s algorithm for solving range queries efficiently.', difficulty: 'Hard', link: 'https://www.geeksforgeeks.org/mos-algorithm-query-square-root-decomposition-technique/' },
-  { title: '24. Heavy-Light Decomposition', description: 'Master heavy-light decomposition for solving tree problems efficiently.', difficulty: 'Hard', link: 'https://www.geeksforgeeks.org/heavy-light-decomposition-set-1-introduction/' },
-  { title: '25. Practice Contests at High Level', description: 'Participate in advanced-level contests on platforms like Codeforces, AtCoder, and CodeChef.', difficulty: 'Hard', link: 'https://codeforces.com/' },
-];
+// Button container for navigation
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+`;
+
+const StartButton = styled.button`
+  background-color: #32b67a;
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  font-size: 1.2rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #28a163;
+  }
+`;
 
 // Roadmap Component
 const Roadmap = () => {
+  const navigate = useNavigate(); // Initialize useNavigate
+
+  useEffect(() => {
+    const checkProgress = async () => {
+      const token = localStorage.getItem('token');
+      if (!token) return;
+
+      try {
+        await axios.get('http://localhost:5000/api/roadmap/competitive-programming/hard/progress', {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+      } catch (err) {
+        console.error('Error fetching progress', err);
+      }
+    };
+    checkProgress();
+  }, []);
+
+  const handleProgressView = () => {
+    navigate(`/roadmap/competitive-programming/hard/progress`, { state: { steps: roadmapSteps } });
+  };
+
   return (
     <Container>
       <Title>Competitive Programming Roadmap (Hard)</Title>
@@ -146,6 +194,11 @@ const Roadmap = () => {
           </DifficultyContainer>
         </StepContainer>
       ))}
+      <ButtonContainer>
+        <StartButton onClick={handleProgressView}>
+          See Your Progress
+        </StartButton>
+      </ButtonContainer>
     </Container>
   );
 };

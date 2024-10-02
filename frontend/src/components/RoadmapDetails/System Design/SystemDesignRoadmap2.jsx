@@ -1,5 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom'; // Ensure useNavigate is imported
+
+// Medium-level Roadmap data with links and difficulty levels
+const roadmapSteps = [
+  { title: '1. Microservices Architecture', description: 'Learn the basics of microservices and their advantages.', difficulty: 'Medium', link: 'https://microservices.io/' },
+  { title: '2. API Gateway', description: 'Understand how API gateways work and how to implement them.', difficulty: 'Medium', link: 'https://www.nginx.com/learn/api-gateway/' },
+  { title: '3. Service Discovery', description: 'Learn how services discover each other in a microservices architecture.', difficulty: 'Medium', link: 'https://www.edureka.co/blog/what-is-service-discovery/' },
+  { title: '4. Message Queues', description: 'Understand message queues like RabbitMQ and Kafka.', difficulty: 'Medium', link: 'https://www.rabbitmq.com/tutorials/tutorial-one-python.html' },
+  { title: '5. Rate Limiting', description: 'Learn about rate limiting and throttling requests.', difficulty: 'Medium', link: 'https://cloud.google.com/architecture/rate-limiting-strategies-techniques' },
+  { title: '6. CDN (Content Delivery Network)', description: 'Learn how CDNs work to speed up content delivery.', difficulty: 'Medium', link: 'https://www.cloudflare.com/learning/cdn/what-is-a-cdn/' },
+  { title: '7. Distributed Caching', description: 'Explore distributed caching systems like Redis and Memcached.', difficulty: 'Medium', link: 'https://redis.io/docs/getting-started/' },
+  { title: '8. Database Sharding', description: 'Revisit sharding with more advanced implementation techniques.', difficulty: 'Medium', link: 'https://www.mongodb.com/basics/sharding' },
+  { title: '9. Event-Driven Architecture', description: 'Understand event-driven systems and their use cases.', difficulty: 'Medium', link: 'https://martinfowler.com/articles/201701-event-driven.html' },
+  { title: '10. Circuit Breaker Pattern', description: 'Learn how circuit breakers protect systems from failure.', difficulty: 'Medium', link: 'https://microservices.io/patterns/reliability/circuit-breaker.html' },
+  { title: '11. Database Replication', description: 'Dive deeper into database replication strategies.', difficulty: 'Medium', link: 'https://www.digitalocean.com/community/tutorials/an-introduction-to-database-replication' },
+  { title: '12. Partitioning and Consistency', description: 'Learn about consistency models and data partitioning.', difficulty: 'Medium', link: 'https://www.javatpoint.com/dbms-data-partitioning' },
+  { title: '13. CAP Theorem Revisited', description: 'Deep dive into the implications of the CAP theorem in system design.', difficulty: 'Medium', link: 'https://www.mongodb.com/consistency-cap-theorem' },
+  { title: '14. Latency Optimization', description: 'Learn techniques to reduce latency in distributed systems.', difficulty: 'Medium', link: 'https://aws.amazon.com/blogs/architecture/optimizing-application-performance-latency-reducing-strategies/' },
+  { title: '15. Data Compression Techniques', description: 'Understand how data compression can reduce network load.', difficulty: 'Medium', link: 'https://cloud.google.com/compute/docs/tutorials/http-data-compression' }
+];
 
 // Styled components
 const Container = styled.div`
@@ -27,9 +48,10 @@ const StepContainer = styled.div`
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-  border-left: 8px solid ${(props) => 
-    props.difficulty === 'Easy' ? '#28a163' : 
-    props.difficulty === 'Medium' ? '#ffc107' : '#dc3545'};
+  border-left: 8px solid ${props =>
+    props.difficulty === 'Easy' ? '#28a163' :
+    props.difficulty === 'Medium' ? '#ffc107' :
+    '#dc3545'};
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   &:hover {
@@ -40,9 +62,10 @@ const StepContainer = styled.div`
 
 const StepTitle = styled.h2`
   font-size: 2rem;
-  color: ${(props) => 
-    props.difficulty === 'Easy' ? '#28a163' : 
-    props.difficulty === 'Medium' ? '#ffc107' : '#dc3545'};
+  color: ${props =>
+    props.difficulty === 'Easy' ? '#28a163' :
+    props.difficulty === 'Medium' ? '#ffc107' :
+    '#dc3545'};
   margin-bottom: 10px;
   position: relative;
   cursor: pointer;
@@ -54,9 +77,10 @@ const StepTitle = styled.h2`
     bottom: -2px;
     width: 100%;
     height: 3px;
-    background-color: ${(props) => 
-      props.difficulty === 'Easy' ? '#28a163' : 
-      props.difficulty === 'Medium' ? '#ffc107' : '#dc3545'};
+    background-color: ${props =>
+      props.difficulty === 'Easy' ? '#28a163' :
+      props.difficulty === 'Medium' ? '#ffc107' :
+      '#dc3545'};
     transform: scaleX(0);
     transform-origin: left;
     animation: underline 0.4s forwards;
@@ -84,9 +108,10 @@ const DifficultyContainer = styled.div`
 
 const DifficultyLabel = styled.span`
   font-size: 1rem;
-  color: ${(props) => 
-    props.level === 'Easy' ? '#28a163' : 
-    props.level === 'Medium' ? '#ffc107' : '#dc3545'};
+  color: ${props => 
+    props.level === 'Easy' ? '#28a163' :
+    props.level === 'Medium' ? '#ffc107' :
+    '#dc3545'};
   font-weight: bold;
 `;
 
@@ -112,7 +137,7 @@ const ButtonContainer = styled.div`
 `;
 
 const StartButton = styled.button`
-  background-color: #32b67a;
+  background-color: #ffc107; /* Color for Medium difficulty */
   color: white;
   border: none;
   padding: 15px 40px;
@@ -122,30 +147,36 @@ const StartButton = styled.button`
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: #28a163;
+    background-color: #ec9c38; /* Darker shade for hover */
   }
 `;
 
-// Medium System Design Roadmap data
-const roadmapSteps = [
-  { title: '1. Microservices Architecture', description: 'Learn the basics of microservices and their advantages.', difficulty: 'Medium', link: 'https://microservices.io/' },
-  { title: '2. API Gateway', description: 'Understand how API gateways work and how to implement them.', difficulty: 'Medium', link: 'https://www.nginx.com/learn/api-gateway/' },
-  { title: '3. Service Discovery', description: 'Learn how services discover each other in a microservices architecture.', difficulty: 'Medium', link: 'https://www.edureka.co/blog/what-is-service-discovery/' },
-  { title: '4. Message Queues', description: 'Understand message queues like RabbitMQ and Kafka.', difficulty: 'Medium', link: 'https://www.rabbitmq.com/tutorials/tutorial-one-python.html' },
-  { title: '5. Rate Limiting', description: 'Learn about rate limiting and throttling requests.', difficulty: 'Medium', link: 'https://cloud.google.com/architecture/rate-limiting-strategies-techniques' },
-  { title: '6. CDN (Content Delivery Network)', description: 'Learn how CDNs work to speed up content delivery.', difficulty: 'Medium', link: 'https://www.cloudflare.com/learning/cdn/what-is-a-cdn/' },
-  { title: '7. Distributed Caching', description: 'Explore distributed caching systems like Redis and Memcached.', difficulty: 'Medium', link: 'https://redis.io/docs/getting-started/' },
-  { title: '8. Database Sharding', description: 'Revisit sharding with more advanced implementation techniques.', difficulty: 'Medium', link: 'https://www.mongodb.com/basics/sharding' },
-  { title: '9. Event-Driven Architecture', description: 'Understand event-driven systems and their use cases.', difficulty: 'Medium', link: 'https://martinfowler.com/articles/201701-event-driven.html' },
-  { title: '10. Circuit Breaker Pattern', description: 'Learn how circuit breakers protect systems from failure.', difficulty: 'Medium', link: 'https://microservices.io/patterns/reliability/circuit-breaker.html' },
-  { title: '11. Database Replication', description: 'Dive deeper into database replication strategies.', difficulty: 'Medium', link: 'https://www.digitalocean.com/community/tutorials/an-introduction-to-database-replication' },
-  { title: '12. Partitioning and Consistency', description: 'Learn about consistency models and data partitioning.', difficulty: 'Medium', link: 'https://www.javatpoint.com/dbms-data-partitioning' },
-  { title: '13. CAP Theorem Revisited', description: 'Deep dive into the implications of the CAP theorem in system design.', difficulty: 'Medium', link: 'https://www.mongodb.com/consistency-cap-theorem' },
-  { title: '14. Latency Optimization', description: 'Learn techniques to reduce latency in distributed systems.', difficulty: 'Medium', link: 'https://aws.amazon.com/blogs/architecture/optimizing-application-performance-latency-reducing-strategies/' },
-  { title: '15. Data Compression Techniques', description: 'Understand how data compression can reduce network load.', difficulty: 'Medium', link: 'https://cloud.google.com/compute/docs/tutorials/http-data-compression' }
-];
-
+// Roadmap Component
 const Roadmap = () => {
+  const navigate = useNavigate(); // Initialize useNavigate
+
+  useEffect(() => {
+    const checkProgress = async () => {
+      const token = localStorage.getItem('token');
+      if (!token) return;
+
+      try {
+        await axios.get('http://localhost:5000/api/roadmap/systemdesign/medium/progress', {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+      } catch (err) {
+        console.error('Error fetching progress', err);
+      }
+    };
+    checkProgress();
+  }, []);
+
+  const handleProgressView = () => {
+    navigate(`/roadmap/systemdesign/medium/progress`, { state: { steps: roadmapSteps } });
+  };
+
   return (
     <Container>
       <Title>System Design Roadmap - Medium</Title>
@@ -160,7 +191,9 @@ const Roadmap = () => {
         </StepContainer>
       ))}
       <ButtonContainer>
-        <StartButton onClick={() => alert('Redirect to the roadmap start!')}>Start the Roadmap</StartButton>
+        <StartButton onClick={handleProgressView}>
+          See Your Progress
+        </StartButton>
       </ButtonContainer>
     </Container>
   );

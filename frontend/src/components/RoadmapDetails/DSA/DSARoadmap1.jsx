@@ -1,7 +1,69 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
-// Styled components
+// Roadmap data with links and difficulty levels
+const roadmapSteps = [
+  { title: '1. Understanding Time & Space Complexity', description: 'Learn the basics of analyzing time and space complexity using Big-O notation.' },
+  { title: '2. Arrays & Strings', description: 'Master the fundamental operations on arrays and strings (sorting, searching, manipulation).' },
+  { title: '3. Basic Sorting Algorithms', description: 'Understand common sorting algorithms like Bubble Sort, Insertion Sort, and Selection Sort.' },
+  { title: '4. Recursion Basics', description: 'Learn how recursion works and solve basic recursive problems.' },
+  { title: '5. Hashing & HashMaps', description: 'Learn how to use hashmaps to solve problems efficiently.' },
+  { title: '6. Two Pointer Technique', description: 'Understand the two-pointer technique for solving problems.' },
+  { title: '7. Stacks & Queues', description: 'Learn stack and queue data structures and solve problems using them.' },
+  { title: '8. Linked Lists', description: 'Understand how to work with singly and doubly linked lists.' },
+  { title: '9. Binary Search', description: 'Master binary search on sorted arrays and apply it in different scenarios.' },
+  { title: '10. Problem-Solving Patterns', description: 'Learn problem-solving patterns like sliding window, divide and conquer, and greedy.' }
+];
+
+const Roadmap = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const checkProgress = async () => {
+      const token = localStorage.getItem('token');
+      if (!token) return;
+
+      try {
+        await axios.get('http://localhost:5000/api/roadmap/dsa-easy/progress', {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+        // Removed logic to check if roadmap has started, just fetch progress
+      } catch (err) {
+        console.error('Error fetching progress', err);
+      }
+    };
+    checkProgress();
+  }, []);
+
+  const handleProgressView = () => {
+    navigate(`/roadmap/dsa/easy/progress`, { state: { steps: roadmapSteps } });
+  };
+
+  return (
+    <Container>
+      <Title>DSA Roadmap - Easy</Title>
+      {roadmapSteps.map((step, index) => (
+        <StepContainer key={index}>
+          <StepTitle>{step.title}</StepTitle>
+          <StepDescription>{step.description}</StepDescription>
+          <DifficultyContainer>
+            <DifficultyLabel level="Easy">Difficulty: Easy</DifficultyLabel>
+            <LearnMoreLink href="#" target="_blank" rel="noopener noreferrer">Resources</LearnMoreLink>
+          </DifficultyContainer>
+        </StepContainer>
+      ))}
+      <ButtonContainer>
+        <StartButton onClick={handleProgressView}>See Your Progress</StartButton>
+      </ButtonContainer>
+    </Container>
+  );
+};
+
+// Styled Components
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -29,7 +91,7 @@ const StepContainer = styled.div`
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
   border-left: 8px solid #32b67a;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  
+
   &:hover {
     transform: scale(1.05);
     box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
@@ -78,7 +140,7 @@ const DifficultyContainer = styled.div`
 
 const DifficultyLabel = styled.span`
   font-size: 1rem;
-  color: ${props => props.level === 'Easy' ? '#28a163' : props.level === 'Medium' ? '#ffc107' : '#dc3545'};
+  color: #28a163;
   font-weight: bold;
 `;
 
@@ -117,41 +179,5 @@ const StartButton = styled.button`
     background-color: #28a163;
   }
 `;
-
-// Easy DSA Roadmap data
-const roadmapSteps = [
-  { title: '1. Understanding Time & Space Complexity', description: 'Learn the basics of analyzing time and space complexity using Big-O notation.', difficulty: 'Easy', link: 'https://www.geeksforgeeks.org/analysis-of-algorithms-set-1-asymptotic-analysis/' },
-  { title: '2. Arrays & Strings', description: 'Master the fundamental operations on arrays and strings (sorting, searching, manipulation).', difficulty: 'Easy', link: 'https://leetcode.com/problemset/all/?topicSlugs=array' },
-  { title: '3. Basic Sorting Algorithms', description: 'Understand common sorting algorithms like Bubble Sort, Insertion Sort, and Selection Sort.', difficulty: 'Easy', link: 'https://www.geeksforgeeks.org/sorting-algorithms/' },
-  { title: '4. Recursion Basics', description: 'Learn how recursion works and solve basic recursive problems.', difficulty: 'Easy', link: 'https://www.geeksforgeeks.org/recursion/' },
-  { title: '5. Hashing & HashMaps', description: 'Learn how to use hashmaps to solve problems efficiently.', difficulty: 'Easy', link: 'https://www.geeksforgeeks.org/hashing-data-structure/' },
-  { title: '6. Two Pointer Technique', description: 'Understand the two-pointer technique for solving problems like finding pairs or subarrays.', difficulty: 'Easy', link: 'https://www.geeksforgeeks.org/two-pointers-technique/' },
-  { title: '7. Stacks & Queues', description: 'Learn stack and queue data structures and solve problems using them.', difficulty: 'Easy', link: 'https://leetcode.com/tag/stack/' },
-  { title: '8. Linked Lists', description: 'Understand how to work with singly and doubly linked lists.', difficulty: 'Easy', link: 'https://www.geeksforgeeks.org/data-structures/linked-list/' },
-  { title: '9. Binary Search', description: 'Master binary search on sorted arrays and apply it in different scenarios.', difficulty: 'Easy', link: 'https://leetcode.com/tag/binary-search/' },
-  { title: '10. Problem-Solving Patterns', description: 'Learn problem-solving patterns like sliding window, divide and conquer, and greedy.', difficulty: 'Easy', link: 'https://www.geeksforgeeks.org/sliding-window-algorithm/' }
-];
-
-// Roadmap Component
-const Roadmap = () => {
-  return (
-    <Container>
-      <Title>DSA Roadmap - Easy</Title>
-      {roadmapSteps.map((step, index) => (
-        <StepContainer key={index}>
-          <StepTitle>{step.title}</StepTitle>
-          <StepDescription>{step.description}</StepDescription>
-          <DifficultyContainer>
-            <DifficultyLabel level={step.difficulty}>Difficulty: {step.difficulty}</DifficultyLabel>
-            <LearnMoreLink href={step.link} target="_blank" rel="noopener noreferrer">Learn More</LearnMoreLink>
-          </DifficultyContainer>
-        </StepContainer>
-      ))}
-      <ButtonContainer>
-        <StartButton onClick={() => alert('Redirect to the roadmap start!')}>Start the Roadmap</StartButton>
-      </ButtonContainer>
-    </Container>
-  );
-};
 
 export default Roadmap;

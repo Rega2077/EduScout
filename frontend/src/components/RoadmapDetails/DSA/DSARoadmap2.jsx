@@ -1,7 +1,72 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
-// Styled components
+const roadmapSteps = [
+  { title: '1. Advanced Sorting Algorithms', description: 'Learn Quick Sort, Merge Sort, and their real-world applications.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/merge-sort/' },
+  { title: '2. Binary Trees', description: 'Understand binary tree operations like traversal, insertion, and searching.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/binary-tree-data-structure/' },
+  { title: '3. Heaps & Priority Queues', description: 'Learn heap data structure, heap sort, and implement priority queues.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/heap-data-structure/' },
+  { title: '4. Graph Representation', description: 'Understand graph representation using adjacency lists and matrices.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/graph-and-its-representations/' },
+  { title: '5. Graph Traversal (BFS/DFS)', description: 'Master Breadth First Search and Depth First Search algorithms in graphs.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/breadth-first-search-or-bfs-for-a-graph/' },
+  { title: '6. Dynamic Programming Basics', description: 'Learn to optimize problems using dynamic programming techniques like memoization.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/dynamic-programming/' },
+  { title: '7. Greedy Algorithms', description: 'Learn greedy algorithms and how to solve optimization problems.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/greedy-algorithms/' },
+  { title: '8. Bit Manipulation', description: 'Learn common bit manipulation techniques for solving problems efficiently.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/bitwise-algorithms/' },
+  { title: '9. Backtracking', description: 'Solve complex problems using backtracking techniques, such as N-Queens.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/backtracking-algorithms/' },
+  { title: '10. Segment Trees', description: 'Learn to implement and use segment trees for range queries.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/segment-tree/' },
+  { title: '11. Union Find (Disjoint Set)', description: 'Understand the Union-Find algorithm to handle dynamic connectivity.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/union-find/' },
+  { title: '12. Topological Sorting', description: 'Learn topological sorting for directed acyclic graphs (DAG).', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/topological-sorting/' },
+  { title: '13. Shortest Path Algorithms', description: 'Implement Dijkstra’s algorithm and Bellman-Ford for shortest paths in graphs.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/shortest-path-in-a-directed-graph-by-dijkstras-algorithm/' },
+  { title: '14. Fenwick Tree (Binary Indexed Tree)', description: 'Use Fenwick trees for efficient range queries and updates.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/binary-indexed-tree-or-fenwick-tree-2/' },
+  { title: '15. Tries', description: 'Learn to solve string-related problems using Tries.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/trie-insert-and-search/' }
+];
+
+const RoadmapMedium = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const checkProgress = async () => {
+      const token = localStorage.getItem('token');
+      if (!token) return;
+
+      try {
+        await axios.get('http://localhost:5000/api/roadmap/dsa-medium/progress', {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+      } catch (err) {
+        console.error('Error fetching progress', err);
+      }
+    };
+    checkProgress();
+  }, []);
+
+  const handleProgressView = () => {
+    navigate(`/roadmap/dsa/medium/progress`, { state: { steps: roadmapSteps } });
+  };
+
+  return (
+    <Container>
+      <Title>DSA Roadmap - Medium</Title>
+      {roadmapSteps.map((step, index) => (
+        <StepContainer key={index}>
+          <StepTitle>{step.title}</StepTitle>
+          <StepDescription>{step.description}</StepDescription>
+          <DifficultyContainer>
+            <DifficultyLabel level="Medium">Difficulty: Medium</DifficultyLabel>
+            <LearnMoreLink href={step.link} target="_blank" rel="noopener noreferrer">Resources</LearnMoreLink>
+          </DifficultyContainer>
+        </StepContainer>
+      ))}
+      <ButtonContainer>
+        <StartButton onClick={handleProgressView}>See Your Progress</StartButton>
+      </ButtonContainer>
+    </Container>
+  );
+};
+
+// Styled Components
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -78,7 +143,7 @@ const DifficultyContainer = styled.div`
 
 const DifficultyLabel = styled.span`
   font-size: 1rem;
-  color: ${props => props.level === 'Easy' ? '#28a163' : props.level === 'Medium' ? '#ffc107' : '#dc3545'};
+  color: #28a163;
   font-weight: bold;
 `;
 
@@ -118,45 +183,4 @@ const StartButton = styled.button`
   }
 `;
 
-// Medium DSA Roadmap data
-const roadmapSteps = [
-  { title: '1. Advanced Sorting Algorithms', description: 'Learn Quick Sort, Merge Sort, and their real-world applications.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/merge-sort/' },
-  { title: '2. Binary Trees', description: 'Understand binary tree operations like traversal, insertion, and searching.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/binary-tree-data-structure/' },
-  { title: '3. Heaps & Priority Queues', description: 'Learn heap data structure, heap sort, and implement priority queues.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/heap-data-structure/' },
-  { title: '4. Graph Representation', description: 'Understand graph representation using adjacency lists and matrices.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/graph-and-its-representations/' },
-  { title: '5. Graph Traversal (BFS/DFS)', description: 'Master Breadth First Search and Depth First Search algorithms in graphs.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/breadth-first-search-or-bfs-for-a-graph/' },
-  { title: '6. Dynamic Programming Basics', description: 'Learn to optimize problems using dynamic programming techniques like memoization.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/dynamic-programming/' },
-  { title: '7. Greedy Algorithms', description: 'Learn greedy algorithms and how to solve optimization problems.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/greedy-algorithms/' },
-  { title: '8. Bit Manipulation', description: 'Learn common bit manipulation techniques for solving problems efficiently.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/bitwise-algorithms/' },
-  { title: '9. Backtracking', description: 'Solve complex problems using backtracking techniques, such as N-Queens.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/backtracking-algorithms/' },
-  { title: '10. Segment Trees', description: 'Learn to implement and use segment trees for range queries.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/segment-tree/' },
-  { title: '11. Union Find (Disjoint Set)', description: 'Understand the Union-Find algorithm to handle dynamic connectivity.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/union-find/' },
-  { title: '12. Topological Sorting', description: 'Learn topological sorting for directed acyclic graphs (DAG).', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/topological-sorting/' },
-  { title: '13. Shortest Path Algorithms', description: 'Implement Dijkstra’s algorithm and Bellman-Ford for shortest paths in graphs.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/shortest-path-in-a-directed-graph-by-dijkstras-algorithm/' },
-  { title: '14. Fenwick Tree (Binary Indexed Tree)', description: 'Use Fenwick trees for efficient range queries and updates.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/binary-indexed-tree-or-fenwick-tree-2/' },
-  { title: '15. Tries', description: 'Learn to solve string-related problems using Tries.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/trie-insert-and-search/' }
-];
-
-// Roadmap Component
-const Roadmap = () => {
-  return (
-    <Container>
-      <Title>DSA Roadmap - Medium</Title>
-      {roadmapSteps.map((step, index) => (
-        <StepContainer key={index}>
-          <StepTitle>{step.title}</StepTitle>
-          <StepDescription>{step.description}</StepDescription>
-          <DifficultyContainer>
-            <DifficultyLabel level={step.difficulty}>Difficulty: {step.difficulty}</DifficultyLabel>
-            <LearnMoreLink href={step.link} target="_blank" rel="noopener noreferrer">Learn More</LearnMoreLink>
-          </DifficultyContainer>
-        </StepContainer>
-      ))}
-      <ButtonContainer>
-        <StartButton onClick={() => alert('Redirect to the roadmap start!')}>Start the Roadmap</StartButton>
-      </ButtonContainer>
-    </Container>
-  );
-};
-
-export default Roadmap;
+export default RoadmapMedium;

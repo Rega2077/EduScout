@@ -5,6 +5,7 @@ const authRoutes = require('./routes/auth');
 const quizRoutes = require('./routes/quiz');
 const rewardsRoutes = require('./routes/rewards'); // Add the rewards route
 const cors = require('cors'); 
+const roadmapRoutes = require('./routes/Roadmap'); // Add this
 
 // Load environment variables
 dotenv.config();
@@ -28,6 +29,7 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/quiz', quizRoutes); 
 app.use('/api/rewards', rewardsRoutes); // Add the rewards route here
+app.use('/api/roadmap', roadmapRoutes);
 
 // Start the server
 const PORT = process.env.PORT || 5000;

@@ -1,5 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom'; // Ensure useNavigate is imported
+
+// Roadmap data with links and difficulty levels
+const roadmapSteps = [
+  { title: '1. Basics of Machine Learning', description: 'Introduction to ML and types of learning methods.', difficulty: 'Easy', link: 'https://www.coursera.org/learn/machine-learning' },
+  { title: '2. Python Libraries for Data Science', description: 'Learn NumPy, Pandas, and Matplotlib for data processing and visualization.', difficulty: 'Easy', link: 'https://numpy.org/' },
+  { title: '3. Linear Regression', description: 'Understanding linear regression models and how to apply them.', difficulty: 'Easy', link: 'https://towardsdatascience.com/simple-linear-regression' },
+  { title: '4. Data Preprocessing', description: 'Cleaning and preparing data for machine learning models.', difficulty: 'Medium', link: 'https://scikit-learn.org/stable/modules/preprocessing.html' },
+  { title: '5. Logistic Regression', description: 'Learn how to classify data using logistic regression models.', difficulty: 'Medium', link: 'https://towardsdatascience.com/logistic-regression' },
+  { title: '6. Support Vector Machines (SVM)', description: 'Implementing and understanding SVMs for classification tasks.', difficulty: 'Medium', link: 'https://scikit-learn.org/stable/modules/svm.html' },
+  { title: '7. Decision Trees & Random Forests', description: 'Learn decision tree and random forest algorithms for classification.', difficulty: 'Medium', link: 'https://towardsdatascience.com/random-forest' },
+  { title: '8. K-Means Clustering', description: 'Unsupervised learning using K-Means clustering.', difficulty: 'Medium', link: 'https://scikit-learn.org/stable/modules/clustering.html' },
+  { title: '9. Neural Networks Introduction', description: 'Introduction to neural networks and their architectures.', difficulty: 'Medium', link: 'https://www.deeplearning.ai/' },
+  { title: '10. Convolutional Neural Networks (CNN)', description: 'Dive into CNNs for image classification and processing.', difficulty: 'Hard', link: 'https://www.tensorflow.org/tutorials/images/cnn' },
+  { title: '11. Recurrent Neural Networks (RNN)', description: 'Understanding RNNs and their application in sequence-based data.', difficulty: 'Hard', link: 'https://towardsdatascience.com/recurrent-neural-networks' },
+  { title: '12. Transfer Learning', description: 'Implement transfer learning using pre-trained models.', difficulty: 'Hard', link: 'https://www.tensorflow.org/tutorials/images/transfer_learning' },
+  { title: '13. Natural Language Processing (NLP)', description: 'Introduction to NLP and its techniques for text data.', difficulty: 'Hard', link: 'https://www.nltk.org/' },
+  { title: '14. Reinforcement Learning Basics', description: 'Learning how reinforcement learning works in dynamic environments.', difficulty: 'Hard', link: 'https://www.coursera.org/specializations/reinforcement-learning' },
+  { title: '15. Model Evaluation and Optimization', description: 'Methods to evaluate and optimize machine learning models.', difficulty: 'Hard', link: 'https://scikit-learn.org/stable/modules/model_evaluation.html' },
+];
 
 // Styled components
 const Container = styled.div`
@@ -28,8 +49,9 @@ const StepContainer = styled.div`
   border-radius: 12px;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
   border-left: 8px solid ${(props) =>
-    props.difficulty === 'Easy' ? '#28a163' : 
-    props.difficulty === 'Medium' ? '#ffc107' : '#dc3545'};
+    props.difficulty === 'Easy' ? '#28a163' :
+    props.difficulty === 'Medium' ? '#ffc107' :
+    '#dc3545'}; // Color coding based on difficulty
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   &:hover {
@@ -40,9 +62,10 @@ const StepContainer = styled.div`
 
 const StepTitle = styled.h2`
   font-size: 2rem;
-  color: ${(props) => 
-    props.difficulty === 'Easy' ? '#28a163' : 
-    props.difficulty === 'Medium' ? '#ffc107' : '#dc3545'};
+  color: ${(props) =>
+    props.difficulty === 'Easy' ? '#28a163' :
+    props.difficulty === 'Medium' ? '#ffc107' :
+    '#dc3545'}; // Color coding based on difficulty
   margin-bottom: 10px;
 `;
 
@@ -62,8 +85,9 @@ const DifficultyContainer = styled.div`
 const DifficultyLabel = styled.span`
   font-size: 1rem;
   color: ${(props) =>
-    props.level === 'Easy' ? '#28a163' : 
-    props.level === 'Medium' ? '#ffc107' : '#dc3545'};
+    props.level === 'Easy' ? '#28a163' :
+    props.level === 'Medium' ? '#ffc107' :
+    '#dc3545'}; // Color coding based on difficulty
   font-weight: bold;
 `;
 
@@ -103,26 +127,32 @@ const StartButton = styled.button`
   }
 `;
 
-// Medium-level ML Roadmap data
-const roadmapSteps = [
-  { title: '1. Basics of Machine Learning', description: 'Introduction to ML and types of learning methods.', difficulty: 'Easy', link: 'https://www.coursera.org/learn/machine-learning' },
-  { title: '2. Python Libraries for Data Science', description: 'Learn NumPy, Pandas, and Matplotlib for data processing and visualization.', difficulty: 'Easy', link: 'https://numpy.org/' },
-  { title: '3. Linear Regression', description: 'Understanding linear regression models and how to apply them.', difficulty: 'Easy', link: 'https://towardsdatascience.com/simple-linear-regression' },
-  { title: '4. Data Preprocessing', description: 'Cleaning and preparing data for machine learning models.', difficulty: 'Medium', link: 'https://scikit-learn.org/stable/modules/preprocessing.html' },
-  { title: '5. Logistic Regression', description: 'Learn how to classify data using logistic regression models.', difficulty: 'Medium', link: 'https://towardsdatascience.com/logistic-regression' },
-  { title: '6. Support Vector Machines (SVM)', description: 'Implementing and understanding SVMs for classification tasks.', difficulty: 'Medium', link: 'https://scikit-learn.org/stable/modules/svm.html' },
-  { title: '7. Decision Trees & Random Forests', description: 'Learn decision tree and random forest algorithms for classification.', difficulty: 'Medium', link: 'https://towardsdatascience.com/random-forest' },
-  { title: '8. K-Means Clustering', description: 'Unsupervised learning using K-Means clustering.', difficulty: 'Medium', link: 'https://scikit-learn.org/stable/modules/clustering.html' },
-  { title: '9. Neural Networks Introduction', description: 'Introduction to neural networks and their architectures.', difficulty: 'Medium', link: 'https://www.deeplearning.ai/' },
-  { title: '10. Convolutional Neural Networks (CNN)', description: 'Dive into CNNs for image classification and processing.', difficulty: 'Hard', link: 'https://www.tensorflow.org/tutorials/images/cnn' },
-  { title: '11. Recurrent Neural Networks (RNN)', description: 'Understanding RNNs and their application in sequence-based data.', difficulty: 'Hard', link: 'https://towardsdatascience.com/recurrent-neural-networks' },
-  { title: '12. Transfer Learning', description: 'Implement transfer learning using pre-trained models.', difficulty: 'Hard', link: 'https://www.tensorflow.org/tutorials/images/transfer_learning' },
-  { title: '13. Natural Language Processing (NLP)', description: 'Introduction to NLP and its techniques for text data.', difficulty: 'Hard', link: 'https://www.nltk.org/' },
-  { title: '14. Reinforcement Learning Basics', description: 'Learning how reinforcement learning works in dynamic environments.', difficulty: 'Hard', link: 'https://www.coursera.org/specializations/reinforcement-learning' },
-  { title: '15. Model Evaluation and Optimization', description: 'Methods to evaluate and optimize machine learning models.', difficulty: 'Hard', link: 'https://scikit-learn.org/stable/modules/model_evaluation.html' },
-];
-
+// Roadmap Component
 const Roadmap = () => {
+  const navigate = useNavigate(); // Initialize useNavigate
+
+  useEffect(() => {
+    const checkProgress = async () => {
+      const token = localStorage.getItem('token');
+      if (!token) return;
+
+      try {
+        await axios.get('http://localhost:5000/api/roadmap/machinelearning/medium/progress', {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+      } catch (err) {
+        console.error('Error fetching progress', err);
+      }
+    };
+    checkProgress();
+  }, []);
+
+  const handleProgressView = () => {
+    navigate(`/roadmap/machinelearning/medium/progress`, { state: { steps: roadmapSteps } });
+  };
+
   return (
     <Container>
       <Title>Machine Learning Roadmap - Medium</Title>
@@ -137,7 +167,9 @@ const Roadmap = () => {
         </StepContainer>
       ))}
       <ButtonContainer>
-        <StartButton onClick={() => alert('Redirect to the roadmap start!')}>Start the Roadmap</StartButton>
+        <StartButton onClick={handleProgressView}>
+          See Your Progress
+        </StartButton>
       </ButtonContainer>
     </Container>
   );

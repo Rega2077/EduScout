@@ -1,5 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom'; // Ensure useNavigate is imported
+
+// Easy-level Roadmap data for Competitive Programming with links and difficulty levels
+const roadmapSteps = [
+  { title: '1. Introduction to Competitive Programming', description: 'Learn what competitive programming is and its importance.', difficulty: 'Easy', link: 'https://www.geeksforgeeks.org/competitive-programming/' },
+  { title: '2. Language Proficiency', description: 'Master a programming language for competitive coding (C++, Java, Python).', difficulty: 'Easy', link: 'https://www.programiz.com/' },
+  { title: '3. I/O and Fast Input/Output', description: 'Learn how to handle input/output efficiently in competitive programming.', difficulty: 'Easy', link: 'https://www.geeksforgeeks.org/fast-io-in-competitive-programming/' },
+  { title: '4. Basic Data Structures', description: 'Study basic data structures like Arrays, Stacks, and Queues.', difficulty: 'Easy', link: 'https://www.geeksforgeeks.org/data-structures/' },
+  { title: '5. Sorting and Searching Algorithms', description: 'Understand key sorting (Merge, Quick) and searching algorithms.', difficulty: 'Medium', link: 'https://www.tutorialspoint.com/data_structures_algorithms/sorting_algorithms.htm' },
+  { title: '6. Time Complexity and Big O Notation', description: 'Learn about algorithm time complexity and how to optimize your code.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/understanding-time-complexity-simple-examples/' },
+  { title: '7. Recursion and Backtracking', description: 'Master recursion and backtracking techniques for problem-solving.', difficulty: 'Medium', link: 'https://www.hackerearth.com/practice/algorithms/recursion/recursion-and-backtracking/tutorial/' },
+  { title: '8. Dynamic Programming Basics', description: 'Get introduced to Dynamic Programming and solve basic problems.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/dynamic-programming/' },
+  { title: '9. Greedy Algorithms', description: 'Understand greedy algorithms and when they can be applied.', difficulty: 'Medium', link: 'https://www.hackerearth.com/practice/algorithms/greedy/basics-of-greedy-algorithms/tutorial/' },
+  { title: '10. Bit Manipulation', description: 'Learn about bit manipulation and its applications in competitive programming.', difficulty: 'Hard', link: 'https://www.geeksforgeeks.org/bitwise-operators-in-c-cpp/' },
+  { title: '11. Graph Theory Basics', description: 'Understand the basics of graph theory (DFS, BFS).', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/graph-data-structure-and-algorithms/' },
+  { title: '12. Number Theory', description: 'Learn prime numbers, GCD, LCM, and modular arithmetic for problem-solving.', difficulty: 'Hard', link: 'https://cp-algorithms.com/algebra/' },
+  { title: '13. Segment Trees and Fenwick Trees', description: 'Study advanced data structures like Segment Trees and Fenwick Trees.', difficulty: 'Hard', link: 'https://www.geeksforgeeks.org/segment-tree-set-1-sum-of-given-range/' },
+  { title: '14. Combinatorics', description: 'Understand basic combinatorics and its application in problem-solving.', difficulty: 'Hard', link: 'https://brilliant.org/wiki/combinatorics/' },
+  { title: '15. Practice Contests', description: 'Participate in beginner-level contests on platforms like Codeforces and CodeChef.', difficulty: 'Easy', link: 'https://codeforces.com/' },
+];
 
 // Styled components
 const Container = styled.div`
@@ -78,7 +99,7 @@ const DifficultyContainer = styled.div`
 
 const DifficultyLabel = styled.span`
   font-size: 1rem;
-  color: ${props => 
+  color: ${(props) => 
     props.level === 'Easy' ? '#28a163' :
     props.level === 'Medium' ? '#ffc107' :
     '#dc3545'};
@@ -100,27 +121,53 @@ const LearnMoreLink = styled.a`
   }
 `;
 
-// Easy-level Roadmap data for Competitive Programming with links and difficulty levels
-const roadmapSteps = [
-  { title: '1. Introduction to Competitive Programming', description: 'Learn what competitive programming is and its importance.', difficulty: 'Easy', link: 'https://www.geeksforgeeks.org/competitive-programming/' },
-  { title: '2. Language Proficiency', description: 'Master a programming language for competitive coding (C++, Java, Python).', difficulty: 'Easy', link: 'https://www.programiz.com/' },
-  { title: '3. I/O and Fast Input/Output', description: 'Learn how to handle input/output efficiently in competitive programming.', difficulty: 'Easy', link: 'https://www.geeksforgeeks.org/fast-io-in-competitive-programming/' },
-  { title: '4. Basic Data Structures', description: 'Study basic data structures like Arrays, Stacks, and Queues.', difficulty: 'Easy', link: 'https://www.geeksforgeeks.org/data-structures/' },
-  { title: '5. Sorting and Searching Algorithms', description: 'Understand key sorting (Merge, Quick) and searching algorithms.', difficulty: 'Medium', link: 'https://www.tutorialspoint.com/data_structures_algorithms/sorting_algorithms.htm' },
-  { title: '6. Time Complexity and Big O Notation', description: 'Learn about algorithm time complexity and how to optimize your code.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/understanding-time-complexity-simple-examples/' },
-  { title: '7. Recursion and Backtracking', description: 'Master recursion and backtracking techniques for problem-solving.', difficulty: 'Medium', link: 'https://www.hackerearth.com/practice/algorithms/recursion/recursion-and-backtracking/tutorial/' },
-  { title: '8. Dynamic Programming Basics', description: 'Get introduced to Dynamic Programming and solve basic problems.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/dynamic-programming/' },
-  { title: '9. Greedy Algorithms', description: 'Understand greedy algorithms and when they can be applied.', difficulty: 'Medium', link: 'https://www.hackerearth.com/practice/algorithms/greedy/basics-of-greedy-algorithms/tutorial/' },
-  { title: '10. Bit Manipulation', description: 'Learn about bit manipulation and its applications in competitive programming.', difficulty: 'Hard', link: 'https://www.geeksforgeeks.org/bitwise-operators-in-c-cpp/' },
-  { title: '11. Graph Theory Basics', description: 'Understand the basics of graph theory (DFS, BFS).', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/graph-data-structure-and-algorithms/' },
-  { title: '12. Number Theory', description: 'Learn prime numbers, GCD, LCM, and modular arithmetic for problem-solving.', difficulty: 'Hard', link: 'https://cp-algorithms.com/algebra/' },
-  { title: '13. Segment Trees and Fenwick Trees', description: 'Study advanced data structures like Segment Trees and Fenwick Trees.', difficulty: 'Hard', link: 'https://www.geeksforgeeks.org/segment-tree-set-1-sum-of-given-range/' },
-  { title: '14. Combinatorics', description: 'Understand basic combinatorics and its application in problem-solving.', difficulty: 'Hard', link: 'https://brilliant.org/wiki/combinatorics/' },
-  { title: '15. Practice Contests', description: 'Participate in beginner-level contests on platforms like Codeforces and CodeChef.', difficulty: 'Easy', link: 'https://codeforces.com/' },
-];
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+`;
+
+const StartButton = styled.button`
+  background-color: #32b67a;
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  font-size: 1.2rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #28a163;
+  }
+`;
 
 // Roadmap Component
 const Roadmap = () => {
+  const navigate = useNavigate(); // Initialize useNavigate
+
+  useEffect(() => {
+    const checkProgress = async () => {
+      const token = localStorage.getItem('token');
+      if (!token) return;
+
+      try {
+        await axios.get('http://localhost:5000/api/roadmap/competitiveprogramming/easy/progress', {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+      } catch (err) {
+        console.error('Error fetching progress', err);
+      }
+    };
+    checkProgress();
+  }, []);
+
+  const handleProgressView = () => {
+    navigate(`/roadmap/competitiveprogramming/easy/progress`, { state: { steps: roadmapSteps } });
+  };
+
   return (
     <Container>
       <Title>Competitive Programming Roadmap (Easy)</Title>
@@ -136,6 +183,11 @@ const Roadmap = () => {
           </DifficultyContainer>
         </StepContainer>
       ))}
+      <ButtonContainer>
+        <StartButton onClick={handleProgressView}>
+          See Your Progress
+        </StartButton>
+      </ButtonContainer>
     </Container>
   );
 };

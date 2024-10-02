@@ -1,5 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom'; // Ensure useNavigate is imported
+
+// Roadmap data with links and difficulty levels
+const roadmapSteps = [
+  { title: '1. Introduction to Machine Learning', description: 'Understand the basics and types of machine learning (supervised, unsupervised).', difficulty: 'Easy', link: 'https://en.wikipedia.org/wiki/Machine_learning' },
+  { title: '2. Python for Data Science', description: 'Get familiar with Python libraries like NumPy, Pandas, and Matplotlib.', difficulty: 'Easy', link: 'https://www.learnpython.org/' },
+  { title: '3. Linear Algebra Basics', description: 'Learn about vectors, matrices, and how they are used in ML algorithms.', difficulty: 'Easy', link: 'https://www.khanacademy.org/math/linear-algebra' },
+  { title: '4. Introduction to Probability and Statistics', description: 'Understand the basics of probability and statistics used in machine learning.', difficulty: 'Easy', link: 'https://www.khanacademy.org/math/statistics-probability' },
+  { title: '5. Data Preprocessing', description: 'Learn techniques like data cleaning, normalization, and feature scaling.', difficulty: 'Easy', link: 'https://scikit-learn.org/stable/modules/preprocessing.html' },
+  { title: '6. Simple Linear Regression', description: 'Understand and implement simple linear regression models.', difficulty: 'Easy', link: 'https://towardsdatascience.com/linear-regression-detailed-view-ea73175f6e86' },
+  { title: '7. Train/Test Splitting', description: 'Learn how to split your dataset for training and testing.', difficulty: 'Easy', link: 'https://scikit-learn.org/stable/modules/cross_validation.html' },
+  { title: '8. K-Nearest Neighbors (KNN)', description: 'Introduction to the KNN algorithm for classification problems.', difficulty: 'Easy', link: 'https://scikit-learn.org/stable/modules/neighbors.html' },
+  { title: '9. Introduction to Decision Trees', description: 'Learn the basics of decision trees and how they work.', difficulty: 'Easy', link: 'https://www.geeksforgeeks.org/decision-tree-introduction-example/' },
+  { title: '10. Model Evaluation Metrics', description: 'Understand evaluation metrics like accuracy, precision, recall, and F1-score.', difficulty: 'Easy', link: 'https://scikit-learn.org/stable/modules/model_evaluation.html' }
+];
 
 // Styled components
 const Container = styled.div`
@@ -27,9 +43,12 @@ const StepContainer = styled.div`
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-  border-left: 8px solid #28a163;
+  border-left: 8px solid ${props => 
+    props.difficulty === 'Easy' ? '#32b67a' :
+    props.difficulty === 'Medium' ? '#f0ad4e' :
+    '#dc3545'}; // Color coding based on difficulty
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  
+
   &:hover {
     transform: scale(1.05);
     box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
@@ -38,7 +57,10 @@ const StepContainer = styled.div`
 
 const StepTitle = styled.h2`
   font-size: 2rem;
-  color: #28a163;
+  color: ${props => 
+    props.difficulty === 'Easy' ? '#32b67a' :
+    props.difficulty === 'Medium' ? '#f0ad4e' :
+    '#dc3545'}; // Color coding based on difficulty
   margin-bottom: 10px;
   position: relative;
   cursor: pointer;
@@ -50,7 +72,10 @@ const StepTitle = styled.h2`
     bottom: -2px;
     width: 100%;
     height: 3px;
-    background-color: #28a163;
+    background-color: ${props => 
+      props.difficulty === 'Easy' ? '#32b67a' :
+      props.difficulty === 'Medium' ? '#f0ad4e' :
+      '#dc3545'}; // Color coding based on difficulty
     transform: scaleX(0);
     transform-origin: left;
     animation: underline 0.4s forwards;
@@ -78,7 +103,10 @@ const DifficultyContainer = styled.div`
 
 const DifficultyLabel = styled.span`
   font-size: 1rem;
-  color: #28a163;
+  color: ${props => 
+    props.level === 'Easy' ? '#28a163' :
+    props.level === 'Medium' ? '#ffc107' :
+    '#dc3545'}; // Color coding based on difficulty
   font-weight: bold;
 `;
 
@@ -104,7 +132,7 @@ const ButtonContainer = styled.div`
 `;
 
 const StartButton = styled.button`
-  background-color: #28a163;
+  background-color: #28a163; /* Color for Easy difficulty */
   color: white;
   border: none;
   padding: 15px 40px;
@@ -114,32 +142,42 @@ const StartButton = styled.button`
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: #28a163;
+    background-color: #28a163; /* Darker shade for hover */
   }
 `;
 
-// Easy-level Machine Learning Roadmap data
-const roadmapSteps = [
-  { title: '1. Introduction to Machine Learning', description: 'Understand the basics and types of machine learning (supervised, unsupervised).', difficulty: 'Easy', link: 'https://en.wikipedia.org/wiki/Machine_learning' },
-  { title: '2. Python for Data Science', description: 'Get familiar with Python libraries like NumPy, Pandas, and Matplotlib.', difficulty: 'Easy', link: 'https://www.learnpython.org/' },
-  { title: '3. Linear Algebra Basics', description: 'Learn about vectors, matrices, and how they are used in ML algorithms.', difficulty: 'Easy', link: 'https://www.khanacademy.org/math/linear-algebra' },
-  { title: '4. Introduction to Probability and Statistics', description: 'Understand the basics of probability and statistics used in machine learning.', difficulty: 'Easy', link: 'https://www.khanacademy.org/math/statistics-probability' },
-  { title: '5. Data Preprocessing', description: 'Learn techniques like data cleaning, normalization, and feature scaling.', difficulty: 'Easy', link: 'https://scikit-learn.org/stable/modules/preprocessing.html' },
-  { title: '6. Simple Linear Regression', description: 'Understand and implement simple linear regression models.', difficulty: 'Easy', link: 'https://towardsdatascience.com/linear-regression-detailed-view-ea73175f6e86' },
-  { title: '7. Train/Test Splitting', description: 'Learn how to split your dataset for training and testing.', difficulty: 'Easy', link: 'https://scikit-learn.org/stable/modules/cross_validation.html' },
-  { title: '8. K-Nearest Neighbors (KNN)', description: 'Introduction to the KNN algorithm for classification problems.', difficulty: 'Easy', link: 'https://scikit-learn.org/stable/modules/neighbors.html' },
-  { title: '9. Introduction to Decision Trees', description: 'Learn the basics of decision trees and how they work.', difficulty: 'Easy', link: 'https://www.geeksforgeeks.org/decision-tree-introduction-example/' },
-  { title: '10. Model Evaluation Metrics', description: 'Understand evaluation metrics like accuracy, precision, recall, and F1-score.', difficulty: 'Easy', link: 'https://scikit-learn.org/stable/modules/model_evaluation.html' }
-];
-
 // Roadmap Component
 const Roadmap = () => {
+  const navigate = useNavigate(); // Initialize useNavigate
+
+  useEffect(() => {
+    const checkProgress = async () => {
+      const token = localStorage.getItem('token');
+      if (!token) return;
+
+      try {
+        await axios.get('http://localhost:5000/api/roadmap/machinelearning/easy/progress', {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+      } catch (err) {
+        console.error('Error fetching progress', err);
+      }
+    };
+    checkProgress();
+  }, []);
+
+  const handleProgressView = () => {
+    navigate(`/roadmap/machinelearning/easy/progress`, { state: { steps: roadmapSteps } });
+  };
+
   return (
     <Container>
       <Title>Machine Learning Roadmap - Easy</Title>
       {roadmapSteps.map((step, index) => (
-        <StepContainer key={index}>
-          <StepTitle>{step.title}</StepTitle>
+        <StepContainer key={index} difficulty={step.difficulty}>
+          <StepTitle difficulty={step.difficulty}>{step.title}</StepTitle>
           <StepDescription>{step.description}</StepDescription>
           <DifficultyContainer>
             <DifficultyLabel level={step.difficulty}>Difficulty: {step.difficulty}</DifficultyLabel>
@@ -148,7 +186,9 @@ const Roadmap = () => {
         </StepContainer>
       ))}
       <ButtonContainer>
-        <StartButton onClick={() => alert('Redirect to the roadmap start!')}>Start the Roadmap</StartButton>
+        <StartButton onClick={handleProgressView}>
+          See Your Progress
+        </StartButton>
       </ButtonContainer>
     </Container>
   );
