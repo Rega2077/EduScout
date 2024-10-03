@@ -1,26 +1,47 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import axios from 'axios';
 
-// Quiz topics for Web Development (MERN)
+// Quiz topics for Web Development
 const webDevTopics = [
-  { title: 'HTML', icon: '🌐', description: 'Test your knowledge of HTML.', bestScore: 90 },
-  { title: 'CSS', icon: '🎨', description: 'Test your skills in CSS.', bestScore: 85 },
-  { title: 'JavaScript', icon: '💻', description: 'Challenge your JavaScript skills.', bestScore: 88 },
-  { title: 'React', icon: '⚛️', description: 'Solve React-related problems.', bestScore: 92 },
-  { title: 'Node.js', icon: '🚀', description: 'Test your knowledge of Node.js.', bestScore: 86 },
-  { title: 'Express', icon: '📦', description: 'Challenge your Express skills.', bestScore: 84 },
-  { title: 'MongoDB', icon: '🗃️', description: 'Test your MongoDB skills.', bestScore: 87 },
-  { title: 'APIs', icon: '🔗', description: 'Test your knowledge of REST APIs.', bestScore: 89 },
-  { title: 'Deployment', icon: '📦', description: 'Learn about deployment strategies.', bestScore: 80 },
-  { title: 'Version Control', icon: '🔄', description: 'Test your skills in Git.', bestScore: 91 },
+  { title: 'HTML', icon: '🌐', description: 'Test your knowledge of HTML.' },
+  { title: 'CSS', icon: '🎨', description: 'Test your skills in CSS.' },
+  { title: 'JavaScript', icon: '💻', description: 'Challenge your JavaScript skills.' },
+  { title: 'React', icon: '⚛️', description: 'Solve React-related problems.' },
+  { title: 'Node.js', icon: '🚀', description: 'Test your knowledge of Node.js.' },
+  { title: 'Express', icon: '📦', description: 'Challenge your Express skills.' },
+  { title: 'MongoDB', icon: '🗃️', description: 'Test your MongoDB skills.' },
+  { title: 'APIs', icon: '🔗', description: 'Test your knowledge of REST APIs.' },
+  { title: 'Deployment', icon: '📦', description: 'Learn about deployment strategies.' },
+  { title: 'Version Control', icon: '🔄', description: 'Test your skills in Git.' },
 ];
 
 const WebDevSection = () => {
   const navigate = useNavigate();
+  const [bestScores, setBestScores] = useState({});
+
+  useEffect(() => {
+    const fetchBestScores = async () => {
+      const token = localStorage.getItem('token'); // Get token
+      try {
+        const response = await axios.get(`http://localhost:5000/api/quiz/best-scores`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        setBestScores(response.data); // Set best scores from API response
+      } catch (err) {
+        console.error('Error fetching best scores:', err);
+      }
+    };
+    fetchBestScores();
+  }, []);
 
   const handleQuizClick = (topic) => {
-    navigate(`/quiz/webdev/${topic.title.toLowerCase()}`); // Navigate to the quiz page for that topic
+    navigate(`/quiz/webdev/${topic.title.toLowerCase().replace(' ', '-')}`); // Navigate to the quiz page for that topic
+  };
+
+  const normalizeTitle = (title) => {
+    return title.toLowerCase().replace(' ', '-'); // Normalize the title to match the response structure
   };
 
   return (
@@ -33,7 +54,11 @@ const WebDevSection = () => {
             <QuizIcon>{topic.icon}</QuizIcon>
             <h2>{topic.title}</h2>
             <p>{topic.description}</p>
-            <BestScore>Best Score: {topic.bestScore}%</BestScore>
+            <BestScore>
+              Best Score: {bestScores['webdev'] && bestScores['webdev'][normalizeTitle(topic.title)] 
+                ? `${parseFloat(bestScores['webdev'][normalizeTitle(topic.title)].toFixed(2))}%` 
+                : 'N/A'}
+            </BestScore>
           </QuizBox>
         ))}
       </QuizGrid>

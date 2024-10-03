@@ -1,26 +1,47 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import axios from 'axios';
 
 // Quiz topics for Database Management
 const databaseManagementTopics = [
-  { title: 'SQL Basics', icon: '🗄️', description: 'Test your SQL knowledge.', bestScore: 85 },
-  { title: 'Normalization', icon: '📏', description: 'Learn about database normalization.', bestScore: 88 },
-  { title: 'Indexes', icon: '📊', description: 'Understand indexing in databases.', bestScore: 82 },
-  { title: 'Transactions', icon: '🔄', description: 'Explore transaction management.', bestScore: 90 },
-  { title: 'Database Security', icon: '🔒', description: 'Test your knowledge of database security.', bestScore: 86 },
-  { title: 'Stored Procedures', icon: '📜', description: 'Learn about stored procedures.', bestScore: 81 },
-  { title: 'Data Warehousing', icon: '🏢', description: 'Understand data warehousing concepts.', bestScore: 83 },
-  { title: 'NoSQL Databases', icon: '🚀', description: 'Explore NoSQL database types.', bestScore: 89 },
-  { title: 'Database Design', icon: '📐', description: 'Learn about database design principles.', bestScore: 84 },
-  { title: 'Backup and Recovery', icon: '💾', description: 'Test your knowledge of backup strategies.', bestScore: 87 },
+  { title: 'SQL Basics', icon: '🗄️', description: 'Test your SQL knowledge.' },
+  { title: 'Normalization', icon: '📏', description: 'Learn about database normalization.' },
+  { title: 'Indexes', icon: '📊', description: 'Understand indexing in databases.' },
+  { title: 'Transactions', icon: '🔄', description: 'Explore transaction management.' },
+  { title: 'Database Security', icon: '🔒', description: 'Test your knowledge of database security.' },
+  { title: 'Stored Procedures', icon: '📜', description: 'Learn about stored procedures.' },
+  { title: 'Data Warehousing', icon: '🏢', description: 'Understand data warehousing concepts.' },
+  { title: 'NoSQL Databases', icon: '🚀', description: 'Explore NoSQL database types.' },
+  { title: 'Database Design', icon: '📐', description: 'Learn about database design principles.' },
+  { title: 'Backup and Recovery', icon: '💾', description: 'Test your knowledge of backup strategies.' },
 ];
 
 const DatabaseManagementSection = () => {
   const navigate = useNavigate();
+  const [bestScores, setBestScores] = useState({});
+
+  useEffect(() => {
+    const fetchBestScores = async () => {
+      const token = localStorage.getItem('token'); // Get token
+      try {
+        const response = await axios.get(`http://localhost:5000/api/quiz/best-scores`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        setBestScores(response.data); // Set best scores from API response
+      } catch (err) {
+        console.error('Error fetching best scores:', err);
+      }
+    };
+    fetchBestScores();
+  }, []);
 
   const handleQuizClick = (topic) => {
-    navigate(`/quiz/databasemanagement/${topic.title.toLowerCase()}`); // Navigate to the quiz page for that topic
+    navigate(`/quiz/databasemanagement/${topic.title.toLowerCase().replace(' ', '-')}`); // Navigate to the quiz page for that topic
+  };
+
+  const normalizeTitle = (title) => {
+    return title.toLowerCase().replace(' ', '-'); // Normalize the title to match the response structure
   };
 
   return (
@@ -33,7 +54,11 @@ const DatabaseManagementSection = () => {
             <QuizIcon>{topic.icon}</QuizIcon>
             <h2>{topic.title}</h2>
             <p>{topic.description}</p>
-            <BestScore>Best Score: {topic.bestScore}%</BestScore>
+            <BestScore>
+              Best Score: {bestScores['databasemanagement'] && bestScores['databasemanagement'][normalizeTitle(topic.title)] 
+                ? `${parseFloat(bestScores['databasemanagement'][normalizeTitle(topic.title)].toFixed(2))}%` 
+                : 'N/A'}
+            </BestScore>
           </QuizBox>
         ))}
       </QuizGrid>
@@ -41,7 +66,7 @@ const DatabaseManagementSection = () => {
   );
 };
 
-// Styled Components (Same as previous sections)
+// Styled Components
 const QuizSectionWrapper = styled.div`
   padding: 40px;
   max-width: 1200px;

@@ -1,26 +1,47 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import axios from 'axios';
 
 // Quiz topics for Machine Learning
 const machineLearningTopics = [
-  { title: 'Supervised Learning', icon: '📊', description: 'Learn about supervised learning algorithms.', bestScore: 88 },
-  { title: 'Unsupervised Learning', icon: '📈', description: 'Explore unsupervised learning techniques.', bestScore: 90 },
-  { title: 'Neural Networks', icon: '🤖', description: 'Test your knowledge of neural networks.', bestScore: 85 },
-  { title: 'Natural Language Processing', icon: '🗣️', description: 'Understand NLP concepts and applications.', bestScore: 87 },
-  { title: 'Computer Vision', icon: '👁️', description: 'Explore computer vision techniques.', bestScore: 86 },
-  { title: 'Model Evaluation', icon: '🔍', description: 'Learn about evaluating machine learning models.', bestScore: 84 },
-  { title: 'Clustering Algorithms', icon: '🔗', description: 'Test your skills in clustering.', bestScore: 82 },
-  { title: 'Feature Engineering', icon: '🛠️', description: 'Understand feature engineering strategies.', bestScore: 81 },
-  { title: 'Deep Learning', icon: '💻', description: 'Explore deep learning techniques.', bestScore: 83 },
-  { title: 'Reinforcement Learning', icon: '🏆', description: 'Test your knowledge of reinforcement learning.', bestScore: 89 },
+  { title: 'Supervised Learning', icon: '📊', description: 'Learn about supervised learning algorithms.' },
+  { title: 'Unsupervised Learning', icon: '📈', description: 'Explore unsupervised learning techniques.' },
+  { title: 'Neural Networks', icon: '🤖', description: 'Test your knowledge of neural networks.' },
+  { title: 'Natural Language Processing', icon: '🗣️', description: 'Understand NLP concepts and applications.' },
+  { title: 'Computer Vision', icon: '👁️', description: 'Explore computer vision techniques.' },
+  { title: 'Model Evaluation', icon: '🔍', description: 'Learn about evaluating machine learning models.' },
+  { title: 'Clustering Algorithms', icon: '🔗', description: 'Test your skills in clustering.' },
+  { title: 'Feature Engineering', icon: '🛠️', description: 'Understand feature engineering strategies.' },
+  { title: 'Deep Learning', icon: '💻', description: 'Explore deep learning techniques.' },
+  { title: 'Reinforcement Learning', icon: '🏆', description: 'Test your knowledge of reinforcement learning.' },
 ];
 
 const MachineLearningSection = () => {
   const navigate = useNavigate();
+  const [bestScores, setBestScores] = useState({});
+
+  useEffect(() => {
+    const fetchBestScores = async () => {
+      const token = localStorage.getItem('token'); // Get token
+      try {
+        const response = await axios.get(`http://localhost:5000/api/quiz/best-scores`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        setBestScores(response.data); // Set best scores from API response
+      } catch (err) {
+        console.error('Error fetching best scores:', err);
+      }
+    };
+    fetchBestScores();
+  }, []);
 
   const handleQuizClick = (topic) => {
-    navigate(`/quiz/machinelearning/${topic.title.toLowerCase()}`); // Navigate to the quiz page for that topic
+    navigate(`/quiz/machinelearning/${topic.title.toLowerCase().replace(' ', '-')}`); // Navigate to the quiz page for that topic
+  };
+
+  const normalizeTitle = (title) => {
+    return title.toLowerCase().replace(' ', '-'); // Normalize the title to match the response structure
   };
 
   return (
@@ -33,7 +54,11 @@ const MachineLearningSection = () => {
             <QuizIcon>{topic.icon}</QuizIcon>
             <h2>{topic.title}</h2>
             <p>{topic.description}</p>
-            <BestScore>Best Score: {topic.bestScore}%</BestScore>
+            <BestScore>
+              Best Score: {bestScores['machinelearning'] && bestScores['machinelearning'][normalizeTitle(topic.title)] 
+                ? `${parseFloat(bestScores['machinelearning'][normalizeTitle(topic.title)].toFixed(2))}%` 
+                : 'N/A'}
+            </BestScore>
           </QuizBox>
         ))}
       </QuizGrid>
@@ -41,7 +66,7 @@ const MachineLearningSection = () => {
   );
 };
 
-// Styled Components (Same as previous sections)
+// Styled Components
 const QuizSectionWrapper = styled.div`
   padding: 40px;
   max-width: 1200px;

@@ -1,26 +1,32 @@
 const mongoose = require('mongoose');
 
-const QuizQuestionSchema = new mongoose.Schema({
+// Common schema for quiz questions
+const quizQuestionSchema = new mongoose.Schema({
   topic: {
-    type: String, // e.g., "DSA"
-    required: true,
+    type: String,
+    required: true
   },
   subtopic: {
-    type: String, // e.g., "Arrays"
-    required: true,
+    type: String,
+    required: true
   },
   question: {
     type: String,
-    required: true,
+    required: true
   },
   options: {
-    type: [String], // Array of answer options
-    required: true,
+    type: [String],
+    required: true
   },
   correctAnswer: {
-    type: Number, // Index of the correct answer in the options array
-    required: true,
+    type: Number,
+    required: true
   }
 });
 
-module.exports = mongoose.model('QuizQuestion', QuizQuestionSchema);
+// Function to dynamically create and retrieve models based on the collection name (topic)
+const getQuizModel = (collectionName) => {
+  return mongoose.model(collectionName, quizQuestionSchema, collectionName); // Third argument is the collection name
+};
+
+module.exports = getQuizModel;

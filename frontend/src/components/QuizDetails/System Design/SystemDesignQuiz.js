@@ -1,26 +1,47 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import axios from 'axios';
 
 // Quiz topics for System Design
 const systemDesignTopics = [
-  { title: 'Scalability', icon: '📈', description: 'Test your knowledge on scalability.', bestScore: 85 },
-  { title: 'Load Balancing', icon: '⚖️', description: 'Understand load balancing techniques.', bestScore: 80 },
-  { title: 'Caching', icon: '💾', description: 'Explore caching strategies.', bestScore: 90 },
-  { title: 'Database Design', icon: '🗄️', description: 'Learn about effective database design.', bestScore: 88 },
-  { title: 'Microservices', icon: '🔗', description: 'Test your understanding of microservices.', bestScore: 83 },
-  { title: 'API Design', icon: '🔧', description: 'Explore best practices for API design.', bestScore: 87 },
-  { title: 'Message Queues', icon: '📬', description: 'Understand message queue systems.', bestScore: 84 },
-  { title: 'Data Modeling', icon: '📊', description: 'Learn about data modeling techniques.', bestScore: 89 },
-  { title: 'Event-Driven Architecture', icon: '🔄', description: 'Explore event-driven architecture.', bestScore: 82 },
-  { title: 'Monitoring and Logging', icon: '📋', description: 'Learn about monitoring systems.', bestScore: 81 },
+  { title: 'Scalability', icon: '📈', description: 'Test your knowledge on scalability.' },
+  { title: 'Load Balancing', icon: '⚖️', description: 'Understand load balancing techniques.' },
+  { title: 'Caching', icon: '💾', description: 'Explore caching strategies.' },
+  { title: 'Database Design', icon: '🗄️', description: 'Learn about effective database design.' },
+  { title: 'Microservices', icon: '🔗', description: 'Test your understanding of microservices.' },
+  { title: 'API Design', icon: '🔧', description: 'Explore best practices for API design.' },
+  { title: 'Message Queues', icon: '📬', description: 'Understand message queue systems.' },
+  { title: 'Data Modeling', icon: '📊', description: 'Learn about data modeling techniques.' },
+  { title: 'Event-Driven Architecture', icon: '🔄', description: 'Explore event-driven architecture.' },
+  { title: 'Monitoring and Logging', icon: '📋', description: 'Learn about monitoring systems.' },
 ];
 
 const SystemDesignSection = () => {
   const navigate = useNavigate();
+  const [bestScores, setBestScores] = useState({});
+
+  useEffect(() => {
+    const fetchBestScores = async () => {
+      const token = localStorage.getItem('token'); // Get token
+      try {
+        const response = await axios.get(`http://localhost:5000/api/quiz/best-scores`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        setBestScores(response.data); // Set best scores from API response
+      } catch (err) {
+        console.error('Error fetching best scores:', err);
+      }
+    };
+    fetchBestScores();
+  }, []);
 
   const handleQuizClick = (topic) => {
-    navigate(`/quiz/systemdesign/${topic.title.toLowerCase()}`); // Navigate to the quiz page for that topic
+    navigate(`/quiz/systemdesign/${topic.title.toLowerCase().replace(' ', '-')}`); // Navigate to the quiz page for that topic
+  };
+
+  const normalizeTitle = (title) => {
+    return title.toLowerCase().replace(' ', '-'); // Normalize the title to match the response structure
   };
 
   return (
@@ -33,7 +54,11 @@ const SystemDesignSection = () => {
             <QuizIcon>{topic.icon}</QuizIcon>
             <h2>{topic.title}</h2>
             <p>{topic.description}</p>
-            <BestScore>Best Score: {topic.bestScore}%</BestScore>
+            <BestScore>
+              Best Score: {bestScores['systemdesign'] && bestScores['systemdesign'][normalizeTitle(topic.title)] 
+                ? `${parseFloat(bestScores['systemdesign'][normalizeTitle(topic.title)].toFixed(2))}%` 
+                : 'N/A'}
+            </BestScore>
           </QuizBox>
         ))}
       </QuizGrid>
@@ -41,7 +66,7 @@ const SystemDesignSection = () => {
   );
 };
 
-// Styled Components (Same as WebDevSection)
+// Styled Components
 const QuizSectionWrapper = styled.div`
   padding: 40px;
   max-width: 1200px;

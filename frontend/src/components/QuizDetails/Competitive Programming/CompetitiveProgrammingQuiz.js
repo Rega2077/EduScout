@@ -1,26 +1,47 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import axios from 'axios';
 
 // Quiz topics for Competitive Programming
 const competitiveProgrammingTopics = [
-  { title: 'Sorting Algorithms', icon: '⚙️', description: 'Test your knowledge of sorting algorithms.', bestScore: 88 },
-  { title: 'Dynamic Programming', icon: '📈', description: 'Challenge your dynamic programming skills.', bestScore: 90 },
-  { title: 'Greedy Algorithms', icon: '💡', description: 'Solve problems using greedy algorithms.', bestScore: 85 },
-  { title: 'Graph Theory', icon: '🌐', description: 'Explore graph theory concepts.', bestScore: 87 },
-  { title: 'Backtracking', icon: '🔄', description: 'Test your skills in backtracking algorithms.', bestScore: 82 },
-  { title: 'Recursion', icon: '🔁', description: 'Understand recursion techniques.', bestScore: 86 },
-  { title: 'Bit Manipulation', icon: '🔢', description: 'Learn about bit manipulation strategies.', bestScore: 84 },
-  { title: 'Number Theory', icon: '🔣', description: 'Explore concepts in number theory.', bestScore: 81 },
-  { title: 'Game Theory', icon: '♟️', description: 'Test your knowledge of game theory.', bestScore: 83 },
-  { title: 'Competitive Programming Techniques', icon: '🏆', description: 'Learn about various CP techniques.', bestScore: 89 },
+  { title: 'Sorting Algorithms', icon: '⚙️', description: 'Test your knowledge of sorting algorithms.' },
+  { title: 'Dynamic Programming', icon: '📈', description: 'Challenge your dynamic programming skills.' },
+  { title: 'Greedy Algorithms', icon: '💡', description: 'Solve problems using greedy algorithms.' },
+  { title: 'Graph Theory', icon: '🌐', description: 'Explore graph theory concepts.' },
+  { title: 'Backtracking', icon: '🔄', description: 'Test your skills in backtracking algorithms.' },
+  { title: 'Recursion', icon: '🔁', description: 'Understand recursion techniques.' },
+  { title: 'Bit Manipulation', icon: '🔢', description: 'Learn about bit manipulation strategies.' },
+  { title: 'Number Theory', icon: '🔣', description: 'Explore concepts in number theory.' },
+  { title: 'Game Theory', icon: '♟️', description: 'Test your knowledge of game theory.' },
+  { title: 'Competitive Programming Techniques', icon: '🏆', description: 'Learn about various CP techniques.' },
 ];
 
 const CompetitiveProgrammingSection = () => {
   const navigate = useNavigate();
+  const [bestScores, setBestScores] = useState({});
+
+  useEffect(() => {
+    const fetchBestScores = async () => {
+      const token = localStorage.getItem('token'); // Get token
+      try {
+        const response = await axios.get(`http://localhost:5000/api/quiz/best-scores`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        setBestScores(response.data); // Set best scores from API response
+      } catch (err) {
+        console.error('Error fetching best scores:', err);
+      }
+    };
+    fetchBestScores();
+  }, []);
 
   const handleQuizClick = (topic) => {
-    navigate(`/quiz/competitiveprogramming/${topic.title.toLowerCase()}`); // Navigate to the quiz page for that topic
+    navigate(`/quiz/competitiveprogramming/${topic.title.toLowerCase().replace(' ', '-')}`); // Navigate to the quiz page for that topic
+  };
+
+  const normalizeTitle = (title) => {
+    return title.toLowerCase().replace(' ', '-'); // Normalize the title to match the response structure
   };
 
   return (
@@ -33,7 +54,11 @@ const CompetitiveProgrammingSection = () => {
             <QuizIcon>{topic.icon}</QuizIcon>
             <h2>{topic.title}</h2>
             <p>{topic.description}</p>
-            <BestScore>Best Score: {topic.bestScore}%</BestScore>
+            <BestScore>
+              Best Score: {bestScores['competitiveprogramming'] && bestScores['competitiveprogramming'][normalizeTitle(topic.title)] 
+                ? `${parseFloat(bestScores['competitiveprogramming'][normalizeTitle(topic.title)].toFixed(2))}%` 
+                : 'N/A'}
+            </BestScore>
           </QuizBox>
         ))}
       </QuizGrid>
@@ -41,7 +66,7 @@ const CompetitiveProgrammingSection = () => {
   );
 };
 
-// Styled Components (Same as previous sections)
+// Styled Components
 const QuizSectionWrapper = styled.div`
   padding: 40px;
   max-width: 1200px;
