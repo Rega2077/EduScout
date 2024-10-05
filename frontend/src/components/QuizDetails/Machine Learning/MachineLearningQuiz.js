@@ -37,8 +37,10 @@ const MachineLearningSection = () => {
   }, []);
 
   const handleQuizClick = (topic) => {
-    navigate(`/quiz/machinelearning/${topic.title.toLowerCase().replace(' ', '-')}`); // Navigate to the quiz page for that topic
+    const formattedTitle = topic.title.toLowerCase().replace(/\s+/g, '-'); // Replace spaces with hyphens
+    navigate(`/quiz/machinelearning/${formattedTitle}`); // Navigate to the quiz page for that topic
   };
+  
 
   const normalizeTitle = (title) => {
     return title.toLowerCase().replace(' ', '-'); // Normalize the title to match the response structure

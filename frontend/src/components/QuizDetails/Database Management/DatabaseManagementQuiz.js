@@ -37,7 +37,8 @@ const DatabaseManagementSection = () => {
   }, []);
 
   const handleQuizClick = (topic) => {
-    navigate(`/quiz/databasemanagement/${topic.title.toLowerCase().replace(' ', '-')}`); // Navigate to the quiz page for that topic
+    const formattedTitle = topic.title.toLowerCase().replace(/\s+/g, '-'); // Replace spaces with hyphens
+    navigate(`/quiz/databasemanagement/${formattedTitle}`); // Navigate to the quiz page for that topic
   };
 
   const normalizeTitle = (title) => {

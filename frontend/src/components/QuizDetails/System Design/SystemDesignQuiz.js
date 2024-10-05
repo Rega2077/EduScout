@@ -37,7 +37,8 @@ const SystemDesignSection = () => {
   }, []);
 
   const handleQuizClick = (topic) => {
-    navigate(`/quiz/systemdesign/${topic.title.toLowerCase().replace(' ', '-')}`); // Navigate to the quiz page for that topic
+    const formattedTitle = topic.title.toLowerCase().replace(/\s+/g, '-'); // Replace spaces with hyphens
+    navigate(`/quiz/systemdesign/${formattedTitle}`); // Navigate to the quiz page for that topic
   };
 
   const normalizeTitle = (title) => {

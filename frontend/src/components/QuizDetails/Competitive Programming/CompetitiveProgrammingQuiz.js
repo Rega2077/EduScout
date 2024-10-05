@@ -37,7 +37,8 @@ const CompetitiveProgrammingSection = () => {
   }, []);
 
   const handleQuizClick = (topic) => {
-    navigate(`/quiz/competitiveprogramming/${topic.title.toLowerCase().replace(' ', '-')}`); // Navigate to the quiz page for that topic
+    const formattedTitle = topic.title.toLowerCase().replace(/\s+/g, '-'); // Replace spaces with hyphens
+    navigate(`/quiz/competitiveprogramming/${formattedTitle}`); // Navigate to the quiz page for that topic
   };
 
   const normalizeTitle = (title) => {
