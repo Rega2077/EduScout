@@ -23,7 +23,7 @@ import DBHardRoadmap from './pages/RoadmapPages/Database Management/DatabaseHard
 import CpeasyRoadmap from './pages/RoadmapPages/Competitive Programming/CPEasyRoadmap';
 import CpmediumRoadmap from './pages/RoadmapPages/Competitive Programming/CPMediumRoadmap';
 import CphardRoadmap from './pages/RoadmapPages/Competitive Programming/CPHardRoadmap';
-import DSAEasyResource from './pages/ResourcePages/DSA/DSAEasy';
+import DSAResourceSection from './pages/ResourcePages/DSA/DSAEasy';
 import DSAquizhome from './pages/QuizPages/DSA/DSAquizpage';
 import DBquizhome from './pages/QuizPages/Database Management/DatabaseManagementQuizPage';
 import Webquizhome from './pages/QuizPages/Web Development/WebDevQuiz';
@@ -70,7 +70,6 @@ function App() {
             <Route path="/cp-easy-roadmap" element={<CpeasyRoadmap/>} />
             <Route path="/cp-medium-roadmap" element={<CpmediumRoadmap/>} />
             <Route path="/cp-hard-roadmap" element={<CphardRoadmap/>} />
-            <Route path="/resources/dsa/easy" element={<DSAEasyResource/>} />
             <Route path="/quizzes/dsa" element={<DSAquizhome/>} />
             <Route path="/quizzes/competitive" element={<CPquizhome/>} />
             <Route path="/quizzes/webdev" element={<Webquizhome/>} />
@@ -81,6 +80,7 @@ function App() {
             <Route path="/signup" element={<Signup />} />
             <Route path="/quiz/:topic/:subtopic" element={<QuizPageInterface />} />
             <Route path="/roadmap/:topic/:difficulty/progress" element={<RoadmapPageInterface />} />
+            <Route path="/resources/:topic/:difficulty" element={<DSAResourceSection />} />
 
           </Routes>
         </div>

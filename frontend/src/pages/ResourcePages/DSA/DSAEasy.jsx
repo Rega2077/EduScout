@@ -1,5 +1,5 @@
 import React from 'react';
-import DSAResourceSection from '../../../components/ResourceDetails/DSA/DSAEasy';
+import DSAResourceSection from '../../../components/ResourceDetails/DSA/DSAResourceSection';
 
 const ResourcesPage = () => {
   return (

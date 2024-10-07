@@ -6,6 +6,7 @@ const quizRoutes = require('./routes/quiz');
 const rewardsRoutes = require('./routes/rewards'); // Add the rewards route
 const cors = require('cors'); 
 const roadmapRoutes = require('./routes/Roadmap'); // Add this
+const resourceRoutes = require('./routes/resourceRoutes');
 
 // Load environment variables
 dotenv.config();
@@ -18,8 +19,8 @@ const app = express();
 
 // Enable CORS for all routes, or specify certain origins
 app.use(cors({
-  origin: 'http://localhost:3000', // Allow requests from frontend (React app)
-  credentials: true,  // Allow cookies to be sent/received
+  origin: 'http://localhost:3000', 
+  credentials: true,
 }));
 
 // Body Parser Middleware
@@ -30,6 +31,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/quiz', quizRoutes); 
 app.use('/api/rewards', rewardsRoutes); // Add the rewards route here
 app.use('/api/roadmap', roadmapRoutes);
+app.use('/api/resources', resourceRoutes);
 
 // Start the server
 const PORT = process.env.PORT || 5000;

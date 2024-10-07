@@ -60,55 +60,34 @@ const ResourceSection = () => {
 
   // Function to handle difficulty navigation
   const handleDifficultyClick = (title, level) => {
-    if (title === 'Data Structures & Algorithms') {
-      if (level === 'Easy') {
-        navigate('/resources/dsa/easy');
-      } else if (level === 'Medium') {
-        navigate('/resources/dsa/medium');
-      } else {
-        navigate('/resources/dsa/hard');
-      }
-    } else if (title === 'Web Development') {
-      if (level === 'Easy') {
-        navigate('/resources/webdev/easy');
-      } else if (level === 'Medium') {
-        navigate('/resources/webdev/medium');
-      } else {
-        navigate('/resources/webdev/hard');
-      }
-    } else if (title === 'Competitive Programming') {
-      if (level === 'Easy') {
-        navigate('/resources/competitive/easy');
-      } else if (level === 'Medium') {
-        navigate('/resources/competitive/medium');
-      } else {
-        navigate('/resources/competitive/hard');
-      }
-    } else if (title === 'System Design') {
-      if (level === 'Easy') {
-        navigate('/resources/systemdesign/easy');
-      } else if (level === 'Medium') {
-        navigate('/resources/systemdesign/medium');
-      } else {
-        navigate('/resources/systemdesign/hard');
-      }
-    } else if (title === 'Machine Learning') {
-      if (level === 'Easy') {
-        navigate('/resources/machinelearning/easy');
-      } else if (level === 'Medium') {
-        navigate('/resources/machinelearning/medium');
-      } else {
-        navigate('/resources/machinelearning/hard');
-      }
-    } else if (title === 'Database Management') {
-      if (level === 'Easy') {
-        navigate('/resources/dbms/easy');
-      } else if (level === 'Medium') {
-        navigate('/resources/dbms/medium');
-      } else {
-        navigate('/resources/dbms/hard');
-      }
+    let sanitizedTitle;
+  
+    // Map specific resource titles to their correct URL-friendly versions
+    switch (title) {
+      case 'Data Structures & Algorithms':
+        sanitizedTitle = 'dsa';
+        break;
+      case 'Web Development':
+        sanitizedTitle = 'webdev';
+        break;
+      case 'Competitive Programming':
+        sanitizedTitle = 'competitive';
+        break;
+      case 'System Design':
+        sanitizedTitle = 'systemdesign';
+        break;
+      case 'Machine Learning':
+        sanitizedTitle = 'machinelearning';
+        break;
+      case 'Database Management':
+        sanitizedTitle = 'dbms';
+        break;
+      default:
+        sanitizedTitle = title.toLowerCase().replace(/ /g, '');
     }
+  
+    // Navigate to the correct resource page based on topic and difficulty
+    navigate(`/resources/${sanitizedTitle}/${level.toLowerCase()}`);
   };
 
   const handleClosePopup = () => {
@@ -190,3 +169,4 @@ const ResourceSection = () => {
 };
 
 export default ResourceSection;
+
