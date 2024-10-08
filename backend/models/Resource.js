@@ -11,8 +11,15 @@ const ResourceSchema = new mongoose.Schema({
   upvotes: { type: Number, default: 0 },
   downvotes: { type: Number, default: 0 },
   likes: { type: Number, default: 0 },
-  usersVoted: { type: [String], default: [] } // Store user IDs that have voted
+  usersVoted: { type: [String], default: [] }
 });
 
-const Resource = mongoose.model('Resource', ResourceSchema , 'dsaresources');
-module.exports = Resource;
+// Create models for each topic
+const DSAResource = mongoose.model('DSAResource', ResourceSchema, 'dsaresources');
+const WebDevResource = mongoose.model('WebDevResource', ResourceSchema, 'webdevresources');
+const CPResource = mongoose.model('CPResource', ResourceSchema, 'cpresources'); // Competitive Programming
+const SDResource = mongoose.model('SDResource', ResourceSchema, 'sdresources'); // System Design
+const MLResource = mongoose.model('MLResource', ResourceSchema, 'mlresources'); // Machine Learning
+const DBResource = mongoose.model('DBResource', ResourceSchema, 'dbresources'); // Database Management
+
+module.exports = { DSAResource, WebDevResource, CPResource, SDResource, MLResource, DBResource };

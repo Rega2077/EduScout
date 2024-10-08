@@ -23,7 +23,7 @@ import DBHardRoadmap from './pages/RoadmapPages/Database Management/DatabaseHard
 import CpeasyRoadmap from './pages/RoadmapPages/Competitive Programming/CPEasyRoadmap';
 import CpmediumRoadmap from './pages/RoadmapPages/Competitive Programming/CPMediumRoadmap';
 import CphardRoadmap from './pages/RoadmapPages/Competitive Programming/CPHardRoadmap';
-import DSAResourceSection from './pages/ResourcePages/DSA/DSAEasy';
+import Common from './pages/ResourcePages/CommonPage';
 import DSAquizhome from './pages/QuizPages/DSA/DSAquizpage';
 import DBquizhome from './pages/QuizPages/Database Management/DatabaseManagementQuizPage';
 import Webquizhome from './pages/QuizPages/Web Development/WebDevQuiz';
@@ -80,11 +80,10 @@ function App() {
             <Route path="/signup" element={<Signup />} />
             <Route path="/quiz/:topic/:subtopic" element={<QuizPageInterface />} />
             <Route path="/roadmap/:topic/:difficulty/progress" element={<RoadmapPageInterface />} />
-            <Route path="/resources/:topic/:difficulty" element={<DSAResourceSection />} />
+            <Route path="/resources/:topic/:difficulty" element={<Common />} />
 
           </Routes>
         </div>
-
         {/* Footer should appear on every page */}
         <Footer />
       </div>

@@ -1,10 +1,10 @@
 import React from 'react';
-import DSAResourceSection from '../../../components/ResourceDetails/DSA/DSAResourceSection';
+import Common from '../../components/ResourceDetails/Commonresourcepage';
 
 const ResourcesPage = () => {
   return (
     <div>
-      <DSAResourceSection />
+      <Common />
     </div>
   );
 };
