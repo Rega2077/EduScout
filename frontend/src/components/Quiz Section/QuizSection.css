@@ -1,0 +1,96 @@
+:root {
+    --primary-color: #007bff;
+    --primary-dark: #0056b3;
+    --primary-light: #66b2ff;
+    --white: #ffffff;
+    --button-hover: #FFA500;
+  }
+  
+  /* General styling */
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--white);
+  }
+  
+  /* Quiz Section Styling */
+  .resource-section {
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .section-title {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 30px;
+    color: var(--primary-dark);
+    font-weight: 600;
+  }
+  
+  /* Grid styling */
+  .resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Larger box sizes */
+    gap: 25px;
+  }
+  
+  .resource-box {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    cursor: pointer;
+    transform: translateY(100px); /* Start off-screen */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    animation: slideUp 0.8s ease forwards;
+    opacity: 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .resource-box:hover {
+    transform: translateY(-15px) scale(1.05); /* Enlarge on hover */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Enhanced hover shadow */
+    background-color: #e3f2fd; /* Same hover background color */
+  }
+  
+  .resource-box h2 {
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+    color: var(--primary-dark);
+    position: relative;
+    display: inline-block;
+  }
+  
+  .resource-box h2::after {
+    content: '';
+    width: 0;
+    height: 2px;
+    background-color: #0056b3; /* Blue underline effect */
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    transition: width 0.3s ease;
+  }
+  
+  .resource-box:hover h2::after {
+    width: 100%; /* Underline expands from left to right */
+  }
+  
+  .resource-icon {
+    font-size: 3.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+  }
+  
+  /* Animation for resource boxes */
+  @keyframes slideUp {
+    0% {
+      opacity: 0;
+      transform: translateY(100px); /* Off-screen */
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0); /* Final position */
+    }
+  }
+  

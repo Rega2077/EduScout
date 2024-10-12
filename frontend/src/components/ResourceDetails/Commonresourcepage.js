@@ -16,7 +16,6 @@ const DSAResourceSection = () => {
   useEffect(() => {
     const fetchResources = async () => {
       try {
-        // Correct the axios request here with proper backticks
         const response = await axios.get(`/api/resources?topic=${topic}&difficulty=${difficulty}`);
         setResources(response.data);
       } catch (err) {
@@ -49,7 +48,7 @@ const SectionContainer = styled.div`
   padding: 50px;
   max-width: 1200px;
   margin: 4rem auto;
-  background-color: #f9f9f9;
+  background-color: #f9f9f9; /* Light background */
 `;
 
 const SectionTitle = styled.h1`

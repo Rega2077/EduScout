@@ -8,21 +8,19 @@ const MotivationCard = () => {
       <div className="text-section">
         <h2 className="headline">Unlock Your Full Potential</h2>
         <p className="motivation-text">
-          Every journey to success begins with the right resources, a solid roadmap, and an unshakable mindset.
-          Whether you're learning new skills or mastering existing ones, staying ahead of the curve is the key.
+          Every success story begins with <span className="highlight">the right resources</span>, a solid roadmap, and a growth mindset.
         </p>
         <p className="motivation-text">
-          The world is filled with competition, but those who stand out are the ones who constantly push boundaries,
-          challenge themselves, and never settle for mediocrity. <strong>You can be one of them.</strong>
+          Push beyond your limits, <span className="highlight">stand out from the competition</span>, and constantly challenge yourself to grow.
         </p>
         <p className="motivation-text">
-          This platform provides all the guidance and resources you need to thrive. Start today, and let your skills shine brighter than the rest.
+          Our platform gives you all the tools you need to thrive. <strong>Start your journey today.</strong>
         </p>
-        <button className="cta-button">Get Started Now</button>
+        <button className="cta-button" onClick={() => window.location.href = '/roadmaps'}>Get Started Now</button>
       </div>
 
       <div className="gif-section">
-        <img src={Image} alt="Motivation GIF" className="motivation-gif"/>
+        <img src={Image} alt="Motivation" className="motivation-gif"/>
       </div>
     </div>
   );

@@ -2,47 +2,66 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2rem 4rem;
-    background-color: #ffffff;
-    border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    padding: 3rem 5rem;
+    background-color: #f0f8ff; /* Light blue shade for consistency */
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     margin: 3rem auto;
     max-width: 1200px;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+    opacity: 0;
+    transform: translateY(100px); /* Slide up effect */
+    animation: slideUp 1.2s ease-in-out forwards; /* Smooth appearance from bottom */
+}
+
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .motivation-card-container:hover {
-    transform: scale(1.02);
+    transform: scale(1.02); /* Slightly bigger on hover */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
 }
 
 .text-section {
     flex: 1;
     padding-right: 2rem;
+    color: #003366; /* Consistent color for text */
 }
 
 .headline {
     font-size: 2.5rem;
     font-weight: bold;
-    color: #2a2a2a;
+    color: #003366;
     margin-bottom: 1.5rem;
     line-height: 1.3;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .motivation-text {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     line-height: 1.8;
-    color: #444;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.5rem;
+    color: #555; /* More readable text color */
 }
 
 .motivation-text strong {
-    color: #d62828;
+    color: #0072ff;
+}
+
+.motivation-text .highlight {
+    color: #0072ff;
+    font-weight: bold;
 }
 
 .gif-section {
     flex: 1;
     display: flex;
     justify-content: center;
+    transition: transform 0.3s ease;
 }
 
 .motivation-gif {
@@ -50,22 +69,54 @@
     width: auto;
     border-radius: 16px;
     object-fit: cover;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.motivation-card-container:hover .gif-section {
+    transform: scale(1.05); /* Zoom effect on hover */
 }
 
 .cta-button {
     display: inline-block;
     margin-top: 2rem;
-    padding: 0.8rem 2rem;
-    font-size: 1.1rem;
-    background-color: #d62828;
+    padding: 0.8rem 2.5rem;
+    font-size: 1.2rem;
+    background-color: #0072ff; /* Blue consistent with theme */
     color: #fff;
     border: none;
-    border-radius: 8px;
+    border-radius: 12px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 114, 255, 0.3);
+    letter-spacing: 1px;
 }
 
 .cta-button:hover {
-    background-color: #b71d1d;
+    background-color: #005bb5;
+    transform: translateY(-4px) scale(1.05); /* Hover animation for button */
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 1024px) {
+    .motivation-card-container {
+        flex-direction: column;
+        padding: 2rem;
+    }
+
+    .gif-section {
+        margin-top: 2rem;
+    }
+
+    .headline {
+        font-size: 2rem;
+    }
+
+    .motivation-text {
+        font-size: 1.1rem;
+    }
+
+    .cta-button {
+        padding: 0.7rem 2rem;
+    }
 }

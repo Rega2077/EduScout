@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate for routing
+import { useNavigate } from 'react-router-dom';
 import './ResourceSection.css';
-import DSA from '../../assets/DSA.png'; // Importing image
+import DSA from '../../assets/DSA.png';
 import Web from '../../assets/Web.png';
 import Machine from '../../assets/Machine.png';
 import DBMS from '../../assets/DBMS.png';
@@ -50,19 +50,15 @@ const resources = [
 const ResourceSection = () => {
   const [popupVisible, setPopupVisible] = useState(false);
   const [selectedResource, setSelectedResource] = useState(null);
-  const navigate = useNavigate(); // Initialize useNavigate for routing
+  const navigate = useNavigate();
 
-  // Handle resource click to show the difficulty popup
   const handleResourceClick = (resource) => {
     setSelectedResource(resource);
     setPopupVisible(true);
   };
 
-  // Function to handle difficulty navigation
   const handleDifficultyClick = (title, level) => {
     let sanitizedTitle;
-  
-    // Map specific resource titles to their correct URL-friendly versions
     switch (title) {
       case 'Data Structures & Algorithms':
         sanitizedTitle = 'dsa';
@@ -85,14 +81,12 @@ const ResourceSection = () => {
       default:
         sanitizedTitle = title.toLowerCase().replace(/ /g, '');
     }
-  
-    // Navigate to the correct resource page based on topic and difficulty
     navigate(`/resources/${sanitizedTitle}/${level.toLowerCase()}`);
   };
 
   const handleClosePopup = () => {
     setPopupVisible(false);
-    setSelectedResource(null); // Reset when closing
+    setSelectedResource(null);
   };
 
   return (
@@ -109,22 +103,18 @@ const ResourceSection = () => {
         ))}
       </div>
 
+      {/* Popup Modal */}
       {popupVisible && selectedResource && (
-        <div className="popup-overlay" onClick={handleClosePopup}>
+        <div className={`popup-overlay ${popupVisible ? 'visible' : ''}`} onClick={handleClosePopup}>
           <div className="popup-box" onClick={(e) => e.stopPropagation()}>
             <button className="close-button" onClick={handleClosePopup}>×</button>
-
+            
             <div className="popup-content">
-              {/* Left side: Image */}
               <div className="popup-left">
                 <img src={selectedResource.image} alt={selectedResource.title} className="popup-image" />
               </div>
-
-              {/* Right side: Difficulty section */}
               <div className="popup-right">
                 <h2>{selectedResource.title}</h2>
-
-                {/* Difficulty boxes with stars */}
                 <div className="difficulty-container">
                   <div className="difficulty-box easy" onClick={() => handleDifficultyClick(selectedResource.title, 'Easy')}>
                     <div>
@@ -135,27 +125,22 @@ const ResourceSection = () => {
                       <span>⭐</span>
                     </div>
                   </div>
-
                   <div className="difficulty-box medium" onClick={() => handleDifficultyClick(selectedResource.title, 'Medium')}>
                     <div>
                       <h3>Medium</h3>
                       <p>For intermediate learners wanting to deepen their knowledge in {selectedResource.title}.</p>
                     </div>
                     <div className="difficulty-stars">
-                      <span>⭐</span>
-                      <span>⭐</span>
+                      <span>⭐</span><span>⭐</span>
                     </div>
                   </div>
-
                   <div className="difficulty-box hard" onClick={() => handleDifficultyClick(selectedResource.title, 'Hard')}>
                     <div>
                       <h3>Hard</h3>
                       <p>Advanced content for mastering {selectedResource.title}.</p>
                     </div>
                     <div className="difficulty-stars">
-                      <span>⭐</span>
-                      <span>⭐</span>
-                      <span>⭐</span>
+                      <span>⭐</span><span>⭐</span><span>⭐</span>
                     </div>
                   </div>
                 </div>
@@ -169,4 +154,3 @@ const ResourceSection = () => {
 };
 
 export default ResourceSection;
-

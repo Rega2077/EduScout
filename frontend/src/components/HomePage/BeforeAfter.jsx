@@ -43,7 +43,7 @@ const BeforeAfter = () => {
   return (
     <div className="before-after-container">
       <div className="before-section">
-        <h2 className="section-title">Before: Student's Challenges</h2>
+        <h2 className="section-title">Student's Challenges</h2>
         {beforePoints.map((point, index) => (
           <div key={index} className="point-container">
             <div className="point">{point.title}</div>
@@ -52,7 +52,7 @@ const BeforeAfter = () => {
         ))}
       </div>
       <div className="after-section">
-        <h2 className="section-title">After: Our Solutions</h2>
+        <h2 className="section-title">Personalized Solutions</h2>
         {afterPoints.map((point, index) => (
           <div key={index} className="point-container">
             <div className="point">{point.title}</div>

@@ -35,6 +35,7 @@ exports.signup = async (req, res) => {
 };
 
 // Login logic
+// Login logic
 exports.login = async (req, res) => {
   const { email, password } = req.body;
 
@@ -55,7 +56,8 @@ exports.login = async (req, res) => {
     const payload = { user: { id: user.id } };
     const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-    res.json({ token });
+    // Return both token and user ID to the client
+    res.json({ token, user: { id: user.id, name: user.name } });
   } catch (error) {
     console.error(error.message);
     res.status(500).send('Server error');

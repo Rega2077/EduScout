@@ -3,6 +3,41 @@ import styled from 'styled-components';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+const SpecialReward = styled.div`
+  margin-top: 40px;
+  background-color: #007bff;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+`;
+
+const RewardButton = styled.button`
+  padding: 10px 20px;
+  background-color: white;
+  color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #f1f1f1;
+  }
+`;
+
+const AchievementsSection = styled.div`
+  margin-top: 40px;
+  text-align: left;
+`;
+
+const Achievement = styled.div`
+  margin: 5px 0;
+  font-size: 1.2rem;
+  color: ${(props) => (props.unlocked ? '#007bff' : 'grey')}; /* Grey if not unlocked, blue if unlocked */
+`;
+
 const RewardsSection = () => {
   const [progress, setProgress] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -11,15 +46,15 @@ const RewardsSection = () => {
 
   useEffect(() => {
     const fetchProgress = async () => {
-      const token = localStorage.getItem('token'); // Get the user's token
+      const token = localStorage.getItem('token');
       if (!token) {
-        navigate('/login'); // Redirect to login if not authenticated
+        navigate('/login');
         return;
       }
 
       try {
         const response = await axios.get('http://localhost:5000/api/rewards', {
-          headers: { Authorization: `Bearer ${token}` }
+          headers: { Authorization: `Bearer ${token}` },
         });
         setProgress(response.data);
       } catch (err) {
@@ -36,9 +71,13 @@ const RewardsSection = () => {
   if (loading) return <Loader>Loading...</Loader>;
   if (error) return <Error>{error}</Error>;
 
+  // Calculate progress percentage for problems solved
+  const totalQuestions = 300;
+  const progressPercentage = (progress.problemsSolved * 100) / totalQuestions;
+
   return (
     <RewardsContainer>
-      <h1>Your Rewards</h1>
+      <Heading>Your Rewards and Achievements</Heading>
       <StatsGrid>
         <StatBox>
           <h2>Total Points</h2>
@@ -59,9 +98,9 @@ const RewardsSection = () => {
       </StatsGrid>
 
       <ProgressBarContainer>
-        <ProgressLabel>Your Progress</ProgressLabel>
+        <ProgressLabel>Your Progress: {progressPercentage.toFixed(2)}%</ProgressLabel>
         <ProgressBar>
-          <ProgressFill progress={(progress.totalPoints / 100) * 100} />
+          <ProgressFill progress={progressPercentage} />
         </ProgressBar>
       </ProgressBarContainer>
 
@@ -75,13 +114,35 @@ const RewardsSection = () => {
 
       <AchievementsSection>
         <h3>Achievements</h3>
-        <Achievement>
-          <span>🏆</span> Quiz Master: Complete all quizzes!
+        <Achievement unlocked={progress.problemsSolved > 50}>
+          {progress.problemsSolved > 50 ? '🔓' : '🔒'} More than 50 Problems Solved
         </Achievement>
-        <Achievement>
-          <span>💯</span> Perfect Score: Achieve 100% in a quiz!
+        <Achievement unlocked={progress.averageScore >= 1000}>
+          {progress.averageScore >= 1000 ? '🔓' : '🔒'} Reached 1000 Score
         </Achievement>
       </AchievementsSection>
+
+      {/* Stars Section */}
+      <StarsSection>
+        <h3>Your Stars</h3>
+        <StarsContainer>
+          {[
+            { title: 'Newbie', points: 500 },
+            { title: 'Specialist', points: 1000 },
+            { title: 'Expert', points: 1500 },
+          ].map((star, index) => (
+            <StarContainer key={index}>
+              <Star
+                filled={progress.totalPoints >= star.points}
+                title={progress.totalPoints < star.points ? `Unlock with ${star.points} points` : ''}
+              >
+                ★
+              </Star>
+              <StarTitle>{star.title} (Requires: {star.points} points)</StarTitle>
+            </StarContainer>
+          ))}
+        </StarsContainer>
+      </StarsSection>
     </RewardsContainer>
   );
 };
@@ -89,12 +150,19 @@ const RewardsSection = () => {
 // Styled Components for UI
 const RewardsContainer = styled.div`
   padding: 40px;
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
   text-align: center;
-  background-color: #ffffff;
+  background-color: #fdfdfd;
   border-radius: 10px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+`;
+
+const Heading = styled.h1`
+  font-size: 2.5rem; /* Enlarged font size */
+  color: #007bff; /* Blue color */
+  text-decoration: none; /* Remove underline */
+  margin-bottom: 20px;
 `;
 
 const Loader = styled.div`
@@ -115,20 +183,20 @@ const StatsGrid = styled.div`
 `;
 
 const StatBox = styled.div`
-  background-color: #f5f5f5;
+  background-color: #f0f8ff;
   padding: 20px;
   border-radius: 10px;
   text-align: center;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   flex: 1;
   margin: 10px;
-  min-width: 200px; // Responsive design
+  min-width: 200px;
 `;
 
 const Points = styled.p`
   font-size: 2rem;
   font-weight: bold;
-  color: #4caf50;
+  color: #007bff;
 `;
 
 const ProgressBarContainer = styled.div`
@@ -150,43 +218,43 @@ const ProgressBar = styled.div`
 
 const ProgressFill = styled.div`
   height: 100%;
-  background-color: #4caf50;
+  background-color: #007bff;
   width: ${(props) => props.progress}%;
   transition: width 0.5s ease;
 `;
 
-const SpecialReward = styled.div`
+// Stars section
+const StarsSection = styled.div`
   margin-top: 40px;
-  background-color: #4caf50;
-  color: white;
-  padding: 20px;
-  border-radius: 10px;
   text-align: center;
 `;
 
-const RewardButton = styled.button`
-  padding: 10px 20px;
-  background-color: white;
-  color: #4caf50;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+const StarsContainer = styled.div`
+  display: flex;
+  justify-content: center;
   margin-top: 10px;
-  transition: background-color 0.3s;
+`;
+
+const StarContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 10px;
+`;
+
+const Star = styled.span`
+  font-size: 3rem; /* Increased font size for stars */
+  color: ${(props) => (props.filled ? 'yellow' : 'grey')}; /* Change to yellow if filled */
+  margin-bottom: 5px;
+  cursor: pointer;
 
   &:hover {
-    background-color: #f1f1f1;
+    color: #ffcc00; /* Change to a lighter yellow on hover */
   }
 `;
 
-const AchievementsSection = styled.div`
-  margin-top: 40px;
-  text-align: left;
-`;
-
-const Achievement = styled.div`
-  margin: 5px 0;
-  font-size: 1.2rem;
+const StarTitle = styled.span`
+  font-weight: bold;
 `;
 
 export default RewardsSection;

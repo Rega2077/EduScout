@@ -19,13 +19,6 @@ const Footer = () => {
             <a href="https://linkedin.com" className="social-icon hover:text-blue-700 text-3xl"><FaLinkedinIn /></a>
           </div>
         </div>
-        <div className="mb-6">
-          <ul className="flex justify-center space-x-8">
-            <li><a href="/privacy-policy" className="hover:text-white">Privacy Policy</a></li>
-            <li><a href="/terms-of-service" className="hover:text-white">Terms of Service</a></li>
-            <li><a href="/contact-us" className="hover:text-white">Contact Us</a></li>
-          </ul>
-        </div>
         <div className="footer-bottom text-gray-500 pt-4 border-t border-gray-700 mt-4">
           <p>&copy; 2024 EduScout. All rights reserved.</p>
         </div>

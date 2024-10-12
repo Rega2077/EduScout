@@ -1,85 +1,148 @@
+:root {
+  --primary-color: #007bff;
+  --primary-dark: #005bb5;
+  --bg-color: #f4f4f4;
+  --item-bg: #ffffff;
+  --item-hover-bg: #007bff;
+  --text-color: #333333;
+  --subtext-color: #666666;
+  --box-shadow: rgba(0, 0, 0, 0.1);
+  --hover-box-shadow: rgba(0, 0, 0, 0.3);
+}
+
+/* Carousel Section */
 .carousel-section {
-    padding: 2rem 0;
-    background-color: #f4f4f4;
-    overflow: hidden;
-    position: relative;
+  padding: 3rem 0;
+  background-color: var(--bg-color);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Carousel Heading */
+.carousel-heading {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--text-color);
+  margin-left: 23rem;
+  margin-bottom: 3rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  position: relative;
+  display: inline-block;
+}
+
+.carousel-heading::after {
+  content: '';
+  width: 0;
+  height: 2px;
+  background-color: var(--primary-color);
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  transition: width 0.4s ease;
+}
+
+.carousel-heading:hover::after {
+  width: 100%;
+}
+
+/* Carousel Container */
+.carousel-container {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Carousel Track */
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+  will-change: transform;
+  animation: scroll-carousel 20s linear infinite;
+}
+
+/* Carousel Item */
+.carousel-item {
+  min-width: 22%;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+
+.item-content {
+  background-color: var(--item-bg);
+  border-radius: 1.5rem;
+  box-shadow: 0 0.5rem 1.5rem var(--box-shadow);
+  text-align: center;
+  padding: 3.5rem 2rem;
+  transition: transform 0.4s ease, background-color 0.4s ease;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  border: 1px solid transparent;
+  position: relative;
+  padding: 2rem;
+}
+
+.item-content h2 {
+  font-size: 1.75rem;
+  color: var(--text-color);
+  margin-bottom: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.item-content p {
+  font-size: 1.1rem;
+  color: var(--subtext-color);
+  margin-bottom: 1.5rem;
+}
+
+/* Icon inside the box */
+.item-content i {
+  font-size: 3rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.carousel-item:hover .item-content {
+  transform: translateY(-0.75rem);
+  background-color: var(--item-hover-bg);
+  color: white;
+  border-color: var(--item-hover-bg);
+  box-shadow: 0 0.75rem 2rem var(--hover-box-shadow);
+}
+
+.carousel-item:hover h2,
+.carousel-item:hover p,
+.carousel-item:hover i {
+  color: white;
+}
+
+/* Animation */
+@keyframes scroll-carousel {
+  0% {
+    transform: translateX(0);
   }
-  
-  .carousel-heading {
-    text-align: center;
-    font-size: 2rem;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 2rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+  100% {
+    transform: translateX(-50%);
   }
-  .carousel-container {
-    width: 90%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .carousel-track {
-    display: flex;
-    transition: transform 0.5s ease;
-    will-change: transform;
-    animation: scroll-carousel 15s linear infinite;
-  }
-  
+}
+
+/* Responsive */
+@media (max-width: 768px) {
   .carousel-item {
-    min-width: 25%;
-    padding: 1rem;
-    box-sizing: border-box;
+    min-width: 45%;
   }
-  
-  .item-content {
-    background-color: lightblue;
-    border-radius: 1rem;
-    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
-    text-align: center;
-    padding: 3rem 2rem;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    height: 280px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
+}
+
+@media (max-width: 480px) {
+  .carousel-item {
+    min-width: 100%;
   }
-  
-  .item-content h2 {
-    font-size: 1.5rem;
-    color: #333;
-    margin-bottom: 0.5rem;
-    font-weight: bold;
-  }
-  
-  .item-content p {
-    font-size: 1rem;
-    color: #666;
-  }
-  .carousel-item:hover .item-content {
-    transform: scale(1.05);
-    background-color: darkcyan;
-  }
-  @keyframes scroll-carousel {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
-  }
-  @media (max-width: 768px) {
-    .carousel-item {
-      min-width: 50%;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .carousel-item {
-      min-width: 100%;
-    }
-  }
-  
+}

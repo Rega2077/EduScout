@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for routing
-import styled from 'styled-components';
+import './QuizSection.css'; // Importing the new CSS file
 import DSA from '../../assets/DSA.png'; // Importing image
 import Web from '../../assets/Web.png';
 import Machine from '../../assets/Machine.png';
@@ -62,60 +62,20 @@ const QuizSection = () => {
   };
 
   return (
-    <QuizContainer>
-      <SectionTitle>Choose a Quiz Category</SectionTitle>
+    <div className="resource-section">
+      <h1 className="section-title">Choose a Quiz Category</h1>
 
-      <QuizzesGrid>
+      <div className="resources-grid">
         {quizzes.map((quiz, index) => (
-          <QuizBox key={index} onClick={() => handleQuizClick(quiz.route)}>
-            <QuizIcon>{quiz.icon}</QuizIcon>
+          <div className="resource-box" key={index} onClick={() => handleQuizClick(quiz.route)}>
+            <div className="resource-icon">{quiz.icon}</div>
             <h2>{quiz.title}</h2>
             <p>{quiz.description}</p>
-          </QuizBox>
+          </div>
         ))}
-      </QuizzesGrid>
-    </QuizContainer>
+      </div>
+    </div>
   );
 };
-
-// Styled Components
-const QuizContainer = styled.div`
-  padding: 40px;
-  max-width: 1200px;
-  margin: 0 auto;
-`;
-
-const SectionTitle = styled.h1`
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 30px;
-  color: #333;
-`;
-
-const QuizzesGrid = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: space-around;
-`;
-
-const QuizBox = styled.div`
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  width: calc(33% - 40px);
-  padding: 20px;
-  text-align: center;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  
-  &:hover {
-    transform: translateY(-10px);
-  }
-`;
-
-const QuizIcon = styled.div`
-  font-size: 3rem;
-  margin-bottom: 15px;
-`;
 
 export default QuizSection;

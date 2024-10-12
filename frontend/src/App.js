@@ -1,5 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+// In your main entry file (index.js or App.js)
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import HomePage from './pages/HomePage';
 import ResourcesPage from './pages/ResourcesPage';
 import RoadmapsPage from './pages/RoadmapsPage' ;

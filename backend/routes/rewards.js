@@ -16,8 +16,10 @@ router.get('/', authMiddleware, async (req, res) => {
     const totalPoints = progress.reduce((acc, item) => acc + item.totalPoints, 0);
     const quizzesAttempted = progress.reduce((acc, item) => acc + item.quizzesAttempted, 0);
     const problemsSolved = progress.reduce((acc, item) => acc + item.problemsSolved, 0);
-    const averageScore = progress.length ? (progress.reduce((acc, item) => acc + item.averageScore, 0) / progress.length) : 0;
-    const quizzesCompleted = progress.some(item => item.quizzesCompleted);
+    const averageScore = progress.length
+      ? progress.reduce((acc, item) => acc + item.averageScore, 0) / progress.length
+      : 0;
+    const quizzesCompleted = progress.some((item) => item.quizzesCompleted);
 
     res.json({ totalPoints, quizzesAttempted, problemsSolved, averageScore, quizzesCompleted });
   } catch (err) {
@@ -25,5 +27,5 @@ router.get('/', authMiddleware, async (req, res) => {
     res.status(500).json({ message: 'Server Error' });
   }
 });
-
 module.exports = router;
+
