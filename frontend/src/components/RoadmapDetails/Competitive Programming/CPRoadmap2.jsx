@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'; // Ensure useNavigate is importe
 // Medium-level Roadmap data with links and difficulty levels
 const roadmapSteps = [
   { title: '1. Introduction to Competitive Programming Platforms', description: 'Explore platforms like Codeforces, AtCoder, and LeetCode.', difficulty: 'Easy', link: 'https://codeforces.com/' },
-  { title: '2. Mastering Input and Output Efficiency', description: 'Understand how to optimize input/output for competitive programming.', difficulty: 'Easy', link: 'https://www.geeksforgeeks.org/fast-io-in-competitive-programming/' },
+  { title: '2. Mastering Input and Output Efficiency', description: 'Understand how to optimize input/output for competitive programming.', difficulty: 'Easy', link: 'https://usaco.guide/general/fast-io?lang=cpp' },
   { title: '3. Advanced Sorting Algorithms', description: 'Learn advanced sorting algorithms like Radix Sort and Tim Sort.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/radix-sort/' },
   { title: '4. Binary Search and its Applications', description: 'Study binary search and its applications in competitive programming.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/binary-search/' },
   { title: '5. Two-Pointer Technique', description: 'Learn the two-pointer technique and its applications in problem-solving.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/two-pointers-technique/' },
@@ -18,11 +18,11 @@ const roadmapSteps = [
   { title: '11. Backtracking Problems', description: 'Solve intermediate-level backtracking problems like N-Queens.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/backtracking-algorithms/' },
   { title: '12. Sliding Window Algorithm', description: 'Learn and apply the sliding window algorithm in problems.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/window-sliding-technique/' },
   { title: '13. Bit Manipulation Techniques', description: 'Understand bit manipulation techniques and practice related problems.', difficulty: 'Hard', link: 'https://www.geeksforgeeks.org/bitwise-operators-in-c-cpp/' },
-  { title: '14. Number Theory: GCD, LCM, Modular Arithmetic', description: 'Learn number theory concepts like GCD, LCM, and modular arithmetic.', difficulty: 'Medium', link: 'https://cp-algorithms.com/algebra/' },
+  { title: '14. Number Theory: GCD, LCM, Modular Arithmetic', description: 'Learn number theory concepts like GCD, LCM, and modular arithmetic.', difficulty: 'Medium', link: 'https://www.hackerearth.com/practice/notes/number-theory-1/' },
   { title: '15. Combinatorics and Probability', description: 'Learn combinatorics, binomial coefficients, and probability.', difficulty: 'Medium', link: 'https://brilliant.org/wiki/combinatorics/' },
   { title: '16. Segment Trees and Fenwick Trees', description: 'Master advanced data structures like Segment Trees and Fenwick Trees.', difficulty: 'Hard', link: 'https://www.geeksforgeeks.org/segment-tree-set-1-sum-of-given-range/' },
   { title: '17. Dynamic Programming on Trees', description: 'Learn dynamic programming techniques applied on trees.', difficulty: 'Hard', link: 'https://codeforces.com/blog/entry/20935' },
-  { title: '18. Game Theory', description: 'Introduction to game theory and its applications in competitive programming.', difficulty: 'Hard', link: 'https://www.geeksforgeeks.org/game-theory-introduction/' },
+  { title: '18. Game Theory', description: 'Introduction to game theory and its applications in competitive programming.', difficulty: 'Hard', link: 'https://usaco.guide/adv/game-theory?lang=cpp' },
   { title: '19. Trie Data Structure', description: 'Learn Trie data structure and its applications in string-related problems.', difficulty: 'Hard', link: 'https://www.geeksforgeeks.org/trie-insert-and-search/' },
   { title: '20. Advanced Graph Algorithms', description: 'Master advanced graph algorithms like Floyd-Warshall and Prim’s.', difficulty: 'Hard', link: 'https://www.geeksforgeeks.org/floyd-warshall-algorithm-dp-16/' }
 ];

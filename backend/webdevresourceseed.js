@@ -50,7 +50,7 @@ const seedWebDevResources = async () => {
     {
       rank: 4,
       channelName: "The Net Ninja",
-      videoUrl: "https://www.youtube.com/playlist?list=PL4cUxeGkcC9ij8CfkAYGoqUq8nGdgmxeQ",
+      videoUrl: "https://www.youtube.com/@NetNinja",
       thumbnail: "https://img.youtube.com/vi/YwXWc9olMk0/hqdefault.jpg",
       description: "Learn CSS Grid layout and Flexbox from scratch.",
       difficulty: "easy",
@@ -78,7 +78,7 @@ const seedWebDevResources = async () => {
     {
       rank: 1,
       channelName: "The Net Ninja",
-      videoUrl: "https://www.youtube.com/playlist?list=PL4cUxeGkcC9g7L6lOq4zEs_MF4kHU6LN3",
+      videoUrl: "https://www.youtube.com/@NetNinja",
       thumbnail: "https://img.youtube.com/vi/ZlYp4gjxXnQ/hqdefault.jpg",
       description: "Intermediate-level React tutorial series that covers React hooks and state management.",
       difficulty: "medium",
@@ -91,7 +91,7 @@ const seedWebDevResources = async () => {
     {
       rank: 2,
       channelName: "Traversy Media",
-      videoUrl: "https://www.youtube.com/playlist?list=PLillGF-RfqbYxONbD9qPUZWwOEs62ZfxW",
+      videoUrl: "https://www.youtube.com/watch?v=UB1O30fR-EE&list=PLillGF-RfqbYeckUaD1z6nviTp31GLTH8",
       thumbnail: "https://img.youtube.com/vi/nQTh_WzRk3s/hqdefault.jpg",
       description: "Complete JavaScript crash course for intermediate developers.",
       difficulty: "medium",
@@ -104,7 +104,7 @@ const seedWebDevResources = async () => {
     {
       rank: 3,
       channelName: "Codevolution",
-      videoUrl: "https://www.youtube.com/playlist?list=PL0Zuz27SZ-6M1aO91IvIUt84shETu42PU",
+      videoUrl: "https://www.youtube.com/watch?v=N8YMl4Ezp4g&list=PLC3y8-rFHvwhuX4qGvFx-wPy_MEi6Jdp7",
       thumbnail: "https://img.youtube.com/vi/tiLWCNFzThE/hqdefault.jpg",
       description: "Modern React tutorial with a focus on React hooks and performance optimizations.",
       difficulty: "medium",
@@ -117,7 +117,7 @@ const seedWebDevResources = async () => {
     {
       rank: 4,
       channelName: "Academind",
-      videoUrl: "https://www.youtube.com/playlist?list=PL55RiY5tL51qL-oqwFiF08GEoHOqJEaLP",
+      videoUrl: "https://www.youtube.com/@academind",
       thumbnail: "https://img.youtube.com/vi/N3BdyGXp6d4/hqdefault.jpg",
       description: "Advanced JavaScript techniques and modern web development tools.",
       difficulty: "medium",
@@ -130,7 +130,7 @@ const seedWebDevResources = async () => {
     {
       rank: 5,
       channelName: "Web Dev Simplified",
-      videoUrl: "https://www.youtube.com/playlist?list=PLZlA0Gpn_vH9muR1tGIhXnIYWDdiAbQVo",
+      videoUrl: "https://www.youtube.com/@WebDevSimplified",
       thumbnail: "https://img.youtube.com/vi/KnEMHeJ8i0U/hqdefault.jpg",
       description: "Learn about modern frontend frameworks like React, Vue, and Angular.",
       difficulty: "medium",
@@ -145,7 +145,7 @@ const seedWebDevResources = async () => {
     {
       rank: 1,
       channelName: "Tech With Tim",
-      videoUrl: "https://www.youtube.com/playlist?list=PLzMcBGfZo4-lmGCkD0sMuIsh9T0tET7fT",
+      videoUrl: "https://www.youtube.com/@TechWithTim",
       thumbnail: "https://img.youtube.com/vi/vP4I0gkp9vY/hqdefault.jpg",
       description: "Full-stack Python and JavaScript web development with React and Django.",
       difficulty: "hard",
@@ -158,7 +158,7 @@ const seedWebDevResources = async () => {
     {
       rank: 2,
       channelName: "Hussein Nasser",
-      videoUrl: "https://www.youtube.com/playlist?list=PLQnljOFTspQXqNIz1TdJTmJPWNBHy7QtC",
+      videoUrl: "https://www.youtube.com/@hnasr",
       thumbnail: "https://img.youtube.com/vi/FV9tI1Rj43I/hqdefault.jpg",
       description: "Web backend architecture with advanced topics in caching, scaling, and database optimization.",
       difficulty: "hard",
@@ -171,7 +171,7 @@ const seedWebDevResources = async () => {
     {
       rank: 3,
       channelName: "Fireship",
-      videoUrl: "https://www.youtube.com/playlist?list=PL0vfts4VzfNiU2vLpqt-mvJf7swGAA7mx",
+      videoUrl: "https://www.youtube.com/@Fireship",
       thumbnail: "https://img.youtube.com/vi/n0l5NCKb5Ek/hqdefault.jpg",
       description: "Cutting-edge web development tools and techniques for experienced developers.",
       difficulty: "hard",
@@ -184,7 +184,7 @@ const seedWebDevResources = async () => {
     {
       rank: 4,
       channelName: "The Net Ninja",
-      videoUrl: "https://www.youtube.com/playlist?list=PL4cUxeGkcC9jB0Xh3BTsR6UCmnO9WiLKq",
+      videoUrl: "https://www.youtube.com/@NetNinja",
       thumbnail: "https://img.youtube.com/vi/uoXQWyLCwN8/hqdefault.jpg",
       description: "Advanced Node.js and Express tutorials for building robust server-side applications.",
       difficulty: "hard",
@@ -197,7 +197,7 @@ const seedWebDevResources = async () => {
     {
       rank: 5,
       channelName: "Academind",
-      videoUrl: "https://www.youtube.com/playlist?list=PL55RiY5tL51olfU2IEqr455EYLkrhmh5r",
+      videoUrl: "https://www.youtube.com/@academind",
       thumbnail: "https://img.youtube.com/vi/NlfcWMcnc8U/hqdefault.jpg",
       description: "Advanced React Native for mobile app development.",
       difficulty: "hard",

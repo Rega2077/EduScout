@@ -13,7 +13,7 @@ const roadmapSteps = [
   { title: '7. Greedy Algorithms', description: 'Learn greedy algorithms and how to solve optimization problems.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/greedy-algorithms/' },
   { title: '8. Bit Manipulation', description: 'Learn common bit manipulation techniques for solving problems efficiently.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/bitwise-algorithms/' },
   { title: '9. Backtracking', description: 'Solve complex problems using backtracking techniques, such as N-Queens.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/backtracking-algorithms/' },
-  { title: '10. Segment Trees', description: 'Learn to implement and use segment trees for range queries.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/segment-tree/' },
+  { title: '10. Segment Trees', description: 'Learn to implement and use segment trees for range queries.', difficulty: 'Medium', link: 'https://cp-algorithms.com/data_structures/segment_tree.html' },
   { title: '11. Union Find (Disjoint Set)', description: 'Understand the Union-Find algorithm to handle dynamic connectivity.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/union-find/' },
   { title: '12. Topological Sorting', description: 'Learn topological sorting for directed acyclic graphs (DAG).', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/topological-sorting/' },
   { title: '13. Shortest Path Algorithms', description: 'Implement Dijkstra’s algorithm and Bellman-Ford for shortest paths in graphs.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/shortest-path-in-a-directed-graph-by-dijkstras-algorithm/' },

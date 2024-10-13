@@ -18,12 +18,12 @@ const roadmapSteps = [
   { title: '11. Greedy Algorithms', description: 'Solve real-world problems using greedy techniques like interval scheduling.', difficulty: 'Hard', link: 'https://www.geeksforgeeks.org/greedy-algorithms/' },
   { title: '12. Dynamic Programming I', description: 'Start with classic DP problems like knapsack and Fibonacci.', difficulty: 'Hard', link: 'https://leetcode.com/tag/dynamic-programming/' },
   { title: '13. Advanced Dynamic Programming', description: 'Solve DP with memoization and tabulation techniques in more complex problems.', difficulty: 'Hard', link: 'https://www.geeksforgeeks.org/dynamic-programming/' },
-  { title: '14. Graph Algorithms II', description: 'Learn shortest path algorithms like Dijkstra, Bellman-Ford, and Floyd-Warshall.', difficulty: 'Hard', link: 'https://www.geeksforgeeks.org/shortest-path-algorithms/' },
+  { title: '14. Graph Algorithms II', description: 'Learn shortest path algorithms like Dijkstra, Bellman-Ford, and Floyd-Warshall.', difficulty: 'Hard', link: 'https://www.hackerearth.com/practice/algorithms/graphs/shortest-path-algorithms/tutorial/' },
   { title: '15. Segment Trees', description: 'Understand segment trees, range queries, and lazy propagation.', difficulty: 'Hard', link: 'https://www.geeksforgeeks.org/segment-tree-data-structure/' },
   { title: '16. Trie and Suffix Trees', description: 'Learn trie for prefix-based search and suffix trees for advanced text processing.', difficulty: 'Hard', link: 'https://leetcode.com/tag/trie/' },
   { title: '17. Advanced Trees: AVL and Red-Black Trees', description: 'Explore self-balancing trees like AVL and Red-Black Trees.', difficulty: 'Expert', link: 'https://www.geeksforgeeks.org/avl-tree-set-1-insertion/' },
   { title: '18. Disjoint Set Union (Union-Find)', description: 'Understand DSU and apply it to solve problems like Kruskal’s MST.', difficulty: 'Expert', link: 'https://www.geeksforgeeks.org/union-find/' },
-  { title: '19. Network Flow Algorithms', description: 'Learn Ford-Fulkerson and Edmonds-Karp algorithms for maximum flow.', difficulty: 'Expert', link: 'https://www.geeksforgeeks.org/maximum-flow-problem-introduction/' },
+  { title: '19. Network Flow Algorithms', description: 'Learn Ford-Fulkerson and Edmonds-Karp algorithms for maximum flow.', difficulty: 'Expert', link: 'https://www.hackerearth.com/practice/algorithms/graphs/maximum-flow/tutorial/' },
   { title: '20. Advanced Graphs: Strongly Connected Components', description: 'Master Tarjan’s algorithm and Kosaraju’s for finding SCCs.', difficulty: 'Expert', link: 'https://www.geeksforgeeks.org/strongly-connected-components/' },
 ];
 

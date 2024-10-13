@@ -5,18 +5,18 @@ import { useNavigate } from 'react-router-dom'; // Ensure useNavigate is importe
 
 // Easy-level Roadmap data for Competitive Programming with links and difficulty levels
 const roadmapSteps = [
-  { title: '1. Introduction to Competitive Programming', description: 'Learn what competitive programming is and its importance.', difficulty: 'Easy', link: 'https://www.geeksforgeeks.org/competitive-programming/' },
+  { title: '1. Introduction to Competitive Programming', description: 'Learn what competitive programming is and its importance.', difficulty: 'Easy', link: 'https://usaco.guide/general/intro-cp?lang=cpp' },
   { title: '2. Language Proficiency', description: 'Master a programming language for competitive coding (C++, Java, Python).', difficulty: 'Easy', link: 'https://www.programiz.com/' },
-  { title: '3. I/O and Fast Input/Output', description: 'Learn how to handle input/output efficiently in competitive programming.', difficulty: 'Easy', link: 'https://www.geeksforgeeks.org/fast-io-in-competitive-programming/' },
+  { title: '3. I/O and Fast Input/Output', description: 'Learn how to handle input/output efficiently in competitive programming.', difficulty: 'Easy', link: 'https://usaco.guide/general/fast-io?lang=cpp' },
   { title: '4. Basic Data Structures', description: 'Study basic data structures like Arrays, Stacks, and Queues.', difficulty: 'Easy', link: 'https://www.geeksforgeeks.org/data-structures/' },
   { title: '5. Sorting and Searching Algorithms', description: 'Understand key sorting (Merge, Quick) and searching algorithms.', difficulty: 'Medium', link: 'https://www.tutorialspoint.com/data_structures_algorithms/sorting_algorithms.htm' },
   { title: '6. Time Complexity and Big O Notation', description: 'Learn about algorithm time complexity and how to optimize your code.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/understanding-time-complexity-simple-examples/' },
-  { title: '7. Recursion and Backtracking', description: 'Master recursion and backtracking techniques for problem-solving.', difficulty: 'Medium', link: 'https://www.hackerearth.com/practice/algorithms/recursion/recursion-and-backtracking/tutorial/' },
+  { title: '7. Recursion and Backtracking', description: 'Master recursion and backtracking techniques for problem-solving.', difficulty: 'Medium', link: 'https://www.hackerearth.com/practice/basic-programming/recursion/recursion-and-backtracking/tutorial/' },
   { title: '8. Dynamic Programming Basics', description: 'Get introduced to Dynamic Programming and solve basic problems.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/dynamic-programming/' },
   { title: '9. Greedy Algorithms', description: 'Understand greedy algorithms and when they can be applied.', difficulty: 'Medium', link: 'https://www.hackerearth.com/practice/algorithms/greedy/basics-of-greedy-algorithms/tutorial/' },
   { title: '10. Bit Manipulation', description: 'Learn about bit manipulation and its applications in competitive programming.', difficulty: 'Hard', link: 'https://www.geeksforgeeks.org/bitwise-operators-in-c-cpp/' },
   { title: '11. Graph Theory Basics', description: 'Understand the basics of graph theory (DFS, BFS).', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/graph-data-structure-and-algorithms/' },
-  { title: '12. Number Theory', description: 'Learn prime numbers, GCD, LCM, and modular arithmetic for problem-solving.', difficulty: 'Hard', link: 'https://cp-algorithms.com/algebra/' },
+  { title: '12. Number Theory', description: 'Learn prime numbers, GCD, LCM, and modular arithmetic for problem-solving.', difficulty: 'Hard', link: 'https://www.hackerearth.com/practice/notes/number-theory-1/' },
   { title: '13. Segment Trees and Fenwick Trees', description: 'Study advanced data structures like Segment Trees and Fenwick Trees.', difficulty: 'Hard', link: 'https://www.geeksforgeeks.org/segment-tree-set-1-sum-of-given-range/' },
   { title: '14. Combinatorics', description: 'Understand basic combinatorics and its application in problem-solving.', difficulty: 'Hard', link: 'https://brilliant.org/wiki/combinatorics/' },
   { title: '15. Practice Contests', description: 'Participate in beginner-level contests on platforms like Codeforces and CodeChef.', difficulty: 'Easy', link: 'https://codeforces.com/' },

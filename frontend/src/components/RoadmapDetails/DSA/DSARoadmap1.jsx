@@ -5,16 +5,56 @@ import axios from 'axios';
 
 // Roadmap data with links and difficulty levels
 const roadmapSteps = [
-  { title: '1. Understanding Time & Space Complexity', description: 'Learn the basics of analyzing time and space complexity using Big-O notation.' },
-  { title: '2. Arrays & Strings', description: 'Master the fundamental operations on arrays and strings (sorting, searching, manipulation).' },
-  { title: '3. Basic Sorting Algorithms', description: 'Understand common sorting algorithms like Bubble Sort, Insertion Sort, and Selection Sort.' },
-  { title: '4. Recursion Basics', description: 'Learn how recursion works and solve basic recursive problems.' },
-  { title: '5. Hashing & HashMaps', description: 'Learn how to use hashmaps to solve problems efficiently.' },
-  { title: '6. Two Pointer Technique', description: 'Understand the two-pointer technique for solving problems.' },
-  { title: '7. Stacks & Queues', description: 'Learn stack and queue data structures and solve problems using them.' },
-  { title: '8. Linked Lists', description: 'Understand how to work with singly and doubly linked lists.' },
-  { title: '9. Binary Search', description: 'Master binary search on sorted arrays and apply it in different scenarios.' },
-  { title: '10. Problem-Solving Patterns', description: 'Learn problem-solving patterns like sliding window, divide and conquer, and greedy.' }
+  { 
+    title: '1. Understanding Time & Space Complexity', 
+    description: 'Learn the basics of analyzing time and space complexity using Big-O notation.',
+    link: 'https://www.hackerearth.com/practice/notes/complexity/' 
+  },
+  { 
+    title: '2. Arrays & Strings', 
+    description: 'Master the fundamental operations on arrays and strings (sorting, searching, manipulation).',
+    link: 'https://www.geeksforgeeks.org/array-data-structure/' 
+  },
+  { 
+    title: '3. Basic Sorting Algorithms', 
+    description: 'Understand common sorting algorithms like Bubble Sort, Insertion Sort, and Selection Sort.',
+    link: 'https://www.geeksforgeeks.org/sorting-algorithms/' 
+  },
+  { 
+    title: '4. Recursion Basics', 
+    description: 'Learn how recursion works and solve basic recursive problems.',
+    link: 'https://www.geeksforgeeks.org/recursion/' 
+  },
+  { 
+    title: '5. Hashing & HashMaps', 
+    description: 'Learn how to use hashmaps to solve problems efficiently.',
+    link: 'https://www.geeksforgeeks.org/hashing-data-structure/' 
+  },
+  { 
+    title: '6. Two Pointer Technique', 
+    description: 'Understand the two-pointer technique for solving problems.',
+    link: 'https://www.geeksforgeeks.org/two-pointers-technique/' 
+  },
+  { 
+    title: '7. Stacks & Queues', 
+    description: 'Learn stack and queue data structures and solve problems using them.',
+    link: 'https://www.geeksforgeeks.org/stack-data-structure/' 
+  },
+  { 
+    title: '8. Linked Lists', 
+    description: 'Understand how to work with singly and doubly linked lists.',
+    link: 'https://www.geeksforgeeks.org/data-structures/linked-list/' 
+  },
+  { 
+    title: '9. Binary Search', 
+    description: 'Master binary search on sorted arrays and apply it in different scenarios.',
+    link: 'https://www.geeksforgeeks.org/binary-search/' 
+  },
+  { 
+    title: '10. Problem-Solving Patterns', 
+    description: 'Learn problem-solving patterns like sliding window, divide and conquer, and greedy.',
+    link: 'https://leetcode.com/discuss/study-guide/4039411/14-Patterns-to-Ace-Any-Coding-Interview-Question' 
+  }
 ];
 
 const Roadmap = () => {
@@ -52,7 +92,7 @@ const Roadmap = () => {
           <StepDescription>{step.description}</StepDescription>
           <DifficultyContainer>
             <DifficultyLabel level="Easy">Difficulty: Easy</DifficultyLabel>
-            <LearnMoreLink href="#" target="_blank" rel="noopener noreferrer">Resources</LearnMoreLink>
+            <LearnMoreLink href={step.link} target="_blank" rel="noopener noreferrer">Resources</LearnMoreLink>
           </DifficultyContainer>
         </StepContainer>
       ))}

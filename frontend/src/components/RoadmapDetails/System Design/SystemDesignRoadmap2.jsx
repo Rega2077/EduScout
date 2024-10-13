@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'; // Ensure useNavigate is importe
 const roadmapSteps = [
   { title: '1. Microservices Architecture', description: 'Learn the basics of microservices and their advantages.', difficulty: 'Medium', link: 'https://microservices.io/' },
   { title: '2. API Gateway', description: 'Understand how API gateways work and how to implement them.', difficulty: 'Medium', link: 'https://www.nginx.com/learn/api-gateway/' },
-  { title: '3. Service Discovery', description: 'Learn how services discover each other in a microservices architecture.', difficulty: 'Medium', link: 'https://www.edureka.co/blog/what-is-service-discovery/' },
+  { title: '3. Service Discovery', description: 'Learn how services discover each other in a microservices architecture.', difficulty: 'Medium', link: 'https://dev.to/karanpratapsingh/system-design-service-discovery-58nn' },
   { title: '4. Message Queues', description: 'Understand message queues like RabbitMQ and Kafka.', difficulty: 'Medium', link: 'https://www.rabbitmq.com/tutorials/tutorial-one-python.html' },
   { title: '5. Rate Limiting', description: 'Learn about rate limiting and throttling requests.', difficulty: 'Medium', link: 'https://cloud.google.com/architecture/rate-limiting-strategies-techniques' },
   { title: '6. CDN (Content Delivery Network)', description: 'Learn how CDNs work to speed up content delivery.', difficulty: 'Medium', link: 'https://www.cloudflare.com/learning/cdn/what-is-a-cdn/' },
@@ -15,11 +15,11 @@ const roadmapSteps = [
   { title: '8. Database Sharding', description: 'Revisit sharding with more advanced implementation techniques.', difficulty: 'Medium', link: 'https://www.mongodb.com/basics/sharding' },
   { title: '9. Event-Driven Architecture', description: 'Understand event-driven systems and their use cases.', difficulty: 'Medium', link: 'https://martinfowler.com/articles/201701-event-driven.html' },
   { title: '10. Circuit Breaker Pattern', description: 'Learn how circuit breakers protect systems from failure.', difficulty: 'Medium', link: 'https://microservices.io/patterns/reliability/circuit-breaker.html' },
-  { title: '11. Database Replication', description: 'Dive deeper into database replication strategies.', difficulty: 'Medium', link: 'https://www.digitalocean.com/community/tutorials/an-introduction-to-database-replication' },
-  { title: '12. Partitioning and Consistency', description: 'Learn about consistency models and data partitioning.', difficulty: 'Medium', link: 'https://www.javatpoint.com/dbms-data-partitioning' },
-  { title: '13. CAP Theorem Revisited', description: 'Deep dive into the implications of the CAP theorem in system design.', difficulty: 'Medium', link: 'https://www.mongodb.com/consistency-cap-theorem' },
-  { title: '14. Latency Optimization', description: 'Learn techniques to reduce latency in distributed systems.', difficulty: 'Medium', link: 'https://aws.amazon.com/blogs/architecture/optimizing-application-performance-latency-reducing-strategies/' },
-  { title: '15. Data Compression Techniques', description: 'Understand how data compression can reduce network load.', difficulty: 'Medium', link: 'https://cloud.google.com/compute/docs/tutorials/http-data-compression' }
+  { title: '11. Database Replication', description: 'Dive deeper into database replication strategies.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/database-replication-and-their-types-in-system-design/' },
+  { title: '12. Partitioning and Consistency', description: 'Learn about consistency models and data partitioning.', difficulty: 'Medium', link: 'https://dgraph.io/blog/post/cap-theorem-partition-tolerance/#:~:text=Consistency%20means%20all%20nodes%20see,or%20communication%20failures%20between%20nodes.' },
+  { title: '13. CAP Theorem Revisited', description: 'Deep dive into the implications of the CAP theorem in system design.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/cap-theorem-in-system-design/' },
+  { title: '14. Latency Optimization', description: 'Learn techniques to reduce latency in distributed systems.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/latency-in-system-design/' },
+  { title: '15. Data Compression Techniques', description: 'Understand how data compression can reduce network load.', difficulty: 'Medium', link: 'https://www.analytixlabs.co.in/blog/data-compression-technique/#:~:text=There%20are%20broadly%20two%20types,and%20its%20size%20is%20reduced.' }
 ];
 
 // Styled components

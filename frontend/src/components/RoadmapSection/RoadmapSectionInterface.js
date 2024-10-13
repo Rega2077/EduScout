@@ -65,7 +65,7 @@ const RoadmapProgress = () => {
                         />
                     </StepTitle>
                     <StepDescription>{step.description}</StepDescription>
-                    <ResourcesLink href="#" target="_blank" rel="noopener noreferrer">Resources</ResourcesLink>
+                    <ResourcesLink href= {step.link} target="_blank" rel="noopener noreferrer">Resources</ResourcesLink>
                 </StepContainer>
             ))}
         </Container>

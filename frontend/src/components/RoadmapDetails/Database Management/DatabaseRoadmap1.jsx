@@ -8,11 +8,11 @@ const roadmapSteps = [
   { title: '1. Introduction to Databases', description: 'Understand what databases are and their importance.', difficulty: 'Easy', link: 'https://www.tutorialspoint.com/dbms/index.htm' },
   { title: '2. Relational Database Concepts', description: 'Learn relational databases and their structures.', difficulty: 'Easy', link: 'https://www.geeksforgeeks.org/relational-model-in-dbms/' },
   { title: '3. SQL Basics', description: 'Master basic SQL queries like SELECT, INSERT, and DELETE.', difficulty: 'Easy', link: 'https://www.w3schools.com/sql/' },
-  { title: '4. Data Modeling', description: 'Learn how to model data using ER diagrams.', difficulty: 'Medium', link: 'https://www.edrawsoft.com/data-modeling-tools.html' },
+  { title: '4. Data Modeling', description: 'Learn how to model data using ER diagrams.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/data-models-in-dbms/' },
   { title: '5. Normalization', description: 'Understand database normalization and the different normal forms.', difficulty: 'Medium', link: 'https://www.javatpoint.com/dbms-normalization' },
   { title: '6. ACID Properties', description: 'Understand ACID properties of transactions in databases.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/acid-properties-in-dbms/' },
   { title: '7. Indexing in Databases', description: 'Learn how indexing helps in efficient data retrieval.', difficulty: 'Medium', link: 'https://www.tutorialspoint.com/sql/sql-indexes.htm' },
-  { title: '8. Joins in SQL', description: 'Master different types of joins in SQL like INNER, LEFT, RIGHT, and FULL.', difficulty: 'Hard', link: 'https://www.datacamp.com/community/tutorials/sql-join-tutorial' },
+  { title: '8. Joins in SQL', description: 'Master different types of joins in SQL like INNER, LEFT, RIGHT, and FULL.', difficulty: 'Hard', link: 'https://www.javatpoint.com/sql-server-joins' },
   { title: '9. NoSQL Databases', description: 'Get introduced to NoSQL databases like MongoDB.', difficulty: 'Hard', link: 'https://www.mongodb.com/nosql-explained' },
   { title: '10. Database Security', description: 'Learn about securing databases from unauthorized access.', difficulty: 'Hard', link: 'https://www.oracle.com/database/technologies/security.html' }
 ];

@@ -10,16 +10,16 @@ const roadmapSteps = [
   { title: '3. Views in Databases', description: 'Understand the concept and usage of views in databases.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/sql-views/' },
   { title: '4. Transactions and Concurrency Control', description: 'Learn about transactions, concurrency, and locking mechanisms.', difficulty: 'Medium', link: 'https://en.wikipedia.org/wiki/Concurrency_control' },
   { title: '5. Index Optimization', description: 'Understand indexing strategies and how to optimize them for faster queries.', difficulty: 'Medium', link: 'https://use-the-index-luke.com/' },
-  { title: '6. Advanced Data Modeling', description: 'Learn more about data modeling with complex relationships and normalization.', difficulty: 'Medium', link: 'https://www.lucidchart.com/pages/data-modeling' },
+  { title: '6. Advanced Data Modeling', description: 'Learn more about data modeling with complex relationships and normalization.', difficulty: 'Medium', link: 'https://medium.com/opstree-technology/advanced-data-modeling-techniques-for-big-data-applications-2165c11280bc' },
   { title: '7. Database Partitioning', description: 'Learn about horizontal and vertical partitioning of large datasets.', difficulty: 'Medium', link: 'https://docs.microsoft.com/en-us/sql/relational-databases/partitions/partitioned-tables-and-indexes' },
   { title: '8. NoSQL vs SQL', description: 'Compare and contrast SQL and NoSQL databases.', difficulty: 'Medium', link: 'https://www.mongodb.com/nosql-explained' },
   { title: '9. Query Optimization Techniques', description: 'Learn how to write efficient queries using optimizers and execution plans.', difficulty: 'Medium', link: 'https://www.tutorialspoint.com/sql/sql-performance-tuning.htm' },
   { title: '10. Sharding Databases', description: 'Understand how sharding works for scaling large databases.', difficulty: 'Medium', link: 'https://www.digitalocean.com/community/tutorials/understanding-database-sharding' },
-  { title: '11. Data Warehousing', description: 'Introduction to data warehousing and its architecture.', difficulty: 'Medium', link: 'https://www.sas.com/en_us/insights/data-management/data-warehousing.html' },
-  { title: '12. Database Backup and Recovery', description: 'Learn about strategies for database backup and recovery.', difficulty: 'Medium', link: 'https://www.oracle.com/database/technologies/backup-recovery.html' },
+  { title: '11. Data Warehousing', description: 'Introduction to data warehousing and its architecture.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/data-warehouse-architecture/' },
+  { title: '12. Database Backup and Recovery', description: 'Learn about strategies for database backup and recovery.', difficulty: 'Medium', link: 'https://appmaster.io/blog/designing-for-database-data-backup-and-recovery' },
   { title: '13. Full-Text Search', description: 'Implement full-text search functionality in your database.', difficulty: 'Medium', link: 'https://www.postgresql.org/docs/current/textsearch.html' },
   { title: '14. Cloud Databases', description: 'Learn about cloud databases and services like AWS RDS.', difficulty: 'Medium', link: 'https://aws.amazon.com/rds/' },
-  { title: '15. Database Security Best Practices', description: 'Learn the best practices for securing your databases from vulnerabilities.', difficulty: 'Medium', link: 'https://www.varonis.com/blog/database-security' }
+  { title: '15. Database Security Best Practices', description: 'Learn the best practices for securing your databases from vulnerabilities.', difficulty: 'Medium', link: 'https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-database-security' }
 ];
 
 // Styled components

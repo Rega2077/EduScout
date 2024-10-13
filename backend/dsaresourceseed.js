@@ -82,7 +82,7 @@ const seedDSAResources = async () => {
     {
       rank: 2,
       channelName: "Abdul Bari",
-      videoUrl: "https://www.youtube.com/playlist?list=PLbMVogVj5nJS3U3fXYAA4mT2l_vPqXytD",
+      videoUrl: "https://www.youtube.com/watch?v=0IAPZzGSbME&list=PLAXnLdrLnQpRcveZTtD644gM9uzYqJCwr",
       description: "Popular DSA playlist in Hindi that covers important algorithms and data structures.",
       difficulty: "medium",
       topic: "dsa",
@@ -93,9 +93,9 @@ const seedDSAResources = async () => {
     },
     {
       rank: 3,
-      channelName: "The Coding Train",
-      videoUrl: "https://www.youtube.com/watch?v=O5Q1_c4E50A&list=PLRqwX-G0sOvC9V3W8e5u9G4T0M9gM6xU",
-      description: "Interactive coding challenges and explanations on algorithms in English.",
+      channelName: "Gate Smashers",
+      videoUrl: "https://www.youtube.com/watch?v=qNGyI95E5AE&list=PLxCzCOWd7aiEwaANNt3OqJPVIxwp2ebiT",
+      description: "Interactive coding challenges and explanations on algorithms in Hindi.",
       difficulty: "medium",
       topic: "dsa",
       upvotes: 0,
@@ -106,7 +106,7 @@ const seedDSAResources = async () => {
     {
       rank: 4,
       channelName: "GeeksforGeeks",
-      videoUrl: "https://www.youtube.com/playlist?list=PLqM7alHXFySFW8MfzST8qzQ1d5N1Yj52r",
+      videoUrl: "https://www.youtube.com/watch?v=rlZpZ8es_6k&list=PLqM7alHXFySF7JxK9E24C-ZeNAXFB1u8k",
       description: "In-depth DSA tutorials in English, focusing on problem-solving strategies.",
       difficulty: "medium",
       topic: "dsa",
@@ -117,8 +117,8 @@ const seedDSAResources = async () => {
     },
     {
       rank: 1,
-      channelName: "LeetCode",
-      videoUrl: "https://www.youtube.com/playlist?list=PL4cUxeGkcC9gZ9cG-J-FN2w8A1d6cU8u0",
+      channelName: "Tech Dose",
+      videoUrl: "https://www.youtube.com/@techdose4u",
       description: "In-depth problem-solving tutorials on advanced DSA topics, perfect for tackling tough coding interviews.",
       difficulty: "hard",
       topic: "dsa",
@@ -130,7 +130,7 @@ const seedDSAResources = async () => {
     {
       rank: 2,
       channelName: "Errichto",
-      videoUrl: "https://www.youtube.com/playlist?list=PLwIuY7gtV5r9b4mZ4R4IcZTT9H9E_3nUd",
+      videoUrl: "https://www.youtube.com/watch?v=xXKL9YBWgCY&list=PLl0KD3g-oDOHpWRyyGBUJ9jmul0lUOD80",
       description: "Advanced DSA challenges and solutions, focusing on competitive programming techniques.",
       difficulty: "hard",
       topic: "dsa",
@@ -142,7 +142,7 @@ const seedDSAResources = async () => {
     {
       rank: 3,
       channelName: "BackToBackSWE",
-      videoUrl: "https://www.youtube.com/playlist?list=PL6gx4Cwl9DGBs4rRjYFJXnvC8QeN3eK7h",
+      videoUrl: "https://www.youtube.com/watch?v=4ykBXGbonlA&list=PLiQ766zSC5jNRiFxKNu8CSQdKmuWgLMI2",
       description: "Covers difficult DSA problems with a focus on understanding complex algorithms.",
       difficulty: "hard",
       topic: "dsa",

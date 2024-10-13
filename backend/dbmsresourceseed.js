@@ -9,7 +9,7 @@ const seedDBResources = async () => {
   const resources = [
     {
       "rank": 1,
-      "channelName": "Apna College",
+      "channelName": "CodeHelp - by Love Babbar",
       "videoUrl": "https://www.youtube.com/watch?v=eYpXCdvKwEQ&list=PLDzeHZWIZsTpukecmA2p5rhHM14bl2dHU",
       "thumbnail": "https://img.youtube.com/vi/eYpXCdvKwEQ/hqdefault.jpg",
       "description": "Comprehensive database management course for beginners.",
@@ -22,7 +22,7 @@ const seedDBResources = async () => {
     },
     {
       "rank": 2,
-      "channelName": "Great Learning",
+      "channelName": "Unacademy Computer Science",
       "videoUrl": "https://www.youtube.com/watch?v=khKoJUpcXUE&list=PLG9aCp4uE-s0bu-I8fgDXXhVLO4qVROGy",
       "thumbnail": "https://img.youtube.com/vi/khKoJUpcXUE/hqdefault.jpg",
       "description": "Introductory DBMS concepts for college students.",
@@ -35,7 +35,7 @@ const seedDBResources = async () => {
     },
     {
       "rank": 3,
-      "channelName": "Geeky Shows",
+      "channelName": "Neso Academy",
       "videoUrl": "https://www.youtube.com/watch?v=OMwgGL3lHlI&list=PLBlnK6fEyqRiyryTrbKHX1Sh9luYI0dhX",
       "thumbnail": "https://img.youtube.com/vi/OMwgGL3lHlI/hqdefault.jpg",
       "description": "Detailed DBMS course for beginners, covering relational models.",
@@ -61,7 +61,7 @@ const seedDBResources = async () => {
     },
     {
       "rank": 5,
-      "channelName": "Edureka",
+      "channelName": "Dinesh Bhawnani",
       "videoUrl": "https://www.youtube.com/watch?v=winMiOgvQRY&list=PL0jWhwlG_ZXkE1sP5T6VW_QXwmfR8pwY2",
       "thumbnail": "https://img.youtube.com/vi/winMiOgvQRY/hqdefault.jpg",
       "description": "Complete beginner course for understanding DBMS fundamentals.",
@@ -74,7 +74,7 @@ const seedDBResources = async () => {
     },
     {
       "rank": 1,
-      "channelName": "GeeksforGeeks",
+      "channelName": "Neso Academy",
       "videoUrl": "https://www.youtube.com/watch?v=OMwgGL3lHlI",
       "thumbnail": "https://img.youtube.com/vi/OMwgGL3lHlI/hqdefault.jpg",
       "description": "Mid-level DBMS tutorial covering important topics like normalization and SQL.",
@@ -87,7 +87,7 @@ const seedDBResources = async () => {
     },
     {
       "rank": 2,
-      "channelName": "MySQL Tutorial",
+      "channelName": "Dinesh Bhawnani",
       "videoUrl": "https://www.youtube.com/watch?v=winMiOgvQRY",
       "thumbnail": "https://img.youtube.com/vi/winMiOgvQRY/hqdefault.jpg",
       "description": "MySQL advanced tutorial for handling databases and queries efficiently.",
@@ -100,7 +100,7 @@ const seedDBResources = async () => {
     },
     {
       "rank": 3,
-      "channelName": "Database Academy",
+      "channelName": "Unacademy Computer Science",
       "videoUrl": "https://www.youtube.com/watch?v=khKoJUpcXUE",
       "thumbnail": "https://img.youtube.com/vi/khKoJUpcXUE/hqdefault.jpg",
       "description": "SQL and DBMS concepts for professionals looking to understand relational databases.",
@@ -113,7 +113,7 @@ const seedDBResources = async () => {
     },
     {
       "rank": 4,
-      "channelName": "Saurabh Shukla Classes",
+      "channelName": "Gate Smashers",
       "videoUrl": "https://www.youtube.com/watch?v=kBdlM6hNDAE",
       "thumbnail": "https://img.youtube.com/vi/kBdlM6hNDAE/hqdefault.jpg",
       "description": "Mid-level course on DBMS and query optimization techniques.",
@@ -126,8 +126,8 @@ const seedDBResources = async () => {
     },
     {
       "rank": 5,
-      "channelName": "Gate Smasher",
-      "videoUrl": "https://www.youtube.com/watch?v=OMwgGL3lHlI",
+      "channelName": "KnowledgeGATE by Sanchit Sir",
+      "videoUrl": "https://youtube.com/playlist?list=PLmXKhU9FNesR1rSES7oLdJaNFgmuj0SYV&si=KAwqzf3JVu0mgxTR",
       "thumbnail": "https://img.youtube.com/vi/OMwgGL3lHlI/hqdefault.jpg",
       "description": "DBMS theory and SQL query optimization for intermediate learners.",
       "difficulty": "medium",
@@ -141,7 +141,7 @@ const seedDBResources = async () => {
       "rank": 1,
       "channelName": "Book: Database System Concepts",
       "videoUrl": "https://www.amazon.com/Database-System-Concepts-Abraham-Silberschatz/dp/0078022150",
-      "thumbnail": "https://images-na.ssl-images-amazon.com/images/I/41yq93uLE1L._SX395_BO1,204,203,200_.jpg",
+      "thumbnail": "https://images-na.ssl-images-amazon.com/images/I/41yq93uLE1L.SX395_BO1,204,203,200.jpg",
       "description": "Comprehensive book for advanced DBMS concepts and real-world applications.",
       "difficulty": "hard",
       "topic": "dbms",
@@ -154,7 +154,7 @@ const seedDBResources = async () => {
       "rank": 2,
       "channelName": "Book: Fundamentals of Database Systems",
       "videoUrl": "https://www.amazon.com/Fundamentals-Database-Systems-Ramez-Elmasri/dp/0133970779",
-      "thumbnail": "https://images-na.ssl-images-amazon.com/images/I/41tD3UDB5TL._SX396_BO1,204,203,200_.jpg",
+      "thumbnail": "https://images-na.ssl-images-amazon.com/images/I/41tD3UDB5TL.SX396_BO1,204,203,200.jpg",
       "description": "Advanced resource to master database systems and query optimization.",
       "difficulty": "hard",
       "topic": "dbms",
@@ -166,8 +166,8 @@ const seedDBResources = async () => {
     {
       "rank": 3,
       "channelName": "Book: Advanced Database Systems",
-      "videoUrl": "https://www.amazon.com/Advanced-Database-Systems-Mario-Agosta/dp/0321490948",
-      "thumbnail": "https://images-na.ssl-images-amazon.com/images/I/51R2Nfh2j1L._SX379_BO1,204,203,200_.jpg",
+      "videoUrl": "https://www.amazon.in/Advanced-Database-Systems-Kaufmann-Management/dp/155860443X",
+      "thumbnail": "https://images-na.ssl-images-amazon.com/images/I/51R2Nfh2j1L.SX379_BO1,204,203,200.jpg",
       "description": "A great resource for in-depth exploration of advanced database architectures.",
       "difficulty": "hard",
       "topic": "dbms",
@@ -192,8 +192,8 @@ const seedDBResources = async () => {
     {
       "rank": 5,
       "channelName": "Book: Practical Database Design",
-      "videoUrl": "https://www.amazon.com/Practical-Database-Design-Ken-Davids/dp/0596529287",
-      "thumbnail": "https://images-na.ssl-images-amazon.com/images/I/51MgPMbeZwL._SX425_BO1,204,203,200_.jpg",
+      "videoUrl": "https://www.amazon.in/Practical-Guide-Database-Design/dp/1138578061",
+      "thumbnail": "https://images-na.ssl-images-amazon.com/images/I/51MgPMbeZwL.SX425_BO1,204,203,200.jpg",
       "description": "Advanced book focusing on practical aspects of database design.",
       "difficulty": "hard",
       "topic": "dbms",

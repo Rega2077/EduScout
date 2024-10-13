@@ -15,16 +15,16 @@ const roadmapSteps = [
   { title: '8. Database Replication', description: 'Learn about replication strategies for high availability.', difficulty: 'Medium', link: 'https://dev.mysql.com/doc/refman/8.0/en/replication.html' },
   { title: '9. Sharding Strategies', description: 'Understand the sharding mechanisms for horizontal scaling.', difficulty: 'Hard', link: 'https://www.digitalocean.com/community/tutorials/understanding-database-sharding' },
   { title: '10. Data Partitioning', description: 'Implement data partitioning for performance and maintainability.', difficulty: 'Medium', link: 'https://docs.microsoft.com/en-us/sql/relational-databases/partitions/partitioned-tables-and-indexes' },
-  { title: '11. Eventual Consistency', description: 'Learn about eventual consistency models in distributed databases.', difficulty: 'Hard', link: 'https://www.sciencedirect.com/topics/computer-science/eventual-consistency' },
-  { title: '12. Database Security Auditing', description: 'Understand how to audit and secure large-scale databases.', difficulty: 'Hard', link: 'https://www.varonis.com/blog/database-security' },
+  { title: '11. Eventual Consistency', description: 'Learn about eventual consistency models in distributed databases.', difficulty: 'Hard', link: 'https://www.scylladb.com/glossary/eventual-consistency/#:~:text=Eventual%20consistency%20in%20general%20refers,of%20the%20latest%20successful%20WRITE.' },
+  { title: '12. Database Security Auditing', description: 'Understand how to audit and secure large-scale databases.', difficulty: 'Hard', link: 'https://satoricyber.com/cloud-data-governance/database-auditing/#:~:text=The%20overall%20premise%20of%20database,action%2C%20and%20when%20it%20occurred.' },
   { title: '13. Graph Databases', description: 'Introduction to graph databases like Neo4j for handling relationships.', difficulty: 'Hard', link: 'https://neo4j.com/' },
   { title: '14. Full-Text Search', description: 'Implement advanced full-text search using Elasticsearch.', difficulty: 'Medium', link: 'https://www.elastic.co/what-is/elasticsearch' },
   { title: '15. Database Caching', description: 'Use caching techniques to improve query performance.', difficulty: 'Medium', link: 'https://redis.io/' },
-  { title: '16. Multitenancy in Databases', description: 'Learn to implement multitenant architecture in databases.', difficulty: 'Hard', link: 'https://www.postgresql.org/docs/10/multitenancy.html' },
+  { title: '16. Multitenancy in Databases', description: 'Learn to implement multitenant architecture in databases.', difficulty: 'Hard', link: 'https://learn.microsoft.com/en-us/azure/azure-sql/database/saas-tenancy-app-design-patterns?view=azuresql' },
   { title: '17. Time-Series Databases', description: 'Introduction to time-series databases like InfluxDB.', difficulty: 'Hard', link: 'https://www.influxdata.com/' },
   { title: '18. Blockchain and Databases', description: 'Understand how blockchain technology integrates with databases.', difficulty: 'Hard', link: 'https://www.ibm.com/blockchain/what-is-blockchain' },
   { title: '19. Distributed Databases', description: 'Deep dive into distributed databases and their architecture.', difficulty: 'Hard', link: 'https://cassandra.apache.org/' },
-  { title: '20. Database CI/CD Pipeline', description: 'Implement CI/CD pipelines for database deployments.', difficulty: 'Hard', link: 'https://www.red-gate.com/solutions/database-ci-cd-pipeline' },
+  { title: '20. Database CI/CD Pipeline', description: 'Implement CI/CD pipelines for database deployments.', difficulty: 'Hard', link: 'https://www.liquibase.com/resources/guides/database-continuous-integration' },
 ];
 
 // Styled components

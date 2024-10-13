@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './Signup.css';  // Import the CSS file
+import './Signup.css';
 
 const Signup = () => {
   const [name, setName] = useState('');
@@ -10,13 +10,14 @@ const Signup = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
 
-    try {
-      await axios.post('http://localhost:5000/api/auth/signup', {
-        name,
-        email,
-        password,
-      });
+    // Ensure email ends with @gmail.com
+    if (!email.endsWith('@gmail.com')) {
+      alert('Email must end with @gmail.com');
+      return;
+    }
 
+    try {
+      await axios.post('http://localhost:5000/api/auth/signup', { name, email, password });
       alert('Signup successful');
     } catch (error) {
       alert('Signup failed');
@@ -52,12 +53,7 @@ const Signup = () => {
             required
             className="input-field"
           />
-          <button
-            type="submit"
-            className="signup-button"
-          >
-            Signup
-          </button>
+          <button type="submit" className="signup-button">Signup</button>
         </form>
       </div>
     </div>

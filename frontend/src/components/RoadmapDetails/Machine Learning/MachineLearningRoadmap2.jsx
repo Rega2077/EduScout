@@ -5,20 +5,20 @@ import { useNavigate } from 'react-router-dom'; // Ensure useNavigate is importe
 
 // Roadmap data with links and difficulty levels
 const roadmapSteps = [
-  { title: '1. Basics of Machine Learning', description: 'Introduction to ML and types of learning methods.', difficulty: 'Easy', link: 'https://www.coursera.org/learn/machine-learning' },
+  { title: '1. Basics of Machine Learning', description: 'Introduction to ML and types of learning methods.', difficulty: 'Easy', link: 'https://www.javatpoint.com/basic-concepts-in-machine-learning' },
   { title: '2. Python Libraries for Data Science', description: 'Learn NumPy, Pandas, and Matplotlib for data processing and visualization.', difficulty: 'Easy', link: 'https://numpy.org/' },
-  { title: '3. Linear Regression', description: 'Understanding linear regression models and how to apply them.', difficulty: 'Easy', link: 'https://towardsdatascience.com/simple-linear-regression' },
+  { title: '3. Linear Regression', description: 'Understanding linear regression models and how to apply them.', difficulty: 'Easy', link: 'https://www.geeksforgeeks.org/ml-linear-regression/' },
   { title: '4. Data Preprocessing', description: 'Cleaning and preparing data for machine learning models.', difficulty: 'Medium', link: 'https://scikit-learn.org/stable/modules/preprocessing.html' },
-  { title: '5. Logistic Regression', description: 'Learn how to classify data using logistic regression models.', difficulty: 'Medium', link: 'https://towardsdatascience.com/logistic-regression' },
+  { title: '5. Logistic Regression', description: 'Learn how to classify data using logistic regression models.', difficulty: 'Medium', link: 'https://www.ibm.com/topics/logistic-regression' },
   { title: '6. Support Vector Machines (SVM)', description: 'Implementing and understanding SVMs for classification tasks.', difficulty: 'Medium', link: 'https://scikit-learn.org/stable/modules/svm.html' },
-  { title: '7. Decision Trees & Random Forests', description: 'Learn decision tree and random forest algorithms for classification.', difficulty: 'Medium', link: 'https://towardsdatascience.com/random-forest' },
+  { title: '7. Decision Trees & Random Forests', description: 'Learn decision tree and random forest algorithms for classification.', difficulty: 'Medium', link: 'https://www.analyticsvidhya.com/blog/2020/05/decision-tree-vs-random-forest-algorithm/' },
   { title: '8. K-Means Clustering', description: 'Unsupervised learning using K-Means clustering.', difficulty: 'Medium', link: 'https://scikit-learn.org/stable/modules/clustering.html' },
-  { title: '9. Neural Networks Introduction', description: 'Introduction to neural networks and their architectures.', difficulty: 'Medium', link: 'https://www.deeplearning.ai/' },
+  { title: '9. Neural Networks Introduction', description: 'Introduction to neural networks and their architectures.', difficulty: 'Medium', link: 'https://www.geeksforgeeks.org/neural-networks-a-beginners-guide/' },
   { title: '10. Convolutional Neural Networks (CNN)', description: 'Dive into CNNs for image classification and processing.', difficulty: 'Hard', link: 'https://www.tensorflow.org/tutorials/images/cnn' },
-  { title: '11. Recurrent Neural Networks (RNN)', description: 'Understanding RNNs and their application in sequence-based data.', difficulty: 'Hard', link: 'https://towardsdatascience.com/recurrent-neural-networks' },
+  { title: '11. Recurrent Neural Networks (RNN)', description: 'Understanding RNNs and their application in sequence-based data.', difficulty: 'Hard', link: 'https://www.geeksforgeeks.org/introduction-to-recurrent-neural-network/' },
   { title: '12. Transfer Learning', description: 'Implement transfer learning using pre-trained models.', difficulty: 'Hard', link: 'https://www.tensorflow.org/tutorials/images/transfer_learning' },
   { title: '13. Natural Language Processing (NLP)', description: 'Introduction to NLP and its techniques for text data.', difficulty: 'Hard', link: 'https://www.nltk.org/' },
-  { title: '14. Reinforcement Learning Basics', description: 'Learning how reinforcement learning works in dynamic environments.', difficulty: 'Hard', link: 'https://www.coursera.org/specializations/reinforcement-learning' },
+  { title: '14. Reinforcement Learning Basics', description: 'Learning how reinforcement learning works in dynamic environments.', difficulty: 'Hard', link: 'https://www.synopsys.com/glossary/what-is-reinforcement-learning.html' },
   { title: '15. Model Evaluation and Optimization', description: 'Methods to evaluate and optimize machine learning models.', difficulty: 'Hard', link: 'https://scikit-learn.org/stable/modules/model_evaluation.html' },
 ];
 
