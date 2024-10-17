@@ -7,7 +7,7 @@ const rewardsRoutes = require('./routes/rewards'); // Add the rewards route
 const cors = require('cors'); 
 const roadmapRoutes = require('./routes/Roadmap'); // Add this
 const resourceRoutes = require('./routes/resourceRoutes');
-
+const path = require('path');
 // Load environment variables
 dotenv.config();
 
@@ -16,6 +16,8 @@ connectDB();
 
 // Initialize express
 const app = express();
+const _dirname = path.resolve();
+
 
 // Enable CORS for all routes, or specify certain origins
 app.use(cors({
@@ -32,6 +34,10 @@ app.use('/api/quiz', quizRoutes);
 app.use('/api/rewards', rewardsRoutes); // Add the rewards route here
 app.use('/api/roadmap', roadmapRoutes);
 app.use('/api/resources', resourceRoutes);
+app.use(express.static(path.join(_dirname,"/frontend/build")));
+app.get('*' , (_,res)=>{
+  res.sendFile(path.resolve(_dirname, "frontend" , "build" , "index.html")); 
+});
 
 // Start the server
 const PORT = process.env.PORT || 5000;
