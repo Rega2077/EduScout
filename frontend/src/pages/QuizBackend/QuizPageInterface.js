@@ -78,7 +78,7 @@ const QuizPageInterface = () => {
     const token = localStorage.getItem('token');
     try {
       const response = await axios.post(
-        `http://localhost:5000/api/quiz/${topic.toLowerCase()}/${subtopic.toLowerCase()}/submit`,
+        `https://eduscout.onrender.com/api/quiz/${topic.toLowerCase()}/${subtopic.toLowerCase()}/submit`,
         { answers: selectedAnswers },
         {
           headers: {
