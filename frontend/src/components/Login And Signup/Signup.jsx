@@ -19,6 +19,7 @@ const Signup = () => {
     try {
       await axios.post('http://localhost:5000/api/auth/signup', { name, email, password });
       alert('Signup successful');
+      window.location.href = '/';
     } catch (error) {
       alert('Signup failed');
     }
