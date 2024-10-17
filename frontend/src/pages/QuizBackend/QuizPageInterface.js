@@ -26,7 +26,7 @@ const QuizPageInterface = () => {
 
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/quiz/${topic.toLowerCase()}/${subtopic.toLowerCase()}`,
+          `https://eduscout.onrender.com/api/quiz/${topic.toLowerCase()}/${subtopic.toLowerCase()}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

@@ -14,7 +14,7 @@ const RoadmapProgress = () => {
     useEffect(() => {
         const fetchProgress = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/roadmap/${topic}-${difficulty}/progress`, {
+                const response = await axios.get(`https://eduscout.onrender.com/api/roadmap/${topic}-${difficulty}/progress`, {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem('token')}`
                     }
@@ -40,7 +40,7 @@ const RoadmapProgress = () => {
 
         try {
             await axios.post(
-                `http://localhost:5000/api/roadmap/${topic}-${difficulty}`,
+                `https://eduscout.onrender.com/api/roadmap/${topic}-${difficulty}`,
                 { completedTopics: updatedCompletedTopics },
                 { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }
             );

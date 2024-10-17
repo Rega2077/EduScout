@@ -25,7 +25,7 @@ const DatabaseManagementSection = () => {
     const fetchBestScores = async () => {
       const token = localStorage.getItem('token'); // Get token
       try {
-        const response = await axios.get(`http://localhost:5000/api/quiz/best-scores`, {
+        const response = await axios.get(`https://eduscout.onrender.com/api/quiz/best-scores`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setBestScores(response.data); // Set best scores from API response

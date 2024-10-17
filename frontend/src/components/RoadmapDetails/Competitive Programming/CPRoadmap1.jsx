@@ -152,7 +152,7 @@ const Roadmap = () => {
       if (!token) return;
 
       try {
-        await axios.get('http://localhost:5000/api/roadmap/competitiveprogramming/easy/progress', {
+        await axios.get('https://eduscout.onrender.com/api/roadmap/competitiveprogramming/easy/progress', {
           headers: {
             Authorization: `Bearer ${token}`
           }

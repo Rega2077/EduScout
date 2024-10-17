@@ -21,7 +21,7 @@ const _dirname = path.resolve();
 
 // Enable CORS for all routes, or specify certain origins
 app.use(cors({
-  origin: 'http://localhost:3000', 
+  origin: 'https://eduscout.onrender.com/', 
   credentials: true,
 }));
 

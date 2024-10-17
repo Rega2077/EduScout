@@ -4,7 +4,7 @@ import ResourceCard from './ResourceCard';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 
-axios.defaults.baseURL = 'http://localhost:5000'; // Add this line
+axios.defaults.baseURL = 'https://eduscout.onrender.com/'; // Add this line
 
 const DSAResourceSection = () => {
   const { topic, difficulty } = useParams();

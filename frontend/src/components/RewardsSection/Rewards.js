@@ -53,7 +53,7 @@ const RewardsSection = () => {
       }
 
       try {
-        const response = await axios.get('http://localhost:5000/api/rewards', {
+        const response = await axios.get('https://eduscout.onrender.com/api/rewards', {
           headers: { Authorization: `Bearer ${token}` },
         });
         setProgress(response.data);

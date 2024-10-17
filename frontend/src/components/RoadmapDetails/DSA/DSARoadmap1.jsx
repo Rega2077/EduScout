@@ -66,7 +66,7 @@ const Roadmap = () => {
       if (!token) return;
 
       try {
-        await axios.get('http://localhost:5000/api/roadmap/dsa-easy/progress', {
+        await axios.get('https://eduscout.onrender.com/api/roadmap/dsa-easy/progress', {
           headers: {
             Authorization: `Bearer ${token}`
           }
