@@ -26,7 +26,7 @@
    npm install
 
 3. Set up your environment variables and run the development server:
-  ```bash
+   ```bash
    npm run dev
 
 
