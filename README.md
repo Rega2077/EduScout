@@ -19,7 +19,7 @@
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/EduScout.git
+   git clone https://github.com/Rega2077/EduScout.git
 
 2. Install dependencies for both frontend and backend:
    ```bash
