@@ -22,7 +22,11 @@
    git clone https://github.com/your-username/EduScout.git
 
 2. Install dependencies for both frontend and backend:
+   ```bash
    npm install
 
 3. Set up your environment variables and run the development server:
+  ```bash
    npm run dev
+
+
